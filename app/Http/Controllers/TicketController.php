@@ -15,13 +15,24 @@ class TicketController extends Controller
         $this->ticketRepository = $ticketRepository;
     }
 
+    public function index()
+    {
+        $tickets = $this->ticketRepository->getAllPaginated(1);
+        return view('tickets.all')->withTickets($tickets);
+    }
+
     public function find(int $id)
     {
         $ticket = $this->ticketRepository->findById($id);
         return response($ticket);
     }
 
-    public function create(Request $request)
+    public function create()
+    {
+        return view('tickets.create');
+    }
+
+    public function store(Request $request)
     {
         try {
             $this->ticketRepository->create($request->all());

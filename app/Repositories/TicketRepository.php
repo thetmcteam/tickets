@@ -17,6 +17,12 @@ class TicketRepository implements TicketRepositoryInterface
         $this->validator = $validator;
     }
 
+    public function getAllPaginated(int $page)
+    {
+        $tickets = $this->ticket->all();
+        return $tickets;
+    }
+
     public function findById(int $id)
     {
         $ticket = $this->ticket->find($id);
