@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Validator;
 use App\Models\Ticket;
 use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\TicketRepositoryInterface;
