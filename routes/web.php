@@ -7,7 +7,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'tickets'], function () {
-        Route::get('/', 'TicketController@index');
+        Route::get('/', 'TicketController@index')->name('tickets');
         Route::get('create', 'TicketController@create');
     });
 });

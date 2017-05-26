@@ -1,0 +1,40 @@
+.sidebar {
+    width: inherit;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $sidebar-background-color;
+    padding: 15px;
+
+    .section {
+        margin-bottom: 25px;
+
+        h6 {
+            font-size: 9px;
+            color: gray;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+
+            li {
+                a {
+                    color: black;
+                    text-transform: capitalize;
+                    padding: 7px 0;
+                    display: block;
+                    width: 100%;
+                    text-decoration: none;
+                    
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
