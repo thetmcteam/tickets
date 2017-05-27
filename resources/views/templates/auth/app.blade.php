@@ -41,7 +41,39 @@
                     </div>
                 </div>
                 <div class="col-sm-10">
-                    @yield("content")
+                    <div class="row">
+                        <nav class="navbar navbar-default">
+                            <div class="collapse navbar-collapse">
+                                <form class="navbar-form navbar-left">
+                                    <div class="input-group">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="search something">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-primary">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-power-off"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="content">
+                        @yield("content")
+                    </div>
                 </div>
             </div>
         </div>
