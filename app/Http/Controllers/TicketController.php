@@ -34,8 +34,12 @@ class TicketController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->all();
+        $data['user'] = $request->user()->id;
+        $data['status'] = 1;
+        
         try {
-            $this->ticketRepository->create($request->all());
+            $this->ticketRepository->create($data);
         } catch (ValidationException $e) {
             return response(json_decode($e->getMessage()), 401);
         }

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
+    protected $guarded = ['id'];
+    
     public function department()
     {
         return $this->hasOne(Department::class, 'id', 'department');
@@ -19,5 +21,10 @@ class Ticket extends Model
     public function status()
     {
         return $this->hasOne(Status::class, 'id', 'status');
+    }
+
+    public function type()
+    {
+        return $this->hasOne(Type::class, 'id', 'type');
     }
 }

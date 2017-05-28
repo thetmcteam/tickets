@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use Validator;
+use Illuminate\Validation\Factory as Validator;
 use App\Models\Comment;
 use App\Exeptions\ValidationException;
 use App\Contracts\Repositories\CommentRepositoryInterface;
@@ -28,7 +28,7 @@ class CommentRepository implements CommentRepositoryInterface
         $validator = $this->validate($data);
 
         if ($validator->fails()) {
-            throw new ValidationException(json_encode($validator->errors()));
+            throw new ValidationException(json_encode($validator->errors()->all()));
         }
 
         $this->comment->create([

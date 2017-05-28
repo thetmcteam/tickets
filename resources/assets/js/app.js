@@ -15,6 +15,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('create-ticket', require('./components/tickets/create.vue'));
+
 const app = new Vue({
     el: '#app'
 });

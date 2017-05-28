@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use Validator;
+use Illuminate\Validation\Factory as Validator;
 use App\Models\Ticket;
 use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\TicketRepositoryInterface;
@@ -34,14 +34,15 @@ class TicketRepository implements TicketRepositoryInterface
         $validator = $this->validate($data);
 
         if ($validator->fails()) {
-            throw new ValidationException(json_encode($validator->errors()));
+            throw new ValidationException(json_encode($validator->errors()->all()));
         }
 
         $this->ticket->create([
             'user' => $data['user'],
             'department' => $data['department'],
             'title' => $data['title'],
-            'content' => $data['content']
+            'content' => $data['content'],
+            'status' => $data['status'],
         ]);
     }
 
@@ -58,6 +59,7 @@ class TicketRepository implements TicketRepositoryInterface
             'department' => 'required|integer|exists:departments,id',
             'title' => 'required',
             'content' => 'required',
+            'status' => 'required|integer'
         ]);
     }
 }

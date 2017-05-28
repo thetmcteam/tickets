@@ -1,8 +1,14 @@
 @extends("templates.auth.app")
 
 @section("content")
-    <div class="row">
-        <div class="tickets all">
+    <div class="tickets all">
+        <div class="heading">
+            <ul class="breadcrumb">
+                <li><a href="">Tickets</a></li>
+                <li class="disabled">All</li>
+            </ul>
+        </div>
+        <div class="row">
             <table class="table">
                 <thead>
                     <tr>
@@ -17,7 +23,7 @@
                 <tbody>
                     @foreach ($tickets as $ticket)
                         <tr>
-                            <td><a href="">#{{ $ticket["id"] }}</a></td>
+                            <td><a href="">#{{ $ticket['id'] }}</a></td>
                             <td>{{ $ticket['title'] }}</td>
                             <td>
                                 <i class="fa fa-square" style="color: {{ $ticket['department']['color']  }}"></i>

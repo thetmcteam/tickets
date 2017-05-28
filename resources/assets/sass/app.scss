@@ -4,6 +4,9 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+// Imports
+@import "node_modules/sweetalert/dev/sweetalert.scss";
+
 // Core
 @import "variables";
 @import "core";
@@ -13,6 +16,8 @@
 @import "partials/heading";
 @import "partials/navbar";
 @import "partials/tables";
+@import "partials/inputs";
 
 // Framework
 @import "framework/tickets/all";
+@import "framework/tickets/create";

@@ -1,18 +1,18 @@
 <?php
 
-use Illuminate\Http\Request;
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'tickets'], function () {
+        Route::post('', 'TicketController@store');
+        Route::delete('{id}', 'TicketController@delete');
+    });
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+    Route::group(['prefix' => 'departments'], function () {
+        Route::get('/', 'DepartmentController@index');
+        Route::post('/', 'DepartmentController@create');
+        Route::delete('{id}', 'DepartmentController@delete');
+    });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::group(['prefix' => 'types'], function () {
+        Route::get('/', 'TypeController@index');
+    });
 });

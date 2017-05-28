@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use Validator;
+use Illuminate\Validation\Factory as Validator;
 use App\Models\Note;
 use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\NoteRepositoryInterface;
@@ -28,7 +28,7 @@ class NoteRepository implements NoteRepositoryInterface
         $validator = $this->validate($data);
 
         if ($validator->fails()) {
-            throw new ValidationException(json_encode($validator->errors()));
+            throw new ValidationException(json_encode($validator->errors()->all()));
         }
 
         $this->note->create([
