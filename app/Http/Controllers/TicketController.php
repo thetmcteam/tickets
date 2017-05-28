@@ -37,7 +37,7 @@ class TicketController extends Controller
         $data = $request->all();
         $data['user'] = $request->user()->id;
         $data['status'] = 1;
-        
+
         try {
             $this->ticketRepository->create($data);
         } catch (ValidationException $e) {

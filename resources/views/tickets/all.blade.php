@@ -17,6 +17,7 @@
                         <th>Department</th>
                         <th>Creator</th>
                         <th>Status</th>
+                        <th>Type</th>
                         <th>Created</th>
                     </tr>
                 </thead>
@@ -31,6 +32,7 @@
                             </td>
                             <td><a href="">{{ $ticket['user']['name'] }}</a></td>
                             <td>{{ $ticket['status']['status'] }}</td>
+                            <td>{{ $ticket['type']['type'] }}</td>
                             <td>{{ $ticket['created_at'] }}</td>
                         </tr>
                     @endforeach

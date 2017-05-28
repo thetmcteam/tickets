@@ -15,6 +15,7 @@ class CreateTicketsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->integer('status');
+            $table->integer('type');
             $table->timestamps();
         });
     }

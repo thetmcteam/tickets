@@ -19,7 +19,7 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function getAllPaginated(int $page)
     {
-        $tickets = $this->ticket->with('department', 'user', 'status')->get()->toArray();
+        $tickets = $this->ticket->with('department', 'user', 'status', 'type')->get()->toArray();
         return $tickets;
     }
 
@@ -43,6 +43,7 @@ class TicketRepository implements TicketRepositoryInterface
             'title' => $data['title'],
             'content' => $data['content'],
             'status' => $data['status'],
+            'type' => $data['type']
         ]);
     }
 
@@ -59,7 +60,8 @@ class TicketRepository implements TicketRepositoryInterface
             'department' => 'required|integer|exists:departments,id',
             'title' => 'required',
             'content' => 'required',
-            'status' => 'required|integer'
+            'status' => 'required|integer|exists:statuses,id',
+            'type' => 'required|integer|exists:types,id'
         ]);
     }
 }
