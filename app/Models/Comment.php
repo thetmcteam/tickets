@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $guarded = ['id'];
+    protected $with = ['notes', 'user'];
+    
     public function notes()
     {
-        return $this->hasMany(Note::class, 'id', 'ticket');
+        return $this->hasMany(Note::class, 'comment', 'id');
     }
 
     public function user()

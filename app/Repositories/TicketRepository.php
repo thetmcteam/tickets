@@ -19,13 +19,13 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function getAllPaginated(int $page)
     {
-        $tickets = $this->ticket->with('department', 'user', 'status', 'type')->get()->toArray();
+        $tickets = $this->ticket->get()->toArray();
         return $tickets;
     }
 
     public function findById(int $id)
     {
-        $ticket = $this->ticket->with('department', 'user', 'status', 'type', 'comments.notes', 'comments.user')->find($id);
+        $ticket = $this->ticket->find($id);
         return $ticket->toArray();
     }
     

@@ -28,4 +28,22 @@
     > .reply {
         margin-bottom: 25px;
     }
+
+    .replies {
+        .reply {
+            .panel-default {
+                box-shadow: none;
+                
+                .panel-footer {
+                    background-color: #fff;
+
+                    a {
+                        color: $theme;
+                        cursor: pointer;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
 }

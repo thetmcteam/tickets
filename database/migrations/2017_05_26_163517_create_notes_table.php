@@ -12,7 +12,7 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->integer('comment');
             $table->integer('user');
-            $table->text('note');
+            $table->text('content');
             $table->timestamps();
         });
     }

@@ -35,8 +35,20 @@
                             <div class="panel-body">
                                 {!! $comment['content'] !!}
                             </div>
+                            @if (!empty($comment['notes']))
+                                <ul class="list-group">
+                                    @foreach ($comment['notes'] as $note)
+                                        <li class="list-group-item">
+                                            <a href="">{{ $note['user']['name'] }}</a>
+                                            {{ $note['content'] }}
+                                            <i>({{ \Carbon\Carbon::createFromTimeStamp(strtotime($note['created_at']))->diffForHumans() }})</i>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
                             <div class="panel-footer">
-                                <span><i class="fa fa-reply"></i></span>
+                                <a><i class="fa fa-reply"></i></a>
+                                <a><i class="fa fa-trash"></i></a>
                             </div>
                         </div>
                     </div>

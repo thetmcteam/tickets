@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Note;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\TicketRepositoryInterface;
