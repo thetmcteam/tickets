@@ -25,8 +25,8 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function findById(int $id)
     {
-        $ticket = $this->ticket->find($id);
-        return $ticket;
+        $ticket = $this->ticket->with('department', 'user', 'status', 'type', 'comments.notes', 'comments.user')->find($id);
+        return $ticket->toArray();
     }
     
     public function create(array $data)

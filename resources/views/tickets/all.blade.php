@@ -24,7 +24,7 @@
                 <tbody>
                     @foreach ($tickets as $ticket)
                         <tr>
-                            <td><a href="">#{{ $ticket['id'] }}</a></td>
+                            <td><a href="{{ route('tickets.show', ['id' => $ticket['id']]) }}">#{{ $ticket['id'] }}</a></td>
                             <td>{{ $ticket['title'] }}</td>
                             <td>
                                 <i class="fa fa-square" style="color: {{ $ticket['department']['color']  }}"></i>

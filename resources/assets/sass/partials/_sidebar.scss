@@ -6,13 +6,14 @@
     left: 0;
     background-color: $sidebar-background-color;
     padding: 15px;
+    box-shadow: inset -7px 0 9px -7px rgba(0, 0, 0, 0.4);
 
     .section {
         margin-bottom: 25px;
 
         h6 {
             font-size: 9px;
-            color: #30aabc;
+            color: #f9f9f9;
             margin-bottom: 15px;
             text-transform: uppercase;
         }
@@ -20,6 +21,12 @@
         ul {
             list-style: none;
             padding-left: 0;
+
+            li.active {
+                i {
+                    color: $sidebar-active-color;
+                }
+            }
 
             li {
                 a {

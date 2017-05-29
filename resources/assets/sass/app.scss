@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700');
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
@@ -11,6 +11,13 @@
 @import "variables";
 @import "core";
 
+.sweet-alert {
+    button {
+        background-color: $theme !important;
+        color: white !important;
+    }
+}
+
 // Partials
 @import "partials/sidebar";
 @import "partials/heading";
@@ -20,4 +27,5 @@
 
 // Framework
 @import "framework/tickets/all";
+@import "framework/tickets/view";
 @import "framework/tickets/create";

@@ -1,6 +1,9 @@
+$theme: #34495e;
+
 // Colors
 $body-background-color: #fff;
-$sidebar-background-color: #2c3435;
+$sidebar-active-color: #2ecc71;
+$sidebar-background-color: $theme;
 
 // Fonts
-$font-family: 'Raleway', sans-serif;
+$font-family: 'Source Sans Pro', sans-serif;

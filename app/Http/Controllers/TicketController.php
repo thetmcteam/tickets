@@ -21,10 +21,10 @@ class TicketController extends Controller
         return view('tickets.all')->withTickets($tickets);
     }
 
-    public function find(int $id)
+    public function show(int $id)
     {
         $ticket = $this->ticketRepository->findById($id);
-        return response($ticket);
+        return view('tickets.show')->withTicket($ticket);
     }
 
     public function create()

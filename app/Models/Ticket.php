@@ -27,4 +27,9 @@ class Ticket extends Model
     {
         return $this->hasOne(Type::class, 'id', 'type');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'ticket', 'id');
+    }
 }

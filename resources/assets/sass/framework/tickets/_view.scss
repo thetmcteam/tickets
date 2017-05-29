@@ -1,0 +1,31 @@
+.tickets.show {
+    padding: 0 20px;
+
+    .creator {
+        margin-bottom: 25px;
+
+        h3, h4 {
+            text-transform: capitalize;
+            letter-spacing: 0.05em;
+
+            small {
+                font-weight: lighter;
+                text-transform: lowercase;
+            }
+        }
+    }
+
+    .content {
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 1.5;
+        letter-spacing: 0.025em;
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #e9e9e9;
+    }
+
+    > .reply {
+        margin-bottom: 25px;
+    }
+}

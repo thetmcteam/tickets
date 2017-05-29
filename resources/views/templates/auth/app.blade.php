@@ -14,7 +14,7 @@
                         <div class="section">
                             <h6>Main</h6>
                             <ul>
-                                <li><a href=""><i class="fa fa-home"></i> Dashboard</a></li>
+                                <li class="active"><a href=""><i class="fa fa-home"></i> Dashboard</a></li>
                                 <li><a href="{{ route('tickets') }}"><i class="fa fa-ticket"></i> Tickets</a></li>
                                 <li><a href=""><i class="fa fa-cog"></i> Settings</a></li>
                                 <li><a href=""><i class="fa fa-power-off"></i> Logout</a></li>
@@ -33,10 +33,10 @@
                         <div class="section">
                             <h6>Active Users</h6>
                             <ul>
-                                <li><a href=""><i class="fa fa-circle" style="color: green"></i> Jordan Bardsley</a></li>
-                                <li><a href=""><i class="fa fa-circle" style="color: green"></i> James Andrews</a></li>
-                                <li><a href=""><i class="fa fa-circle" style="color: green"></i> Tyson Chavarie</a></li>
-                                <li><a href=""><i class="fa fa-circle" style="color: green"></i> Austin Layne</a></li>
+                                <li><a href=""><i class="fa fa-circle" style="color: #2ecc71"></i> Jordan Bardsley</a></li>
+                                <li><a href=""><i class="fa fa-circle" style="color: #2ecc71"></i> James Andrews</a></li>
+                                <li><a href=""><i class="fa fa-circle" style="color: #2ecc71"></i> Tyson Chavarie</a></li>
+                                <li><a href=""><i class="fa fa-circle" style="color: #2ecc71"></i> Austin Layne</a></li>
                             </ul>
                         </div>
                     </div>
