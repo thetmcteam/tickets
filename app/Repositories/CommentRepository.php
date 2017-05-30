@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Carbon\Carbon;
 use Illuminate\Validation\Factory as Validator;
 use App\Models\Comment;
 use App\Exceptions\ValidationException;
@@ -20,7 +21,12 @@ class CommentRepository implements CommentRepositoryInterface
     public function findById(int $id)
     {
         $comments = $this->comment->where('ticket', $id)->orderBy('id', 'asc')->get();
-        return $comments;
+        
+        return $comments->map(function ($comment) {
+            $data = $comment->toArray();
+            $data['created_at'] = $comment->created_at->diffForHumans();
+            return $data;
+        });
     }
     
     public function create(array $data)

@@ -1,7 +1,56 @@
 .tickets.all {
+    position: relative;
+    margin-top: -20px;
+
     .table {
+        margin-bottom: 0;
+
         .fa {
             margin-top: 10px;
+        }
+    }
+
+    .filters {
+        background-color: #fafafa;
+        border-right: 1px solid #e5e5e5;
+
+        h6 {
+            font-size: 9px;
+            color: black;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+
+        ul {
+            top: 10px;
+            position: sticky;
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+
+            .active {
+                a {
+                    i {
+                        color: $sidebar-active-color;
+                    }
+                }
+            }
+
+            li {
+                a {
+                    width: 100%;
+                    color: black;
+                    display: block;
+                    padding: 5px 15px;
+                    text-decoration: none;
+
+                    i {
+                        margin-right: 10px;
+                    }
+                }
+            }
         }
     }
 }

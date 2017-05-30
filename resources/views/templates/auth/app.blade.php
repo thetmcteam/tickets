@@ -60,31 +60,32 @@
                 <div class="col-sm-10">
                     <div class="row">
                         <nav class="navbar navbar-default">
+                            <div class="navbar-header">
+                                <a href="" class="navbar-brand">
+                                    {{ config('app.name') }}
+                                </a>
+                            </div>
                             <div class="collapse navbar-collapse">
-                                <form class="navbar-form navbar-left">
-                                    <div class="input-group">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="search something">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-primary">
-                                                    <i class="fa fa-search"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </form>
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li>
+                                    <li data-toggle="tooltip" data-placement="bottom" title="open ticket">
                                         <a href="{{ route('tickets.create') }}">
                                             <i class="fa fa-plus"></i>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li data-toggle="tooltip" data-placement="bottom" title="logout">
                                         <a href="">
                                             <i class="fa fa-power-off"></i>
                                         </a>
                                     </li>
                                 </ul>
+                                <form class="navbar-form navbar-right">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                </form>
                             </div>
                         </nav>
                     </div>
@@ -96,5 +97,12 @@
         </div>
 
         <script src="{{ asset('js/app.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+
+                $('.filters').css('height', ($(document).height() - $('.navbar').height()) + 'px');
+            });
+        </script>
     </body>
 </html>
