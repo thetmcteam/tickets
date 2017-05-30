@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     protected $guarded = ['id'];
-    protected $with = ['department', 'user', 'status', 'type', 'comments'];
+    protected $with = ['department', 'user', 'status', 'type'];
 
     public function department()
     {

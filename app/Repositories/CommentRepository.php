@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Validation\Factory as Validator;
 use App\Models\Comment;
-use App\Exeptions\ValidationException;
+use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\CommentRepositoryInterface;
 
 class CommentRepository implements CommentRepositoryInterface

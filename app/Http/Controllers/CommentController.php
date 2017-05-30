@@ -23,8 +23,11 @@ class CommentController extends Controller
 
     public function create(Request $request)
     {
+        $data = $request->all();
+        $data['user'] = $request->user()->id;
+        
         try {
-            $this->commentRepository->create($request->all());
+            $this->commentRepository->create($data);
         } catch (ValidationException $e) {
             return response(json_decode($e->getMessage()), 401);
         }

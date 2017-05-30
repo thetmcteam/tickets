@@ -14,10 +14,26 @@
                         <div class="section">
                             <h6>Main</h6>
                             <ul>
-                                <li class="active"><a href=""><i class="fa fa-home"></i> Dashboard</a></li>
-                                <li><a href="{{ route('tickets') }}"><i class="fa fa-ticket"></i> Tickets</a></li>
-                                <li><a href=""><i class="fa fa-cog"></i> Settings</a></li>
-                                <li><a href=""><i class="fa fa-power-off"></i> Logout</a></li>
+                                <li class="{{ request()->route()->getName() === 'dashboard' ? 'active' : '' }}">
+                                    <a href="">
+                                        <i class="fa fa-home"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li class="{{ request()->route()->getName() === 'tickets' ? 'active' : '' }}">
+                                    <a href="{{ route('tickets') }}">
+                                        <i class="fa fa-ticket"></i> Tickets
+                                    </a>
+                                </li>
+                                <li class="{{ request()->route()->getName() === 'settings' ? 'active' : '' }}">
+                                    <a href="">
+                                        <i class="fa fa-cog"></i> Settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="fa fa-power-off"></i> Logout
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div class="section">

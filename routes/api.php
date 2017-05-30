@@ -12,6 +12,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('{id}', 'DepartmentController@delete');
     });
 
+    Route::group(['prefix' => 'comments'], function () {
+        Route::post('/', 'CommentController@create');
+        Route::get('{id}', 'CommentController@find');
+    });
+
     Route::group(['prefix' => 'types'], function () {
         Route::get('/', 'TypeController@index');
     });
