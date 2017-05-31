@@ -3,7 +3,7 @@
 @section("content")
     <div class="tickets all">
         <div class="row">
-            <div class="col-sm-2 filters" style="padding: 0">
+            <div class="col-sm-2 sub-toolbar">
                 <h6>status filters</h6>
                 <ul>
                     <li class="active">

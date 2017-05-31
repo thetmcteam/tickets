@@ -4,7 +4,6 @@
             <textarea class="form-control" rows="6" placeholder="Post a reply to this ticket..." v-model="data.content" required></textarea>
         </div>
         <button class="btn btn-primary pull-right">reply</button>
-        <div style="clear: both"></div>
     </form>
 </template>
 

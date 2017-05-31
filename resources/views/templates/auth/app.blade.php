@@ -100,8 +100,10 @@
         <script>
             $(document).ready(function () {
                 $('[data-toggle="tooltip"]').tooltip();
-
-                $('.filters').css('height', ($(document).height() - $('.navbar').height()) + 'px');
+                
+                setTimeout(function () {
+                    $('.sub-toolbar').css('height', ($(document).height() - $('.navbar').height()) + 'px');
+                }, 250);
             });
         </script>
     </body>

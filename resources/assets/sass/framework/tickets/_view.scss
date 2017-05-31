@@ -1,5 +1,5 @@
 .tickets.show {
-    padding: 0 20px;
+    margin-top: -20px;
 
     .creator {
         margin-bottom: 25px;
@@ -29,6 +29,8 @@
     }
 
     .replies {
+        margin-top: 20px;
+
         .reply {
             .panel-default {
                 box-shadow: none;
@@ -40,6 +42,51 @@
                         color: rgba(0,0,0,0.55);
                         cursor: pointer;
                         margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include sub-toolbar();
+
+    .sub-toolbar {
+        padding: 15px 10px;
+
+        .sticky {
+            position: sticky;
+            top: 20px;
+        }
+
+        .section {
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .small-creator {
+            img {
+                height: 40px;
+                width: 40px;
+                display: block;
+                margin: auto;
+                border-radius: 100%;
+            }
+
+            h5 {
+                text-align: center;
+            }
+        }
+
+        .viewers {
+            ul {
+                list-style: none;
+                padding-left: 0;
+
+                li {
+                    margin-bottom: 3px;
+                    i {
+                        color: #2ecc71;
+                        margin-right: 6px;
                     }
                 }
             }

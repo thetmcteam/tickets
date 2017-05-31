@@ -7,6 +7,9 @@
 // Imports
 @import "node_modules/sweetalert/dev/sweetalert.scss";
 
+// Mixins
+@import "mixins/_sub-toolbar";
+
 // Core
 @import "variables";
 @import "core";
