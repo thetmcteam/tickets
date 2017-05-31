@@ -99,7 +99,7 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <script>
             $(document).ready(function () {
-                $('[data-toggle="tooltip"]').tooltip();
+                $(document).find('[data-toggle="tooltip"]').tooltip();
                 
                 setTimeout(function () {
                     $('.sub-toolbar').css('height', ($(document).height() - $('.navbar').height()) + 'px');

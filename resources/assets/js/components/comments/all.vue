@@ -12,8 +12,17 @@
                         {{ note.content }}
                     </li>
                 </ul>
+                <div class="panel-body" v-if="isReplying && data.comment === reply.id">
+                    <form @submit.prevent="reply">
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Post a reply..." v-model="data.note" required></textarea>
+                        </div>
+                        <button class="btn btn-warning" @click.prevent="cancelReply">cancel</button>
+                        <button class="btn btn-primary" @click.prevent="postReply">reply</button>
+                    </form>
+                </div>
                 <div class="panel-footer">
-                    <a data-toggle="tooltip" data-placement="bottom" title="reply"><i class="fa fa-reply"></i></a>
+                    <a @click="setReplying(reply)"><i class="fa fa-reply"></i></a>
                     <a><i class="fa fa-trash"></i></a>
                 </div>
             </div>
@@ -38,11 +47,34 @@
 
         data() {
             return {
-                replies: []
+                replies: [],
+                isReplying: false,
+                data: {
+                    comment: null,
+                    note: null
+                }
             };
         },
 
         methods: {
+            setReplying(reply) {
+                this.isReplying = true;
+                this.data.comment = reply.id;
+            },
+
+            cancelReply() {
+                this.isReplying = false;
+                this.data.note = null;
+            },
+
+            postReply() {
+                axios.post('/api/notes', this.data)
+                    .then(response => {
+                        this.refresh();
+                        this.cancelReply();
+                    });
+            },
+
             refresh() {
                 let ticket = this.ticket;
 

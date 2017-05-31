@@ -7,7 +7,7 @@ use App\Repositories\NoteRepository;
 use App\Repositories\TicketRepository;
 use App\Repositories\CommentRepository;
 use App\Repositories\DepartmentRepository;
-use App\Contracts\NoteRepositoryInterface;
+use App\Contracts\Repositories\NoteRepositoryInterface;
 use App\Contracts\Repositories\TypeRepositoryInterface;
 use App\Contracts\Repositories\TicketRepositoryInterface;
 use App\Contracts\Repositories\CommentRepositoryInterface;

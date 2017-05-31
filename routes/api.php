@@ -17,6 +17,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('{id}', 'CommentController@find');
     });
 
+    Route::group(['prefix' => 'notes'], function () {
+        Route::post('/', 'NoteController@create');
+    });
+
     Route::group(['prefix' => 'types'], function () {
         Route::get('/', 'TypeController@index');
     });

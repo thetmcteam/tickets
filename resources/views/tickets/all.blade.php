@@ -50,12 +50,12 @@
                         <tbody>
                             @foreach ($tickets as $ticket)
                                 <tr>
-                                    <td><a href="{{ route('tickets.show', ['id' => $ticket['id']]) }}">#{{ $ticket['id'] }}</a></td>
-                                    <td>{{ $ticket['title'] }}</td>
                                     <td>
                                         <i class="fa fa-square" style="color: {{ $ticket['department']['color']  }}"></i>
-                                        {{ $ticket["department"]["department"] }}
+                                        <a href="{{ route('tickets.show', ['id' => $ticket['id']]) }}">#{{ $ticket['id'] }}</a>
                                     </td>
+                                    <td>{{ $ticket['title'] }}</td>
+                                    <td>{{ $ticket["department"]["department"] }}</td>
                                     <td><a href="">{{ $ticket['user']['name'] }}</a></td>
                                     <td>{{ $ticket['status']['status'] }}</td>
                                     <td>{{ $ticket['type']['type'] }}</td>

@@ -23,8 +23,11 @@ class NoteController extends Controller
     
     public function create(Request $request)
     {
+        $data = $request->all();
+        $data['user'] = $request->user()->id;
+        
         try {
-            $this->noteRepository->create($request->all());
+            $this->noteRepository->create($data);
         } catch (ValidationException $e) {
             return response(json_decode($e->getMessage()), 401);
         }

@@ -34,7 +34,7 @@ class NoteRepository implements NoteRepositoryInterface
         $this->note->create([
             'comment' => $data['comment'],
             'user' => $data['user'],
-            'note' => $data['note']
+            'content' => $data['note']
         ]);
     }
 
