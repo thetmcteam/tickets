@@ -33,6 +33,27 @@ class TicketController extends Controller
         return view('tickets.create');
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $status = intval($request->get('status'));
+        $this->ticketRepository->updateStatus($id, $status);
+        return response(['message' => 'ticket successfully updated.']);
+    }
+
+    public function updatePriority(Request $request, $id)
+    {
+        $priority = intval($request->get('priority'));
+        $this->ticketRepository->updatePriority($id, $priority);
+        return response(['message' => 'ticket successfully updated.']);
+    }
+
+    public function updateAssignee(Request $request, $id)
+    {
+        $assignee = intval($request->get('assignee'));
+        $this->ticketRepository->updateAssignee($id, $assignee);
+        return response(['message' => 'ticket successfully updated.']);
+    }
+
     public function store(Request $request)
     {
         $data = $request->all();

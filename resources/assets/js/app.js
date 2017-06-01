@@ -18,6 +18,9 @@ window.Bus = new Vue();
 
 Vue.component('all-comments', require('./components/comments/all.vue'));
 Vue.component('create-ticket', require('./components/tickets/create.vue'));
+Vue.component('ticket-status', require('./components/tickets/status.vue'));
+Vue.component('ticket-priority', require('./components/tickets/priority.vue'));
+Vue.component('ticket-assignee', require('./components/tickets/assignee.vue'));
 Vue.component('create-comment', require('./components/comments/create.vue'));
 
 const app = new Vue({

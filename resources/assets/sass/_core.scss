@@ -2,3 +2,11 @@ body {
     font-family: $font-family;
     background-color: $body-background-color;
 }
+
+label {
+    .main {
+        font-weight: normal !important;
+        text-transform: capitalize;
+        letter-spacing: 0.04em;
+    }
+}

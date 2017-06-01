@@ -16,7 +16,7 @@
     }
 
     .content {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.5;
         letter-spacing: 0.025em;
         margin-bottom: 25px;
@@ -51,7 +51,7 @@
     @include sub-toolbar();
 
     .sub-toolbar {
-        padding: 15px 10px;
+        padding: 15px 0;
 
         .sticky {
             position: sticky;
@@ -59,11 +59,25 @@
         }
 
         .section {
-            padding-bottom: 5px;
-            border-bottom: 1px solid #e5e5e5;
+            padding: 10px;
+            border-top: 1px solid #e5e5e5;
+
+            form {
+                label {
+                    display: block;
+                    width: 100%;
+
+                    a {
+                        font-size: 9px;
+                        margin-top: 5px;
+                    }
+                }
+            }
         }
 
         .small-creator {
+            border-top: none !important;
+
             img {
                 height: 40px;
                 width: 40px;
@@ -78,14 +92,20 @@
         }
 
         .viewers {
+            i {
+                color: #2ecc71;
+            }
+        }
+
+        .viewers, .assignees {
             ul {
                 list-style: none;
                 padding-left: 0;
 
                 li {
                     margin-bottom: 3px;
+
                     i {
-                        color: #2ecc71;
                         margin-right: 6px;
                     }
                 }

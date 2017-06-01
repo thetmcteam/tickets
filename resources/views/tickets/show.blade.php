@@ -3,28 +3,24 @@
 @section("content")
     <div class="tickets show">
         <div class="row">
-            <div class="col-sm-2 sub-toolbar">
+            <div class="col-sm-3 sub-toolbar">
                 <div class="sticky">
                     <div class="section small-creator">
                         <img src="https://www.webpagefx.com/data/marketing-persona-generator/img/placeholder.png">
                         <h5>{{ $ticket['user']['name'] }}</h5>
                     </div>
-                    <div class="section viewers">
-                        <h6>active users</h6>
-                        <ul>
-                            <li><i class="fa fa-circle"></i> Jordan Bardsley</li>
-                            <li><i class="fa fa-circle"></i> James Andrews</li>
-                            <li><i class="fa fa-circle"></i> Tyson Chavarie</li>
-                            <li><i class="fa fa-circle"></i> Joe Yates</li>
-                        </ul>
-                    </div>
                     <div class="section status">
-                        <h6>ticket status</h6>
-                        <h5><i class="fa fa-clock-o"></i> Awaiting Response</h5>
+                        <ticket-status ticket="{{ $ticket['id'] }}" status="{{ $ticket['status']['id'] }}"></ticket-status>
+                    </div>
+                    <div class="section assignees">
+                        <ticket-assignee ticket="{{ $ticket['id'] }}" assignee="{{ $ticket['assignee']['id'] }}"></ticket-assignee>
+                    </div>
+                    <div class="section priority">
+                        <ticket-priority ticket="{{ $ticket['id'] }}" priority="{{ $ticket['priority']['id'] }}"></ticket-priority>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <div class="creator">
                     <h3>
                         {{ $ticket['title'] }}<br>

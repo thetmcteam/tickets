@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     protected $guarded = ['id'];
-    protected $with = ['department', 'user', 'status', 'type'];
+    protected $with = ['department', 'user', 'status', 'type', 'priority', 'assignee'];
 
     public function department()
     {
@@ -17,6 +17,11 @@ class Ticket extends Model
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user');
+    }
+
+    public function assignee()
+    {
+        return $this->hasOne(User::class, 'id', 'assignee');
     }
 
     public function status()
@@ -32,5 +37,10 @@ class Ticket extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'ticket', 'id');
+    }
+
+    public function priority()
+    {
+        return $this->hasOne(Priority::class, 'id', 'priority');
     }
 }

@@ -5,20 +5,20 @@
             <input type="text" class="form-control" v-model="data.title" required>
         </div>
         <div class="form-group">
+            <label>Content</label>
+            <textarea class="form-control" v-model="data.content" rows="10" required></textarea>
+        </div>
+        <div class="form-group">
             <label>Department</label>
-            <select class="form-control" v-model="data.department" required>
-                <option v-for="department in departments" :value="department.id">{{ department.department }}</option>
-            </select>
+            <div v-for="department in departments">
+                <input type="radio" :value="department.id" v-model="data.department" required> &nbsp; {{ department.department }}
+            </div>
         </div>
         <div class="form-group">
             <label>Type</label>
-            <select class="form-control" v-model="data.type" required>
-                <option v-for="t in types" :value="t.id">{{ t.type }}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Content</label>
-            <textarea class="form-control" v-model="data.content" rows="10" required></textarea>
+            <div v-for="t in types">
+                <input type="radio" :value="t.id" v-model="data.type" required> &nbsp; {{ t.type }}
+            </div>
         </div>
         <div class="form-group">
             <button class="btn btn-primary">Create</button>
