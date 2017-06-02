@@ -39,11 +39,14 @@
                         <div class="section">
                             <h6>Departments</h6>
                             <ul>
-                                <li><a href=""><i class="fa fa-square" style="color: #3498db"></i> information techology</a></li>
-                                <li><a href=""><i class="fa fa-square" style="color: #e74c3c"></i> human resources</a></li>
-                                <li><a href=""><i class="fa fa-square" style="color: #f39c12"></i> verizon</a></li>
-                                <li><a href=""><i class="fa fa-square" style="color: #9b59b6"></i> energy</a></li>
-                                <li><a href=""><i class="fa fa-square" style="color: #16a085"></i> political</a></li>
+                                @foreach ($departments as $department)
+                                    <li>
+                                        <a href="{{ route('tickets.department', ['id' => $department->id]) }}">
+                                            <i class="fa fa-square" style="color: {{ $department['color']  }}"></i>
+                                            {{ $department->department }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="section">

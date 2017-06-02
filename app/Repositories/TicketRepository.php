@@ -19,8 +19,14 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function getAllPaginated(int $page)
     {
-        $tickets = $this->ticket->get()->toArray();
-        return $tickets;
+        $tickets = $this->ticket->get();
+        return $tickets->toArray();
+    }
+
+    public function getAllPaginatedByDepartment(int $id, int $page)
+    {
+        $tickets = $this->ticket->where('department', $id)->get();
+        return $tickets->toArray();
     }
 
     public function findById(int $id)

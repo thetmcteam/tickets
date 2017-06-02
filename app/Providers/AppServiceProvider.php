@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use View;
+use App\Models\Department;
 use App\Repositories\TypeRepository;
 use App\Repositories\NoteRepository;
 use App\Repositories\TicketRepository;
@@ -18,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $departments = Department::all();
+        View::share('departments', $departments);
     }
 
     public function register()
