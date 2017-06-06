@@ -78,7 +78,6 @@
                                 @foreach ($tickets as $ticket)
                                     <tr>
                                         <td>
-                                            <i class="fa fa-square" style="color: {{ $ticket['department']['color']  }}"></i>
                                             <a href="{{ route('tickets.show', ['id' => $ticket['id']]) }}">#{{ $ticket['id'] }}</a>
                                         </td>
                                         <td>{{ $ticket['title'] }}</td>

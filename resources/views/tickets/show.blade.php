@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-9 no-padding">
                 <div class="creator">
                     <h3>
                         {{ $ticket['title'] }}<br>
@@ -30,10 +30,10 @@
                         </small>
                     </h3>
                 </div>
-                <div class="content">
+                <div class="content main">
                     {!! nl2br($ticket['content']) !!}
                 </div>
-                <div class="reply">
+                <div class="create--reply">
                     <create-comment ticket="{{ $ticket['id'] }}"></create-comment>
                     <div style="clear: both"></div>
                 </div>

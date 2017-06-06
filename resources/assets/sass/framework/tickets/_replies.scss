@@ -1,0 +1,22 @@
+.replies {
+    .reply {
+        padding: 0 25px;
+
+        .heading {
+            .user {
+                h4 {
+                    padding-top: 0;
+                    margin-top: 0;
+                }
+            }
+
+            button {
+                background-color: #fff;
+                border: 3px solid inherit;
+                color: $brand-primary;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+        }
+    }
+}

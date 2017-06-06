@@ -1,31 +1,15 @@
 <template>
     <div class="replies" v-if="replies.length > 0">
         <div class="reply" v-for="reply in replies">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a href="">{{ reply.user.name }}</a> replied {{ reply.created_at }}
+            <div class="heading">
+                <div class="user pull-left">
+                    <h4>{{ reply.user.name }}</h4>
+                    <h5>{{ reply.created_at }}</h5>
                 </div>
-                <div class="panel-body">{{ reply.content }}</div>
-                <ul class="list-group" v-if="reply.notes.length > 0">
-                    <li class="list-group-item" v-for="note in reply.notes">
-                        <a href="">{{ note.user.name }}</a>
-                        {{ note.content }}
-                    </li>
-                </ul>
-                <div class="panel-body" v-if="isReplying && data.comment === reply.id">
-                    <form @submit.prevent="reply">
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Post a reply..." v-model="data.note" required></textarea>
-                        </div>
-                        <button class="btn btn-warning" @click.prevent="cancelReply">cancel</button>
-                        <button class="btn btn-primary" @click.prevent="postReply">reply</button>
-                    </form>
-                </div>
-                <div class="panel-footer">
-                    <a @click="setReplying(reply)"><i class="fa fa-reply"></i></a>
-                    <a><i class="fa fa-trash"></i></a>
-                </div>
+                <button class="btn btn-primary btn-sm pull-right">reply</button>
+                <div style="clear: both"></div>
             </div>
+            <div class="content">{{ reply.content }}</div>
         </div>
     </div>
 </template>
@@ -81,6 +65,7 @@
                 axios.get(`/api/comments/${ticket}`)
                     .then(response => {
                         this.replies = response.data;
+                        console.log(this.replies);
                     });
             }
         }

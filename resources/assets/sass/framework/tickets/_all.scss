@@ -5,6 +5,21 @@
     .table {
         margin-bottom: 0;
 
+        .priority--urgent {
+            background-color: rgba(217, 83, 79, 0.2);
+        }
+
+        .priority--high {
+            background-color: rgba(240, 173, 78, 0.2);
+        }
+
+        .priority--high, .priority--urgent {
+            td {
+                border-top: none !important;
+                border-bottom: none !important;
+            }
+        }
+
         .fa {
             margin-top: 10px;
         }
