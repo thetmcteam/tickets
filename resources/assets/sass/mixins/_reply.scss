@@ -1,0 +1,40 @@
+@mixin reply() {
+    .reply {
+        padding: 0 25px 25px 25px;
+
+        .heading {
+            margin-bottom: 15px;
+
+            .user {
+                h4, h5 {
+                    padding-top: 0;
+                    margin-top: 0;
+
+                    small {
+                        color: #B1B1B2;
+                        font-weight: lighter;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+
+        .options {
+            margin-top: 15px;
+
+            ul {
+                list-style: none;
+                padding-left: 0;
+
+                li {
+                    display: inline-block;
+                    margin-right: 5px;
+
+                    a {
+                        font-weight: lighter;
+                    }
+                }
+            }
+        }
+    }
+}

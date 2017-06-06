@@ -2,14 +2,38 @@
     <div class="replies" v-if="replies.length > 0">
         <div class="reply" v-for="reply in replies">
             <div class="heading">
-                <div class="user pull-left">
-                    <h4>{{ reply.user.name }}</h4>
-                    <h5>{{ reply.created_at }}</h5>
+                <div class="user">
+                    <h4>
+                        {{ reply.user.name }}
+                        <small>{{ reply.created_at }}</small>
+                    </h4>
                 </div>
-                <button class="btn btn-primary btn-sm pull-right">reply</button>
-                <div style="clear: both"></div>
             </div>
             <div class="content">{{ reply.content }}</div>
+            <div class="options">
+                <ul>
+                    <li><a href="">delete</a></li>
+                    <li><a href="">reply</a></li>
+                </ul>
+            </div>
+            <div class="notes" v-if="reply.notes.length > 0">
+                <div class="reply note" v-for="note in reply.notes">
+                    <div class="heading">
+                        <div class="user">
+                            <h4>
+                                {{ note.user.name }}
+                                <small>{{ note.created_at }}</small>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="content">{{ note.content }}</div>
+                    <div class="options">
+                        <ul>
+                            <li><a href="">delete</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>

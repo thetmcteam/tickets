@@ -1,5 +1,6 @@
 .navbar {
     border-radius: 0;
+    box-shadow: none;
     background-color: #fafafa;
     border-top: none;
     border-left: none;
@@ -8,6 +9,10 @@
 
     a {
         color: rgba(0, 0, 0, 0.55) !important;
+    }
+
+    .navbar-brand {
+        font-size: 16px;
     }
 
     .navbar-nav {

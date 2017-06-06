@@ -1,6 +1,3 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -8,7 +5,8 @@
 @import "node_modules/sweetalert/dev/sweetalert.scss";
 
 // Mixins
-@import "mixins/_sub-toolbar";
+@import "mixins/sub-toolbar";
+@import "mixins/reply";
 
 // Core
 @import "variables";

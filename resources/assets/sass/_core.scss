@@ -1,6 +1,14 @@
 body {
-    font-family: $font-family;
     background-color: $body-background-color;
+    // -webkit-font-smoothing: antialiased;
+    letter-spacing: .1px;
+    word-spacing: 1px;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.846;
+}
+
+a {
+    color: #2196f3;
 }
 
 label {
