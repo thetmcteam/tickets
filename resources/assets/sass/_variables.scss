@@ -1,6 +1,20 @@
-$theme: #29668e;
+$theme: rgba(52, 152, 219,1.0);
+$theme-darker: rgba(41, 128, 185,1.0);
 
-// Colors
+// Colors.
 $body-background-color: #fff;
+
+// Typeography.
+$line-height: 1.3;
+$pop-font-family: 'Baloo Bhaina', cursive;
+$font-family: 'Source Sans Pro', sans-serif;
+
+// Sidebar.
+$sidebar-bg: #f7f7f7;
 $sidebar-active-color: #2ecc71;
-$sidebar-background-color: $theme;
+$sidebar-color: black;
+$sidebar-text-padding: 12px 20px;
+
+// Navbar.
+$navbar-bg: $theme;
+$navbar-color: #fff;

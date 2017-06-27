@@ -11,8 +11,10 @@
             <div class="row">
                 <div class="col-sm-2">
                     <div class="sidebar">
+                        <div class="logo">
+                            <h3>tmc tickets</h3>
+                        </div>
                         <div class="section">
-                            <h6>Main</h6>
                             <ul>
                                 <li class="{{ request()->route()->getName() === 'dashboard' ? 'active' : '' }}">
                                     <a href="">
@@ -36,59 +38,34 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="section">
-                            <h6>Departments</h6>
-                            <ul>
-                                @foreach ($departments as $department)
-                                    <li>
-                                        <a href="{{ route('tickets.department', ['id' => $department->id]) }}">
-                                            <i class="fa fa-square" style="color: {{ $department['color']  }}"></i>
-                                            {{ $department->department }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="section">
-                            <h6>Active Users</h6>
-                            <ul>
-                                <li><a href=""><i class="fa fa-circle" style="color: #2ecc71"></i> Jordan Bardsley</a></li>
-                                <li><a href=""><i class="fa fa-circle" style="color: #2ecc71"></i> James Andrews</a></li>
-                                <li><a href=""><i class="fa fa-circle" style="color: #2ecc71"></i> Tyson Chavarie</a></li>
-                                <li><a href=""><i class="fa fa-circle" style="color: #2ecc71"></i> Austin Layne</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <div class="col-sm-10">
                     <div class="row">
                         <nav class="navbar navbar-default">
-                            <div class="navbar-header">
-                                <a href="" class="navbar-brand">
-                                    {{ config('app.name') }}
-                                </a>
-                            </div>
                             <div class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li data-toggle="tooltip" data-placement="bottom" title="open ticket">
+                                <ul class="nav navbar-nav">
+                                    <li data-toggle="tooltip" data-placement="bottom" title="Open Ticket">
                                         <a href="{{ route('tickets.create') }}">
                                             <i class="fa fa-plus"></i>
                                         </a>
                                     </li>
-                                    <li data-toggle="tooltip" data-placement="bottom" title="logout">
+                                    <li data-toggle="tooltip" data-placement="bottom" title="Profile">
+                                        <a href="">
+                                            <i class="fa fa-user"></i>
+                                        </a>
+                                    </li>
+                                    <li data-toggle="tooltip" data-placement="bottom" title="Settings">
+                                        <a href="">
+                                            <i class="fa fa-cog"></i>
+                                        </a>
+                                    </li>
+                                    <li data-toggle="tooltip" data-placement="bottom" title="Logout">
                                         <a href="">
                                             <i class="fa fa-power-off"></i>
                                         </a>
                                     </li>
                                 </ul>
-                                <form class="navbar-form navbar-right">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                    </div>
-                                </form>
                             </div>
                         </nav>
                     </div>
@@ -103,10 +80,6 @@
         <script>
             $(document).ready(function () {
                 $(document).find('[data-toggle="tooltip"]').tooltip();
-                
-                setTimeout(function () {
-                    $('.sub-toolbar').css('height', ($(document).height() - $('.navbar').height()) + 'px');
-                }, 250);
             });
         </script>
     </body>

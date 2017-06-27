@@ -1,12 +1,13 @@
+// Fonts.
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700');
+@import url("https://fonts.googleapis.com/css?family=Baloo+Bhaina");
+
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 // Imports
 @import "node_modules/sweetalert/dev/sweetalert.scss";
-
-// Mixins
-@import "mixins/sub-toolbar";
-@import "mixins/reply";
+@import "node_modules/typebase.css/src/typebase.scss";
 
 // Core
 @import "variables";
@@ -26,6 +27,7 @@
 @import "partials/navbar";
 @import "partials/tables";
 @import "partials/inputs";
+@import "partials/buttons";
 
 // Framework
 @import "framework/tickets/all";

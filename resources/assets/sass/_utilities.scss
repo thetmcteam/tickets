@@ -1,3 +1,8 @@
 .no-padding {
     padding: 0 !important;
 }
+
+.stick-to-top {
+    position: sticky;
+    top: 0;
+}

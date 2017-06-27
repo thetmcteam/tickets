@@ -1,109 +1,59 @@
-.tickets.show {
-    margin-top: -20px;
+.ticket.view {
+    padding: 0 30px;
 
-    .creator {
-        padding: 0 25px;
+    .title {
         margin-bottom: 25px;
 
-        h3, h4 {
+        h1 {
+            font-size: 2.4rem;
+            line-height: 3rem;
+            margin-top: 1.5rem;
             text-transform: capitalize;
-            letter-spacing: 0.05em;
-
-            small {
-                font-weight: lighter;
-                text-transform: lowercase;
-            }
-        }
-    }
-
-    .content.main {
-        padding: 0 25px;
-        margin-bottom: 25px;
-        padding-bottom: 25px;
-    }
-
-    .content {
-        line-height: 1.5;
-        letter-spacing: 0.025em;
-        color: black;
-    }
-
-    .create--reply {
-        margin-bottom: 50px;
-        border-top: 1px solid #e5e5e5;
-        border-bottom: 1px solid #e5e5e5;
-        padding: 15px 25px;
-
-        textarea {
-            resize: none;
-            border: none;
-            border-radius: 0;
-            padding: 0;
-        }
-    }
-
-    @include sub-toolbar();
-
-    .sub-toolbar {
-        padding: 15px 0;
-
-        .sticky {
-            position: sticky;
-            top: 20px;
-        }
-
-        .section {
-            padding: 10px;
-            border-top: 1px solid #e5e5e5;
-
-            form {
-                label {
-                    display: block;
-                    width: 100%;
-
-                    a {
-                        font-size: 9px;
-                        margin-top: 5px;
-                    }
-                }
-            }
-        }
-
-        .small-creator {
-            border-top: none !important;
+            color: black;
 
             img {
-                height: 40px;
-                width: 40px;
-                display: block;
-                margin: auto;
+                width: 35px;
+                height: 35px;
                 border-radius: 100%;
-            }
-
-            h5 {
-                text-align: center;
+                margin-top: -6px;
             }
         }
 
-        .viewers {
-            i {
-                color: #2ecc71;
+        .meta {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+
+            li:nth-child(1) {
+                margin-left: 0 !important;
+            }
+
+            li {
+                margin-left: 15px;
+                display: inline-block;
+                word-spacing: 3px;
+                text-transform: capitalize;
             }
         }
+    }
 
-        .viewers, .assignees {
-            ul {
-                list-style: none;
-                padding-left: 0;
+    .body {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}
 
-                li {
-                    margin-bottom: 3px;
+.assigned--to--you {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    padding: 15px;
 
-                    i {
-                        margin-right: 6px;
-                    }
-                }
-            }
-        }
+    color: #fff;
+    box-shadow: 0 0 8px #676767;
+    background-color: $brand-danger;
+
+    i {
+        margin-right: 7px;
     }
 }

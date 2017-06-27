@@ -1,10 +1,13 @@
+html {
+    font-size: 100% !important;
+    -webkit-font-smoothing: antialiased;
+}
+
 body {
     background-color: $body-background-color;
-    // -webkit-font-smoothing: antialiased;
-    letter-spacing: .1px;
-    word-spacing: 1px;
-    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.846;
+    line-height: $line-height;
+    overflow-x: hidden;
+    font-family: $font-family;
 }
 
 a {

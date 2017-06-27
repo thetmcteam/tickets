@@ -1,23 +1,33 @@
-.navbar {
+.navbar:not(.heading) {
     border-radius: 0;
-    box-shadow: none;
-    background-color: #fafafa;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid #e5e5e5;
-
-    a {
-        color: rgba(0, 0, 0, 0.55) !important;
-    }
-
-    .navbar-brand {
-        font-size: 16px;
+    background-color: $theme;
+    border: none;
+    margin-bottom: 0;
+    
+    .navbar-header {
+        .navbar-brand {
+            font-family: $pop-font-family;
+            line-height: 25px;
+        }
     }
 
     .navbar-nav {
         a {
-            font-size: 15.5px !important;
+            color: $navbar-color !important;
+        }
+    }
+
+    .navbar-form {
+        .input-group-addon {
+            background-color: white;
+        }
+
+        input {
+            border-left: none;
+        }
+
+        input:hover, input:focus {
+            border-color: #ccc !important;
         }
     }
 }

@@ -21,12 +21,7 @@ class CommentRepository implements CommentRepositoryInterface
     public function findById(int $id)
     {
         $comments = $this->comment->where('ticket', $id)->orderBy('id', 'asc')->get();
-        
-        return $comments->map(function ($comment) {
-            $data = $comment->toArray();
-            $data['created_at'] = $comment->created_at->diffForHumans();
-            return $data;
-        });
+        return $comments;
     }
     
     public function create(array $data)

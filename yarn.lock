@@ -5460,6 +5460,10 @@ type-is@~1.6.15:
     media-typer "0.3.0"
     mime-types "~2.1.15"
 
+typebase.css:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/typebase.css/-/typebase.css-0.5.0.tgz#9f047bf8df09d1ea3931c03fe42034b897a98f90"
+
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"

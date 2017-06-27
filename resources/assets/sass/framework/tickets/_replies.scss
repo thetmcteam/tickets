@@ -1,13 +1,27 @@
-.replies {
-    @include reply();
+.ticket.view {
+    .replies {
+        margin: 50px 0;
 
-    .notes {
-        margin-top: 35px;
-
-        .note {
-            padding-left: 5% !important;
+        .reply:nth-child(1) {
+            margin-top: 0 !important;
         }
 
-        @include reply();
+        .reply {
+            margin-top: 20px;
+
+            .title {
+                margin-bottom: 15px;
+
+                h3 {
+                    img {
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 100%;
+                        margin-top: -3px;
+                        margin-right: 6px;
+                    }
+                }
+            }
+        }
     }
 }

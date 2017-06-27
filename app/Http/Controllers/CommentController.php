@@ -25,7 +25,7 @@ class CommentController extends Controller
     {
         $data = $request->all();
         $data['user'] = $request->user()->id;
-        
+
         try {
             $this->commentRepository->create($data);
         } catch (ValidationException $e) {

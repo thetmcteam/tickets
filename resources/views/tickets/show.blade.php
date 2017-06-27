@@ -1,44 +1,54 @@
 @extends("templates.auth.app")
 
 @section("content")
-    <div class="tickets show">
-        <div class="row">
-            <div class="col-sm-3 sub-toolbar">
-                <div class="sticky">
-                    <div class="section small-creator">
-                        <img src="https://www.webpagefx.com/data/marketing-persona-generator/img/placeholder.png">
-                        <h5>{{ $ticket['user']['name'] }}</h5>
-                    </div>
-                    <div class="section status">
-                        <ticket-status ticket="{{ $ticket['id'] }}" status="{{ $ticket['status']['id'] }}"></ticket-status>
-                    </div>
-                    <div class="section assignees">
-                        <ticket-assignee ticket="{{ $ticket['id'] }}" assignee="{{ $ticket['assignee']['id'] }}"></ticket-assignee>
-                    </div>
-                    <div class="section priority">
-                        <ticket-priority ticket="{{ $ticket['id'] }}" priority="{{ $ticket['priority']['id'] }}"></ticket-priority>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="navbar navbar-default heading stick-to-top">
+            <ul class="nav navbar-nav">
+                <li><a href="">assign</a></li>
+                <li><a href="">status</a></li>
+                <li><a href="">priority</a></li>
+                <li><a href="">type</a></li>
+                <li><a href="">comment</a></li>
+            </ul>
+        </div>
+        <div class="ticket view">
+            <div class="title">
+                <h1><img src="http://www.mtlwalks.com/images/empty_profile.jpg"> {{ $ticket['title'] }}</h1>
+                <ul class="meta">
+                    <li>
+                        <i class="fa fa-user"></i>
+                        {{ $ticket['user']['name'] }}
+                    </li>
+                    <li>
+                        <i class="fa fa-users"></i>
+                        {{ $ticket['assignee']['name'] }}
+                    </li>
+                    <li>
+                        <i class="fa fa-cog"></i>
+                        {{ $ticket['status']['status'] }}
+                    </li>
+                    <li>
+                        <i class="fa fa-home"></i>
+                        {{ $ticket['department']['department'] }}
+                    </li>
+                    <li>
+                        <i class="fa fa-warning"></i>
+                        {{ $ticket['priority']['priority'] }}
+                    </li>
+                </ul>
             </div>
-            <div class="col-sm-9 no-padding">
-                <div class="creator">
-                    <h3>
-                        {{ $ticket['title'] }}<br>
-                        <small>
-                            <a href="">{{ $ticket['user']['name'] }}</a>
-                            &lt;{{ $ticket['user']['email'] }}&gt;
-                        </small>
-                    </h3>
-                </div>
-                <div class="content main">
-                    {!! nl2br($ticket['content']) !!}
-                </div>
-                <div class="create--reply">
-                    <create-comment ticket="{{ $ticket['id'] }}"></create-comment>
-                    <div style="clear: both"></div>
-                </div>
-                <all-comments ticket="{{ $ticket['id'] }}"></all-comments>
+            <div class="body">
+                {!! nl2br($ticket['content']) !!}
             </div>
+            
+            <comments ticket="{{ $ticket['id'] }}"></comments>
         </div>
     </div>
+
+    @if (Auth::user()->id === $ticket['assignee']['id'])
+        <div class="assigned--to--you">
+            <i class="fa fa-user"></i>
+            This ticket is assigned to you.
+        </div>
+    @endif
 @endsection
