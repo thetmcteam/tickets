@@ -1,13 +1,21 @@
 <template>
-    <div class="replies" v-if="replies.length > 0">
-        <div class="reply" v-for="reply in replies">
-            <div class="title">
-                <h3>
-                    <img src="http://www.mtlwalks.com/images/empty_profile.jpg">
-                    {{ reply.user.name }} <small>said on {{ reply.created_at }}</small>
-                </h3>
+    <div class="replies no-margin-top" v-if="replies.length > 0">
+        <div class="row" v-for="reply in replies">
+            <div class="reply">
+                <div class="col-sm-1">
+                    <div class="image">
+                        <img src="http://www.mtlwalks.com/images/empty_profile.jpg">
+                    </div>
+                </div>
+                <div class="col-sm-11">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">{{ reply.user.name }} replied 6 days ago</div>
+                        <div class="panel-body">
+                            {{ reply.content }}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="content">{{ reply.content }}</div>
         </div>
     </div>
 </template>

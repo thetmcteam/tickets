@@ -10,15 +10,15 @@
         </div>
         <div class="form-group">
             <label>Department</label>
-            <div v-for="department in departments">
-                <input type="radio" :value="department.id" v-model="data.department" required> &nbsp; {{ department.department }}
-            </div>
+            <select class="form-control" v-model="data.department" required>
+                <option v-for="department in departments" :value="department.id">{{ department.department }}</option>
+            </select>
         </div>
         <div class="form-group">
             <label>Type</label>
-            <div v-for="t in types">
-                <input type="radio" :value="t.id" v-model="data.type" required> &nbsp; {{ t.type }}
-            </div>
+            <select class="form-control" v-model="data.type" required>
+                <option v-for="t in types" :value="t.id">{{ t.type }}</option>
+            </select>
         </div>
         <div class="form-group">
             <button class="btn btn-primary">Create</button>

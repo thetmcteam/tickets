@@ -41,6 +41,7 @@
                 {!! nl2br($ticket['content']) !!}
             </div>
             
+            <comment ticket="{{ $ticket['id'] }}"></comment>
             <comments ticket="{{ $ticket['id'] }}"></comments>
         </div>
     </div>
