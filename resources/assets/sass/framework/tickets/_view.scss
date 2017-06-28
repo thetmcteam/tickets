@@ -42,18 +42,3 @@
         line-height: 1.6;
     }
 }
-
-.assigned--to--you {
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-    padding: 15px;
-
-    color: #fff;
-    box-shadow: 0 0 8px #676767;
-    background-color: $brand-danger;
-
-    i {
-        margin-right: 7px;
-    }
-}

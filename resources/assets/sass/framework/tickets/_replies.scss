@@ -1,6 +1,6 @@
-.ticket.view {
-    .replies, .rcreate {
-        margin: 50px 0;
+.ticket.view, .ticket.create {
+    .replies, .rcreate, .tcreate {
+        margin: 25px 0 0 0;
 
         .reply {
             .image {

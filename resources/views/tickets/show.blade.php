@@ -8,7 +8,6 @@
                 <li><a href="">status</a></li>
                 <li><a href="">priority</a></li>
                 <li><a href="">type</a></li>
-                <li><a href="">comment</a></li>
             </ul>
         </div>
         <div class="ticket view">
@@ -16,23 +15,23 @@
                 <h1><img src="http://www.mtlwalks.com/images/empty_profile.jpg"> {{ $ticket['title'] }}</h1>
                 <ul class="meta">
                     <li>
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-user" data-toggle="tooltip" data-placement="bottom" title="Creator"></i>
                         {{ $ticket['user']['name'] }}
                     </li>
                     <li>
-                        <i class="fa fa-users"></i>
+                        <i class="fa fa-users" data-toggle="tooltip" data-placement="bottom" title="Assignee"></i>
                         {{ $ticket['assignee']['name'] }}
                     </li>
                     <li>
-                        <i class="fa fa-cog"></i>
+                        <i class="fa fa-cog" data-toggle="tooltip" data-placement="bottom" title="Status"></i>
                         {{ $ticket['status']['status'] }}
                     </li>
                     <li>
-                        <i class="fa fa-home"></i>
+                        <i class="fa fa-home" data-toggle="tooltip" data-placement="bottom" title="Department"></i>
                         {{ $ticket['department']['department'] }}
                     </li>
                     <li>
-                        <i class="fa fa-warning"></i>
+                        <i class="fa fa-warning" data-toggle="tooltip" data-placement="bottom" title="Priority"></i>
                         {{ $ticket['priority']['priority'] }}
                     </li>
                 </ul>
@@ -45,11 +44,4 @@
             <comments ticket="{{ $ticket['id'] }}"></comments>
         </div>
     </div>
-
-    @if (Auth::user()->id === $ticket['assignee']['id'])
-        <div class="assigned--to--you">
-            <i class="fa fa-user"></i>
-            This ticket is assigned to you.
-        </div>
-    @endif
 @endsection

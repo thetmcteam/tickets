@@ -49,7 +49,8 @@ class TicketRepository implements TicketRepositoryInterface
             'title' => $data['title'],
             'content' => $data['content'],
             'status' => $data['status'],
-            'type' => $data['type']
+            'type' => $data['type'],
+            'priority' => $data['priority']
         ]);
     }
 
@@ -91,7 +92,8 @@ class TicketRepository implements TicketRepositoryInterface
             'title' => 'required',
             'content' => 'required',
             'status' => 'required|integer|exists:statuses,id',
-            'type' => 'required|integer|exists:types,id'
+            'type' => 'required|integer|exists:types,id',
+            'priority' => 'required|integer|exists:priorities,id'
         ]);
     }
 }
