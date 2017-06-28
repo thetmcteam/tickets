@@ -2,12 +2,14 @@
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'tickets'], function () {
-        Route::post('', 'TicketController@store');
+        Route::get('/', 'TicketController@index');
+        Route::post('/', 'TicketController@store');
         Route::delete('{id}', 'TicketController@delete');
 
         Route::put('{id}/status', 'TicketController@updateStatus');
         Route::put('{id}/priority', 'TicketController@updatePriority');
         Route::put('{id}/assignee', 'TicketController@updateAssignee');
+        Route::put('{id}/type', 'TicketController@updateType');
     });
 
     Route::group(['prefix' => 'departments'], function () {

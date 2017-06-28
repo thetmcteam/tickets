@@ -78,6 +78,14 @@ class TicketRepository implements TicketRepositoryInterface
         ]);
     }
 
+    public function updateType(int $id, int $type)
+    {
+        $ticket = $this->ticket->find($id);
+        $ticket->update([
+            'type' => $type
+        ]);
+    }
+
     public function delete(int $id)
     {
         $ticket = $this->ticket->find($id);

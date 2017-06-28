@@ -19,7 +19,7 @@ class TicketController extends Controller
     public function index()
     {
         $tickets = $this->ticketRepository->getAllPaginated(1);
-        return view('tickets.all')->withTickets($tickets);
+        return response($tickets);
     }
 
     public function show(int $id)
@@ -57,6 +57,13 @@ class TicketController extends Controller
     {
         $assignee = intval($request->get('assignee'));
         $this->ticketRepository->updateAssignee($id, $assignee);
+        return response(['message' => 'ticket successfully updated.']);
+    }
+
+    public function updateType(Request $request, $id)
+    {
+        $type = intval($request->get('type'));
+        $this->ticketRepository->updateType($id, $type);
         return response(['message' => 'ticket successfully updated.']);
     }
 

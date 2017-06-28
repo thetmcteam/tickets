@@ -10,18 +10,13 @@ require('./bootstrap');
 window.Vue = require('vue');
 window.Bus = new Vue();
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
+Vue.component('tickets', require('./components/tickets/all.vue'));
 Vue.component('comment', require('./components/comments/create.vue'));
 Vue.component('comments', require('./components/comments/all.vue'));
 Vue.component('create-ticket', require('./components/tickets/create.vue'));
-Vue.component('ticket-status', require('./components/tickets/status.vue'));
-Vue.component('ticket-priority', require('./components/tickets/priority.vue'));
-Vue.component('ticket-assignee', require('./components/tickets/assignee.vue'));
+Vue.component('status', require('./components/tickets/status.vue'));
+Vue.component('priority', require('./components/tickets/priority.vue'));
+Vue.component('assign', require('./components/tickets/assignee.vue'));
 
 const app = new Vue({
     el: '#app'

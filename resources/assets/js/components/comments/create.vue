@@ -15,7 +15,7 @@
                                 <div class="form-group">
                                     <textarea class="form-control" placeholder="Say something..." v-model="data.content"></textarea>
                                 </div>
-                                <button class="btn btn-primary">reply</button>
+                                <button class="btn btn-primary pull-right">reply</button>
                             </form>
                         </div>
                     </div>

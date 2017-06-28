@@ -4,9 +4,9 @@
     <div class="row">
         <div class="navbar navbar-default heading stick-to-top">
             <ul class="nav navbar-nav">
-                <li><a href="">assign</a></li>
-                <li><a href="">status</a></li>
-                <li><a href="">priority</a></li>
+                <li><a data-toggle="modal" data-target="#assignTicketModal">assign</a></li>
+                <li><a data-toggle="modal" data-target="#ticketStatusModal">status</a></li>
+                <li><a data-toggle="modal" data-target="#ticketPriorityModal">priority</a></li>
                 <li><a href="">type</a></li>
             </ul>
         </div>
@@ -44,4 +44,8 @@
             <comments ticket="{{ $ticket['id'] }}"></comments>
         </div>
     </div>
+
+    <status ticket="{{ $ticket['id'] }}" status="{{ $ticket['status']['id'] }}"></status>
+    <assign ticket="{{ $ticket['id'] }}" assignee="{{ $ticket['assignee']['id'] }}"></assign>
+    <priority ticket="{{ $ticket['id'] }}" priority="{{ $ticket['priority']['id'] }}"></priority>
 @endsection

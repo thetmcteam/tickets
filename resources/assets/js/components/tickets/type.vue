@@ -1,26 +1,25 @@
 <template>
-    <div class="modal fade" id="ticketPriorityModal">
+    <div class="modal fade" id="ticketTypeModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Update Ticket Priority</h4>
+                    <h4 class="modal-title">Update This Ticket's Type</h4>
                 </div>
                 <form @submit.prevent="save" class="form-horizontal">
                     <div class="modal-body">
                         <div class="form-group no-margin-bottom">
-                            <label class="col-sm-3 text-right">Priority</label>
+                            <label class="col-sm-3 text-right">Type</label>
                             <div class="col-sm-7">
-                                <select class="form-control" v-model="data.priority">
-                                    <option value="1">Low</option>
-                                    <option value="2">Normal</option>
-                                    <option value="3">High</option>
-                                    <option value="4">Urgent</option>
+                                <select class="form-control" v-model="data.type">
+                                    <option value="1">Bug</option>
+                                    <option value="2">Unknown</option>
+                                    <option value="3">Other</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary">Update Priority</button>
+                        <button class="btn btn-primary">Update Status</button>
                     </div>
                 </form>
             </div>
@@ -32,16 +31,16 @@
     let sweetAlert = require('sweetalert');
 
     export default {
-        props: ['ticket', 'priority'],
+        props: ['ticket', 'type'],
 
         created() {
-            this.data.priority = this.priority;
+            this.data.type = this.type;
         },
 
         data() {
             return {
                 data: {
-                    priority: null
+                    type: null
                 }
             };
         },
@@ -49,13 +48,13 @@
         methods: {
             update() {
                 let ticket = this.ticket;
-
-                axios.put(`/api/tickets/${ticket}/priority`, this.data)
+                
+                axios.put(`/api/tickets/${ticket}/status`, this.data)
                     .then(response => {
-                        sweetAlert('Success', 'The priority of this ticket has been updated.', 'success');
+                        sweetAlert('Success', 'The type of this ticket has been updated.', 'success');
                     })
                     .catch(error => {
-                        sweetAlert('Whoops', 'Oh no, looks like there was an issue when updating the priority of this ticket.', 'error');
+                        sweetAlert('Whoops', 'Oh no, looks like there was an issue when updating the type of this ticket.', 'error');
                     });
             }
         }

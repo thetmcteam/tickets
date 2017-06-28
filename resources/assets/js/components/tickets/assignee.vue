@@ -1,12 +1,27 @@
 <template>
-    <form action="" method="post">
-            <label><span class="main">assignee</span> <a class="pull-right" @click.prevent="update">assign</a></label>
-            <select class="form-control" v-model="data.assignee">
-                <option value="1">Jordan Bardsley</option>
-                <option value="2">James Andrews</option>
-                <option value="3">Tyson Chavarie</option>
-            </select>
-        </form>
+    <div class="modal fade" id="assignTicketModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Assign This Ticket</h4>
+                </div>
+                <form @submit.prevent="save" class="form-horizontal">
+                    <div class="modal-body">
+                        <div class="form-group no-margin-bottom">
+                            <label class="col-sm-3 text-right">Assignee</label>
+                            <div class="col-sm-7">
+                                <select class="form-control" v-model="data.assignee">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Assign Ticket</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -28,7 +43,7 @@
         },
 
         methods: {
-            update() {
+            save() {
                 let ticket = this.ticket;
 
                 axios.put(`/api/tickets/${ticket}/assignee`, this.data)
