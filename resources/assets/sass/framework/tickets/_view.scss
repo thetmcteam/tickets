@@ -4,25 +4,18 @@
     .title {
         margin-bottom: 25px;
 
-        h1 {
-            font-size: 2.4rem;
-            line-height: 3rem;
+        h2 {
+            font-size: 2rem;
             margin-top: 1.5rem;
+            line-height: 2rem;
             text-transform: capitalize;
             color: black;
-
-            img {
-                width: 35px;
-                height: 35px;
-                border-radius: 100%;
-                margin-top: -6px;
-            }
         }
 
         .meta {
             list-style: none;
             padding-left: 0;
-            margin-top: 10px;
+            margin-top: 0;
 
             li:nth-child(1) {
                 margin-left: 0 !important;
@@ -35,10 +28,5 @@
                 text-transform: capitalize;
             }
         }
-    }
-
-    .body {
-        font-size: 14px;
-        line-height: 1.6;
     }
 }

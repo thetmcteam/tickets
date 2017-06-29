@@ -1,5 +1,13 @@
 .ticket.view, .ticket.create {
-    .replies, .rcreate, .tcreate {
+    .tview {
+        margin-bottom: 0 !important;
+
+        .panel {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .replies, .rcreate, .tcreate, .tview {
         margin: 25px 0 0 0;
 
         .reply {

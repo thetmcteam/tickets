@@ -1,0 +1,33 @@
+.dropdown.open {
+    > a { background-color: transparent !important; }
+}
+
+.dropdown {
+    .dropdown-menu {
+        margin-top: 13px !important;
+        border: 1.4px solid #ccc;
+    }
+
+    .dropdown-menu::before, .dropdown-menu::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        display: block;
+        position: absolute;
+    }
+
+    .dropdown-menu::before {
+        left: 4px;
+        top: -11px;
+        border-width: 0 14.5px 11px 14.5px;
+        border-color: transparent transparent #ccc transparent;
+    }
+
+    .dropdown-menu::after {
+        left: 7px;
+        top: -10px;
+        border-width: 0 11.5px 10px 11.5px;
+        border-color: transparent transparent #fff transparent;
+    }
+}

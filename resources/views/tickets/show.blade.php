@@ -11,13 +11,9 @@
             </ul>
         </div>
         <div class="ticket view">
-            <div class="title">
-                <h1><img src="http://www.mtlwalks.com/images/empty_profile.jpg"> {{ $ticket['title'] }}</h1>
+             <div class="title">
+                <h2>{{ $ticket['title'] }}</h2>
                 <ul class="meta">
-                    <li>
-                        <i class="fa fa-user" data-toggle="tooltip" data-placement="bottom" title="Creator"></i>
-                        {{ $ticket['user']['name'] }}
-                    </li>
                     <li>
                         <i class="fa fa-users" data-toggle="tooltip" data-placement="bottom" title="Assignee"></i>
                         {{ $ticket['assignee']['name'] }}
@@ -36,8 +32,25 @@
                     </li>
                 </ul>
             </div>
-            <div class="body">
-                {!! nl2br($ticket['content']) !!}
+
+            <div class="tview">
+                <div class="reply">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="image">
+                                <img src="http://www.mtlwalks.com/images/empty_profile.jpg">
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">{{ $ticket['user']['name'] }} opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}</div>
+                                <div class="panel-body">
+                                    {!! nl2br($ticket['content']) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <comment ticket="{{ $ticket['id'] }}"></comment>
