@@ -18,7 +18,7 @@
                         <li v-for="note in reply.notes" class="note">
                             <i class="fa fa-comment-o"></i>
                             <span class="heading">
-                                <a class="user">{{ note.user.name }}</a> said on {{ note.created_at }}
+                                <a class="user">{{ note.user.name }}</a>
                             </span>
                             <span class="content">{{ note.content }}</span>
                         </li>

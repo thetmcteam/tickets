@@ -44,19 +44,22 @@
             list-style: none;
             padding-left: 0;
 
+            li.active {
+                a {
+                    color: $theme;
+                }
+            }
+
             li {
-                a.active, a:hover {
-                    border-left: 4px solid $theme;
+                a:hover {
                     color: $theme;
                 }
 
                 a {
-                    border-left: 4px solid $sidebar-bg;
-
-                    -webkit-transition: border-left 75ms ease-in-out, color 75ms ease-in-out;
-                    -moz-transition: border-left 75ms ease-in-out, color 75ms ease-in-out;
-                    -ms-transition: border-left 75ms ease-in-out, color 75ms ease-in-out;
-                    transition: border-left 75ms ease-in-out, color 75ms ease-in-out;
+                    -webkit-transition: color 75ms ease-in-out;
+                    -moz-transition: color 75ms ease-in-out;
+                    -ms-transition: color 75ms ease-in-out;
+                    transition: color 75ms ease-in-out;
 
                     width: 100%;
                     display: block;

@@ -50,7 +50,7 @@
                             </li>
                             <li>
                                 <span>Type</span>
-                                {{ $ticket['type']['type'] }}
+                                <label class="label label-warning">{{ $ticket['type']['type'] }}</label>
                             </li>
                             <li>
                                 <span>Department</span>
@@ -58,7 +58,11 @@
                             </li>
                             <li>
                                 <span>Priority</span>
-                                {{ $ticket['priority']['priority'] }}
+                                @if (in_array($ticket['priority']['id'], [1, 2]))
+                                    <label class="label label-primary">{{ $ticket['priority']['priority'] }}</label>
+                                @elseif (in_array($ticket['priority']['id'], [3, 4]))
+                                    <label class="label label-danger">{{ $ticket['priority']['priority'] }}</label>
+                                @endif
                             </li>
                         </ul>
                     </div>
