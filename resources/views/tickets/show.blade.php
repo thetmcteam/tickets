@@ -11,50 +11,59 @@
             </ul>
         </div>
         <div class="ticket view">
-             <div class="title">
+            <div class="title">
                 <h2>{{ $ticket['title'] }}</h2>
-                <ul class="meta">
-                    <li>
-                        <i class="fa fa-users" data-toggle="tooltip" data-placement="bottom" title="Assignee"></i>
-                        {{ $ticket['assignee']['name'] }}
-                    </li>
-                    <li>
-                        <i class="fa fa-cog" data-toggle="tooltip" data-placement="bottom" title="Status"></i>
-                        {{ $ticket['status']['status'] }}
-                    </li>
-                    <li>
-                        <i class="fa fa-home" data-toggle="tooltip" data-placement="bottom" title="Department"></i>
-                        {{ $ticket['department']['department'] }}
-                    </li>
-                    <li>
-                        <i class="fa fa-warning" data-toggle="tooltip" data-placement="bottom" title="Priority"></i>
-                        {{ $ticket['priority']['priority'] }}
-                    </li>
-                </ul>
+                <hr>
             </div>
-
-            <div class="tview">
-                <div class="reply">
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <div class="image">
-                                <img src="http://www.mtlwalks.com/images/empty_profile.jpg">
-                            </div>
-                        </div>
-                        <div class="col-sm-11">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">{{ $ticket['user']['name'] }} opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}</div>
-                                <div class="panel-body">
-                                    {!! nl2br($ticket['content']) !!}
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="tview">
+                        <div class="reply">
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <div class="image">
+                                        <img src="http://www.mtlwalks.com/images/empty_profile.jpg">
+                                    </div>
+                                </div>
+                                <div class="col-sm-11">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">{{ $ticket['user']['name'] }} opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}</div>
+                                        <div class="panel-body">{!! nl2br($ticket['content']) !!}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <comment ticket="{{ $ticket['id'] }}"></comment>
+                    <comments ticket="{{ $ticket['id'] }}"></comments>
+                </div>
+                <div class="col-sm-3">
+                    <div class="meta">
+                        <ul>
+                            <li>
+                                <span>Assignee</span>
+                                {{ $ticket['assignee']['name'] }}
+                            </li>
+                            <li>
+                                <span>Status</span>
+                                {{ $ticket['status']['status'] }}
+                            </li>
+                            <li>
+                                <span>Type</span>
+                                {{ $ticket['type']['type'] }}
+                            </li>
+                            <li>
+                                <span>Department</span>
+                                {{ $ticket['department']['department'] }}
+                            </li>
+                            <li>
+                                <span>Priority</span>
+                                {{ $ticket['priority']['priority'] }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
-            <comment ticket="{{ $ticket['id'] }}"></comment>
-            <comments ticket="{{ $ticket['id'] }}"></comments>
         </div>
     </div>
 

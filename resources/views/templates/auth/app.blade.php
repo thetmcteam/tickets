@@ -12,7 +12,7 @@
                 <div class="col-sm-2">
                     <div class="sidebar">
                         <div class="logo">
-                            <h3>tmc tickets</h3>
+                            <h3>helpdesk</h3>
                         </div>
                         <div class="section">
                             <ul>

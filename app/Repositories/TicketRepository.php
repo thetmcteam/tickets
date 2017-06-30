@@ -23,18 +23,25 @@ class TicketRepository implements TicketRepositoryInterface
         return $tickets->toArray();
     }
 
-    public function getAllPaginatedByDepartment(int $id, int $page)
-    {
-        $tickets = $this->ticket->where('department', $id)->get();
-        return $tickets->toArray();
-    }
-
     public function findById(int $id)
     {
         $ticket = $this->ticket->find($id);
         return $ticket->toArray();
     }
-    
+
+    public function search(array $filters)
+    {
+        $tickets = $this->ticket->newQuery();
+
+        foreach ($filters as $key => $filterable) {
+            if (!empty($filterable)) {
+                $tickets->whereIn($key, $filterable);
+            }
+        }
+
+        return $tickets->get();
+    }
+
     public function create(array $data)
     {
         $validator = $this->validate($data);

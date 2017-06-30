@@ -13,7 +13,7 @@
                         <div class="panel-body">
                             <form @submit.prevent="reply">
                                 <div class="form-group">
-                                    <textarea class="form-control" placeholder="Say something..." v-model="data.content"></textarea>
+                                    <textarea class="form-control" placeholder="Say something..." v-model="data.content" rows="5"></textarea>
                                 </div>
                                 <button class="btn btn-primary pull-right">reply</button>
                             </form>

@@ -2,30 +2,6 @@
     <div class="tickets all">
         <div class="row stick-to-top">
             <nav class="navbar navbar-default heading">
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="dropdown">
-                        <a data-toggle="dropdown">
-                            department <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="">human resources</a></li>
-                            <li><a href="">information technology</a></li>
-                            <li><a href="">verizon</a></li>
-                            <li><a href="">direct energy</a></li>
-                            <li><a href="">allstate</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="">
-                            status  <span class="caret"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            priority  <span class="caret"></span>
-                        </a>
-                    </li>
-                </ul>
                 <ul class="pager navbar-right">
                     <li><a href="">last</a></li>
                     <li><a href="">next</a></li>
@@ -60,11 +36,25 @@
     export default {
         created() {
             this.refresh();
+            this.refreshTypes();
+            this.refreshStatuses();
+            this.refreshPriorities();
+            this.refreshDepartments();
         },
 
         data() {
             return {
-                tickets: []
+                tickets: [],
+                departments: [],
+                types: [],
+                statuses: [],
+                priorities: [],
+                filters: {
+                    department: [],
+                    type: [],
+                    status: [],
+                    priority: []
+                }
             };
         },
 
@@ -73,6 +63,41 @@
                 axios.get('/api/tickets')
                     .then(response => {
                         this.tickets = response.data;
+                    });
+            },
+
+            refreshWithFilters() {
+                axios.post('/api/tickets/search', { filters: this.filters })
+                    .then(response => {
+                        this.tickets = response.data;
+                    });
+            },
+
+            refreshTypes() {
+                axios.get('/api/types')
+                    .then(response => {
+                        this.types = response.data;
+                    });
+            },
+
+            refreshStatuses() {
+                axios.get('/api/status')
+                    .then(response => {
+                        this.statuses = response.data;
+                    });
+            },
+
+            refreshPriorities() {
+                axios.get('/api/priorities')
+                    .then(response => {
+                        this.priorities = response.data;
+                    });
+            },
+
+            refreshDepartments() {
+                axios.get('/api/departments')
+                    .then(response => {
+                        this.departments = response.data;
                     });
             }
         }

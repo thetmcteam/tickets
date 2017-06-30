@@ -2,30 +2,35 @@
     padding: 0 30px;
 
     .title {
-        margin-bottom: 25px;
-
         h2 {
-            font-size: 2rem;
+            font-size: 1.75rem;
             margin-top: 1.5rem;
+            margin-bottom: 10px;
             line-height: 2rem;
             text-transform: capitalize;
             color: black;
         }
+    }
 
-        .meta {
+    .meta {
+        ul {
+            margin: 0 auto;
             list-style: none;
             padding-left: 0;
-            margin-top: 0;
 
             li:nth-child(1) {
-                margin-left: 0 !important;
+                border-top: none;
             }
 
             li {
-                margin-left: 15px;
-                display: inline-block;
-                word-spacing: 3px;
+                padding: 10px 5px;
                 text-transform: capitalize;
+                border-top: 1px solid #eeeeee;
+
+                span {
+                    display: block;
+                    font-weight: bolder;
+                }
             }
         }
     }

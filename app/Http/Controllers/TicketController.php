@@ -28,10 +28,10 @@ class TicketController extends Controller
         return view('tickets.show')->withTicket($ticket);
     }
 
-    public function showByDepartment(int $id)
+    public function search(Request $request)
     {
-        $tickets = $this->ticketRepository->getAllPaginatedByDepartment($id, 0);
-        return view('tickets.all')->withTickets($tickets);
+        $tickets = $this->ticketRepository->search($request->get('filters'));
+        return response($tickets);
     }
 
     public function create()

@@ -5,7 +5,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Update This Ticket's Type</h4>
                 </div>
-                <form @submit.prevent="save" class="form-horizontal">
+                <form @submit.prevent="update" class="form-horizontal">
                     <div class="modal-body">
                         <div class="form-group no-margin-bottom">
                             <label class="col-sm-3 text-right">Type</label>
