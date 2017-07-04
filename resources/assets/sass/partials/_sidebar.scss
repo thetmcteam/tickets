@@ -7,7 +7,6 @@
     left: 0;
 
     background-color: $sidebar-bg;
-    box-shadow: inset -5px 0 9px -6px rgba(0,0,0,0.4);
 
     .logo {
         height: 50px;
@@ -46,21 +45,18 @@
 
             li.active {
                 a {
-                    color: $theme;
+                    background-color: $sidebar-active-bg-color;
+                    color: $sidebar-active-color;
                 }
             }
 
             li {
                 a:hover {
-                    color: $theme;
+                    background-color: $sidebar-active-bg-color;
+                    color: $sidebar-active-color;
                 }
 
                 a {
-                    -webkit-transition: color 75ms ease-in-out;
-                    -moz-transition: color 75ms ease-in-out;
-                    -ms-transition: color 75ms ease-in-out;
-                    transition: color 75ms ease-in-out;
-
                     width: 100%;
                     display: block;
 

@@ -2,14 +2,6 @@
 
 @section("content")
     <div class="row">
-        <div class="navbar navbar-default heading stick-to-top">
-            <ul class="nav navbar-nav">
-                <li><a data-toggle="modal" data-target="#assignTicketModal">assign</a></li>
-                <li><a data-toggle="modal" data-target="#ticketStatusModal">status</a></li>
-                <li><a data-toggle="modal" data-target="#ticketPriorityModal">priority</a></li>
-                <li><a href="">type</a></li>
-            </ul>
-        </div>
         <div class="ticket view">
             <div class="title">
                 <h2>{{ $ticket['title'] }}</h2>
@@ -54,15 +46,15 @@
                                 {{ $ticket['department']['department'] }}
                             </li>
                             <li>
-                                <span>Assignee</span>
+                                <a data-toggle="modal" data-target="#assignTicketModal"><span>Assignee</span></a>
                                 {{ $ticket['assignee']['name'] }}
                             </li>
                             <li>
-                                <span>Status</span>
+                                <a data-toggle="modal" data-target="#ticketStatusModal"><span>Status</span></a>
                                 {{ $ticket['status']['status'] }}
                             </li>
                             <li>
-                                <span>Priority</span>
+                                <a data-toggle="modal" data-target="#ticketPriorityModal"><span>Priority</span></a>
                                 @if (in_array($ticket['priority']['id'], [1, 2]))
                                     <label class="label label-primary">{{ $ticket['priority']['priority'] }}</label>
                                 @elseif (in_array($ticket['priority']['id'], [3, 4]))
