@@ -44,6 +44,11 @@ class NoteRepository implements NoteRepositoryInterface
         $note->delete();
     }
 
+    public function deleteByComment(int $id)
+    {
+        $this->note->where('comment', $id)->delete();
+    }
+
     private function validate(array $data)
     {
         return $this->validator->make($data, [

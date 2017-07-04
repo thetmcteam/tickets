@@ -1,11 +1,22 @@
 .ticket.view, .ticket.create {
     .tview {
         margin-top: 0 !important;
-        margin-bottom: 0 !important;
+    }
 
-        .panel {
-            margin-bottom: 0 !important;
+    .create--reply {
+        textarea {
+            background-color: #fafbfc;
         }
+
+        textarea:focus {
+            box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            background-color: #fff;
+        }
+    }
+
+    .replies {
+        margin-top: 0 !important;
     }
 
     .replies, .rcreate, .tcreate, .tview {

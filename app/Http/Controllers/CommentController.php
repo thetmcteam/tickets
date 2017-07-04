@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
+use App\Contracts\Repositories\NoteRepositoryInterface;
 use App\Contracts\Repositories\CommentRepositoryInterface;
 
 class CommentController extends Controller
 {
+    private $noteRepository;
     private $commentRepository;
 
-    public function __construct(CommentRepositoryInterface $commentRepository)
+    public function __construct(NoteRepositoryInterface $noteRepository, CommentRepositoryInterface $commentRepository)
     {
+        $this->noteRepository = $noteRepository;
         $this->commentRepository = $commentRepository;
     }
 
@@ -38,6 +41,7 @@ class CommentController extends Controller
     public function delete(int $id)
     {
         $this->commentRepository->delete($id);
+        $this->noteRepository->deleteByComment($id);
         return response(['message' => 'comment successfully deleted.']);
     }
 }

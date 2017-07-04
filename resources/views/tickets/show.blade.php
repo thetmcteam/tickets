@@ -13,6 +13,13 @@
         <div class="ticket view">
             <div class="title">
                 <h2>{{ $ticket['title'] }}</h2>
+                <h3>
+                    <span class="label label-success">
+                        <i class="fa fa-warning"></i>
+                        Open
+                    </span>
+                    <a href="">{{ $ticket['user']['name'] }}</a> opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}
+                </h3>
                 <hr>
             </div>
             <div class="row">
@@ -27,19 +34,25 @@
                                 </div>
                                 <div class="col-sm-11">
                                     <div class="panel panel-default">
-                                        <div class="panel-heading">{{ $ticket['user']['name'] }} opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}</div>
+                                        <div class="panel-heading">
+                                            {{ $ticket['user']['name'] }} opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}
+                                        </div>
                                         <div class="panel-body">{!! nl2br($ticket['content']) !!}</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <comment ticket="{{ $ticket['id'] }}"></comment>
                     <comments ticket="{{ $ticket['id'] }}"></comments>
+                    <comment ticket="{{ $ticket['id'] }}"></comment>
                 </div>
                 <div class="col-sm-3">
                     <div class="meta">
                         <ul>
+                            <li>
+                                <span>Department</span>
+                                {{ $ticket['department']['department'] }}
+                            </li>
                             <li>
                                 <span>Assignee</span>
                                 {{ $ticket['assignee']['name'] }}
@@ -49,20 +62,16 @@
                                 {{ $ticket['status']['status'] }}
                             </li>
                             <li>
-                                <span>Type</span>
-                                <label class="label label-warning">{{ $ticket['type']['type'] }}</label>
-                            </li>
-                            <li>
-                                <span>Department</span>
-                                {{ $ticket['department']['department'] }}
-                            </li>
-                            <li>
                                 <span>Priority</span>
                                 @if (in_array($ticket['priority']['id'], [1, 2]))
                                     <label class="label label-primary">{{ $ticket['priority']['priority'] }}</label>
                                 @elseif (in_array($ticket['priority']['id'], [3, 4]))
                                     <label class="label label-danger">{{ $ticket['priority']['priority'] }}</label>
                                 @endif
+                            </li>
+                            <li>
+                                <span>Type</span>
+                                <label class="label label-warning">{{ $ticket['type']['type'] }}</label>
                             </li>
                         </ul>
                     </div>

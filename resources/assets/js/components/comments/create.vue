@@ -1,5 +1,5 @@
 <template>
-    <div class="replies no-margin-bottom">
+    <div class="replies create--reply no-margin-top">
         <div class="row">
             <div class="reply">
                 <div class="col-sm-1">
@@ -15,7 +15,7 @@
                                 <div class="form-group">
                                     <textarea class="form-control" placeholder="Say something..." v-model="data.content" rows="5"></textarea>
                                 </div>
-                                <button class="btn btn-primary pull-right">reply</button>
+                                <button class="btn btn-primary pull-right">Reply</button>
                             </form>
                         </div>
                     </div>
