@@ -29,17 +29,10 @@ class TicketRepository implements TicketRepositoryInterface
         return $ticket->toArray();
     }
 
-    public function search(array $filters)
+    public function getAllPaginatedBy($query)
     {
-        $tickets = $this->ticket->newQuery();
-
-        foreach ($filters as $key => $filterable) {
-            if (!empty($filterable)) {
-                $tickets->whereIn($key, $filterable);
-            }
-        }
-
-        return $tickets->get();
+        $tickets = $this->ticket->search($query)->paginate(20);
+        return $tickets;
     }
 
     public function create(array $data)

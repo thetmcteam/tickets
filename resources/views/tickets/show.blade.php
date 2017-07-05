@@ -53,7 +53,11 @@
                             </li>
                             <li>
                                 <a data-toggle="modal" data-target="#assignTicketModal"><span>Assignee</span></a>
-                                <a href="">{{ $ticket['assignee']['name'] }}</a>
+                                @if (!empty($ticket['assignee']))
+                                    <a href="">{{ $ticket['assignee']['name'] }}</a>
+                                @else
+                                    No one has been assigned yet.
+                                @endif
                             </li>
                             <li>
                                 <a data-toggle="modal" data-target="#ticketStatusModal"><span>Status</span></a>

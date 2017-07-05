@@ -1,8 +1,14 @@
 .tickets.all {
     margin-bottom: 25px;
 
-    .panel-body {
-        padding: 0;
+    .toolbar {
+        margin-bottom: 15px;
+    }
+
+    .panel {
+        .panel-body {
+            padding: 0;
+        }
     }
 
     .ticket:nth-child(1) {

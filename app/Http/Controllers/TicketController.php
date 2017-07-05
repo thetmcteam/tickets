@@ -16,9 +16,14 @@ class TicketController extends Controller
         $this->ticketRepository = $ticketRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $tickets = $this->ticketRepository->getAllPaginated();
+        if (($query = $request->get('query')) !== null) {
+            $tickets = $this->ticketRepository->getAllPaginatedBy($query);
+        } else {
+            $tickets = $this->ticketRepository->getAllPaginated();
+        }
+
         return view('tickets.all')->withTickets($tickets);
     }
 

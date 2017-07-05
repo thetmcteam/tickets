@@ -17,11 +17,10 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="">dashboard</a></li>
                         <li><a href="{{ route('tickets') }}">tickets</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href=""><i class="fa fa-plus"></i></a></li>
+                        <li><a href="/tickets/create"><i class="fa fa-plus"></i></a></li>
                         <li><a href=""><i class="fa fa-user"></i></a></li>
                         <li><a href=""><i class="fa fa-sign-out"></i></a></li>
                     </ul>

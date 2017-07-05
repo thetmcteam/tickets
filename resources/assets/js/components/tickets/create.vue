@@ -42,7 +42,7 @@
                                             <div class="form-group">
                                                 <label>Priority</label>
                                                 <select class="form-control" v-model="data.priority" required>
-                                                    
+                                                    <option v-for="priority in priorities" :value="priority.id">{{ priority.priority }}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -78,11 +78,17 @@
                 .then(response => {
                     this.types = response.data;
                 });
+
+            axios.get('/api/priorities')
+                .then(response => {
+                    this.priorities = response.data;
+                });
         },
 
         data() {
             return {
                 types: [],
+                priorities: [],
                 departments: [],
                 data: {
                     title: null,

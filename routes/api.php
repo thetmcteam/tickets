@@ -25,19 +25,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('{id}', 'CommentController@delete');
     });
 
-    Route::group(['prefix' => 'notes'], function () {
-        Route::post('/', 'NoteController@create');
-    });
-
-    Route::group(['prefix' => 'types'], function () {
-        Route::get('/', 'TypeController@index');
-    });
-
-    Route::group(['prefix' => 'status'], function () {
-        Route::get('/', 'StatusController@index');
-    });
-
-    Route::group(['prefix' => 'priorities'], function () {
-        Route::get('/', 'PriorityController@index');
-    });
+    Route::post('notes', 'NoteController@create');
+    Route::get('types', 'TypeController@index');
+    Route::get('status', 'StatusController@index');
+    Route::get('priorities', 'PriorityController@index');
 });
