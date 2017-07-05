@@ -4,13 +4,19 @@
     <div class="row">
         <div class="ticket view">
             <div class="title">
-                <h2>{{ $ticket['title'] }}</h2>
+                <h2>
+                    {{ $ticket['title'] }}
+                    <span style="color: #a3aab1">#{{ $ticket['id'] }}</span>
+                </h2>
                 <h3>
-                    <span class="label label-success">
+                    <span class="label" style="background-color: {{ $ticket['status']['color']  }}">
                         <i class="fa fa-warning"></i>
-                        Open
+                        {{ $ticket['status']['status'] }}
                     </span>
-                    <a href="">{{ $ticket['user']['name'] }}</a> opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}
+                    <span>
+                        <a href="">{{ $ticket['user']['name'] }}</a>
+                        opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}
+                    </span>
                 </h3>
                 <hr>
             </div>
@@ -47,23 +53,28 @@
                             </li>
                             <li>
                                 <a data-toggle="modal" data-target="#assignTicketModal"><span>Assignee</span></a>
-                                {{ $ticket['assignee']['name'] }}
+                                <a href="">{{ $ticket['assignee']['name'] }}</a>
                             </li>
                             <li>
                                 <a data-toggle="modal" data-target="#ticketStatusModal"><span>Status</span></a>
-                                {{ $ticket['status']['status'] }}
+                                <p class="label" style="background-color: {{ $ticket['status']['color']  }}">
+                                    <i class="fa fa-warning"></i>
+                                    {{ $ticket['status']['status'] }}
+                                </p>
                             </li>
                             <li>
                                 <a data-toggle="modal" data-target="#ticketPriorityModal"><span>Priority</span></a>
-                                @if (in_array($ticket['priority']['id'], [1, 2]))
-                                    <label class="label label-primary">{{ $ticket['priority']['priority'] }}</label>
-                                @elseif (in_array($ticket['priority']['id'], [3, 4]))
-                                    <label class="label label-danger">{{ $ticket['priority']['priority'] }}</label>
-                                @endif
+                                <p class="label" style="background-color: {{ $ticket['priority']['color']  }}">
+                                    <i class="fa fa-eye"></i>
+                                    {{ $ticket['priority']['priority'] }}
+                                </p>
                             </li>
                             <li>
                                 <span>Type</span>
-                                <label class="label label-warning">{{ $ticket['type']['type'] }}</label>
+                                <p class="label" style="background-color: {{ $ticket['type']['color']  }}">
+                                    <i class="fa fa-tags"></i>
+                                    {{ $ticket['type']['type'] }}
+                                </p>
                             </li>
                         </ul>
                     </div>

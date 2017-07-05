@@ -17,10 +17,10 @@ class TicketRepository implements TicketRepositoryInterface
         $this->validator = $validator;
     }
 
-    public function getAllPaginated(int $page)
+    public function getAllPaginated()
     {
-        $tickets = $this->ticket->get();
-        return $tickets->toArray();
+        $tickets = $this->ticket->paginate(20);
+        return $tickets;
     }
 
     public function findById(int $id)

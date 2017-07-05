@@ -10,7 +10,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 window.Bus = new Vue();
 
-Vue.component('tickets', require('./components/tickets/all.vue'));
 Vue.component('comment', require('./components/comments/create.vue'));
 Vue.component('comments', require('./components/comments/all.vue'));
 Vue.component('create-ticket', require('./components/tickets/create.vue'));

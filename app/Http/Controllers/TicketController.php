@@ -18,8 +18,8 @@ class TicketController extends Controller
 
     public function index()
     {
-        $tickets = $this->ticketRepository->getAllPaginated(1);
-        return response($tickets);
+        $tickets = $this->ticketRepository->getAllPaginated();
+        return view('tickets.all')->withTickets($tickets);
     }
 
     public function show(int $id)

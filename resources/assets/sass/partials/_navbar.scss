@@ -2,18 +2,19 @@
     border-radius: 0;
     background-color: $theme;
     border: none;
-    margin-bottom: 0;
     
     .navbar-header {
         .navbar-brand {
             font-family: $pop-font-family;
             line-height: 25px;
+            color: #fff;
         }
     }
 
     .navbar-nav {
         a {
             color: $navbar-color !important;
+            text-transform: capitalize;
         }
     }
 

@@ -11,6 +11,7 @@ class CreatePrioritiesTable extends Migration
         Schema::create('priorities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('priority')->unique();
+            $table->string('color')->unique();
         });
     }
 

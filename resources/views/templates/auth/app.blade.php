@@ -7,68 +7,31 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="sidebar">
-                        <div class="logo">
-                            <h3>helpdesk</h3>
-                        </div>
-                        <div class="section">
-                            <ul>
-                                <li class="{{ request()->route()->getName() === 'dashboard' ? 'active' : '' }}">
-                                    <a href="">
-                                        <i class="fa fa-home"></i> Dashboard
-                                    </a>
-                                </li>
-                                <li class="{{ request()->route()->getName() === 'tickets' ? 'active' : '' }}">
-                                    <a href="{{ route('tickets') }}">
-                                        <i class="fa fa-ticket"></i> Tickets
-                                    </a>
-                                </li>
-                                <li class="{{ request()->route()->getName() === 'settings' ? 'active' : '' }}">
-                                    <a href="">
-                                        <i class="fa fa-cog"></i> Settings
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <i class="fa fa-power-off"></i> Logout
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="" class="navbar-brand">
+                        helpdesk
+                    </a>
                 </div>
-                <div class="col-sm-10">
-                    <div class="row">
-                        <nav class="navbar navbar-default">
-                            <div class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav">
-                                    <li data-toggle="tooltip" data-placement="bottom" title="Open Ticket">
-                                        <a href="{{ route('tickets.create') }}">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li data-toggle="tooltip" data-placement="bottom" title="Profile">
-                                        <a href="">
-                                            <i class="fa fa-user"></i>
-                                        </a>
-                                    </li>
-                                    <li data-toggle="tooltip" data-placement="bottom" title="Settings">
-                                        <a href="">
-                                            <i class="fa fa-cog"></i>
-                                        </a>
-                                    </li>
-                                    <li data-toggle="tooltip" data-placement="bottom" title="Logout">
-                                        <a href="">
-                                            <i class="fa fa-power-off"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="">dashboard</a></li>
+                        <li><a href="{{ route('tickets') }}">tickets</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href=""><i class="fa fa-plus"></i></a></li>
+                        <li><a href=""><i class="fa fa-user"></i></a></li>
+                        <li><a href=""><i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
                     <div class="content" id="app">
                         @yield("content")
                     </div>
@@ -82,5 +45,6 @@
                 $(document).find('[data-toggle="tooltip"]').tooltip();
             });
         </script>
+        
     </body>
 </html>

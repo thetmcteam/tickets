@@ -5,7 +5,7 @@
         h2 {
             font-size: 1.75rem;
             margin-top: 1.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             line-height: 2rem;
             text-transform: capitalize;
             color: black;
@@ -13,10 +13,18 @@
 
         h3 {
             margin-top: 0;
+            padding-top: 0;
             font-size: 1.15em;
+            
+            span:not(.label) {
+                vertical-align: middle;
+                color: #586069;
+            }
 
-            span {
+            .label {
                 margin-right: 10px;
+                background-color: #2cbe4e;
+                padding-top: 4px;
             }
         }
     }
@@ -40,6 +48,11 @@
                     display: block;
                     font-weight: bolder;
                     color: #586069;
+                }
+
+                p {
+                    text-align: left;
+                    padding: 6px;
                 }
             }
         }
