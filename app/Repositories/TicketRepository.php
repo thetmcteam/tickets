@@ -2,18 +2,24 @@
 
 namespace App\Repositories;
 
-use Illuminate\Validation\Factory as Validator;
+use Auth;
 use App\Models\Ticket;
+use App\Models\Action;
 use App\Exceptions\ValidationException;
+use App\Exceptions\TicketNotFoundException;
+use Illuminate\Validation\Factory as Validator;
 use App\Contracts\Repositories\TicketRepositoryInterface;
 
 class TicketRepository implements TicketRepositoryInterface
 {
-    private $ticket, $validator;
+    private $ticket;
+    private $action;
+    private $validator;
 
-    public function __construct(Ticket $ticket, Validator $validator)
+    public function __construct(Ticket $ticket, Action $action, Validator $validator)
     {
         $this->ticket = $ticket;
+        $this->action = $action;
         $this->validator = $validator;
     }
 
@@ -26,6 +32,11 @@ class TicketRepository implements TicketRepositoryInterface
     public function findById(int $id)
     {
         $ticket = $this->ticket->find($id);
+        
+        if (is_null($ticket)) {
+            throw new TicketNotFoundException;
+        }
+
         return $ticket->toArray();
     }
 

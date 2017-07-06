@@ -16,7 +16,7 @@ class CreateTicketsTable extends Migration
             $table->text('content');
             $table->integer('status');
             $table->integer('type');
-            $talbe->integer('priority')->nullable();
+            $table->integer('priority')->nullable();
             $table->integer('assignee')->nullable();
             $table->timestamps();
         });

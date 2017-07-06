@@ -36,6 +36,36 @@
                                         </div>
                                         <div class="panel-body">{!! nl2br($ticket['content']) !!}</div>
                                     </div>
+                                    @if (!empty($ticket['actions']))
+                                        <ul class="actions">
+                                            @foreach ($ticket['actions'] as $action)
+                                                <?php $data = json_decode($action['data'], true); ?>
+
+                                                <li class="action">
+                                                    <i class="fa fa-bell-o"></i>
+                                                    <span class="heading">
+                                                        <img src="{{ $action['user']['image'] ? $action['user']['image'] : 'http://www.mtlwalks.com/images/empty_profile.jpg' }}">
+                                                        <a class="user">{{ $action['user']['name'] }}</a>
+                                                    </span>
+                                                    <span class="content">
+                                                        @if ($action['action'] === 'priority')
+                                                            changed the priority to
+                                                        @elseif ($action['action'] === 'status')
+                                                            changed the status to
+                                                        @elseif ($action['action'] === 'type')
+                                                            changed the type to
+                                                        @elseif ($action['action'] === 'assignee')
+                                                            assigned
+                                                        @endif
+                                                        <span class="label" style="background-color: {{ $data['color']  }}; margin-right: 4px">
+                                                            {{ $data['value'] }}
+                                                        </span>
+                                                        <timeago since="{{ $action['created_at'] }}"></timeago>
+                                                    </span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -2,34 +2,17 @@
 
 namespace App\Providers;
 
-use View;
-use App\Models\Department;
-use App\Repositories\TypeRepository;
-use App\Repositories\NoteRepository;
-use App\Repositories\TicketRepository;
-use App\Repositories\CommentRepository;
-use App\Repositories\DepartmentRepository;
-use App\Contracts\Repositories\NoteRepositoryInterface;
-use App\Contracts\Repositories\TypeRepositoryInterface;
-use App\Contracts\Repositories\TicketRepositoryInterface;
-use App\Contracts\Repositories\CommentRepositoryInterface;
-use App\Contracts\Repositories\DepartmentRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function boot()
-    {
-        $departments = Department::all();
-        View::share('departments', $departments);
-    }
-
     public function register()
     {
-        $this->app->bind(TypeRepositoryInterface::class, TypeRepository::class);
-        $this->app->bind(NoteRepositoryInterface::class, NoteRepository::class);
-        $this->app->bind(TicketRepositoryInterface::class, TicketRepository::class);
-        $this->app->bind(CommentRepositoryInterface::class, CommentRepository::class);
-        $this->app->bind(DepartmentRepositoryInterface::class, DepartmentRepository::class);
+        $this->app->bind(\App\Contracts\Repositories\TypeRepositoryInterface::class, \App\Repositories\TypeRepository::class);
+        $this->app->bind(\App\Contracts\Repositories\NoteRepositoryInterface::class, \App\Repositories\NoteRepository::class);
+        $this->app->bind(\App\Contracts\Repositories\ActionRepositoryInterface::class, \App\Repositories\ActionRepository::class);
+        $this->app->bind(\App\Contracts\Repositories\TicketRepositoryInterface::class, \App\Repositories\TicketRepository::class);
+        $this->app->bind(\App\Contracts\Repositories\CommentRepositoryInterface::class, \App\Repositories\CommentRepository::class);
+        $this->app->bind(\App\Contracts\Repositories\DepartmentRepositoryInterface::class, \App\Repositories\DepartmentRepository::class);
     }
 }

@@ -35,6 +35,7 @@
                         <li v-for="note in reply.notes" class="note">
                             <i class="fa fa-comment-o"></i>
                             <span class="heading">
+                                <img :src="reply.user.image !== null ? reply.user.image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
                                 <a class="user">{{ note.user.name }}</a>
                                 <span style="color: #586069">
                                     said <timeago :since="note.created_at"></timeago>

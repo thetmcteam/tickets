@@ -49,7 +49,7 @@
             update() {
                 let ticket = this.ticket;
                 
-                axios.put(`/api/tickets/${ticket}/status`, this.data)
+                axios.put(`/api/tickets/${ticket}/type`, this.data)
                     .then(response => {
                         sweetAlert('Success', 'The type of this ticket has been updated.', 'success');
                     })

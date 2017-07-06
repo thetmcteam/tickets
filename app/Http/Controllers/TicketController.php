@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
+use App\Exceptions\TicketNotFoundException;
+use App\Contracts\Repositories\ActionRepositoryInterface;
 use App\Contracts\Repositories\TicketRepositoryInterface;
 
 class TicketController extends Controller
 {
     private $ticketRepository;
+    private $actionRepository;
 
-    public function __construct(TicketRepositoryInterface $ticketRepository)
+    public function __construct(TicketRepositoryInterface $ticketRepository, ActionRepositoryInterface $actionRepository)
     {
         $this->ticketRepository = $ticketRepository;
+        $this->actionRepository = $actionRepository;
     }
 
     public function index(Request $request)
@@ -29,7 +34,12 @@ class TicketController extends Controller
 
     public function show(int $id)
     {
-        $ticket = $this->ticketRepository->findById($id);
+        try {
+            $ticket = $this->ticketRepository->findById($id);
+        } catch (TicketNotFoundException $e) {
+            abort(404);
+        }
+
         return view('tickets.show')->withTicket($ticket);
     }
 
@@ -46,29 +56,57 @@ class TicketController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        $status = intval($request->get('status'));
-        $this->ticketRepository->updateStatus($id, $status);
+        $statusId = intval($request->get('status'));
+        $this->ticketRepository->updateStatus($id, $statusId);
+        $status = \App\Models\Status::find($statusId);
+
+        $this->actionRepository->log(Auth::user()->id, $id, 'status', [
+            'value' => $status->status,
+            'color' => $status->color
+        ]);
+
         return response(['message' => 'ticket successfully updated.']);
     }
 
     public function updatePriority(Request $request, $id)
     {
-        $priority = intval($request->get('priority'));
-        $this->ticketRepository->updatePriority($id, $priority);
+        $priorityId = intval($request->get('priority'));
+        $this->ticketRepository->updatePriority($id, $priorityId);
+        $priority = \App\Models\Priority::find($priorityId);
+
+        $this->actionRepository->log(Auth::user()->id, $id, 'priority', [
+            'value' => $priority->priority,
+            'color' => $priority->color
+        ]);
+
         return response(['message' => 'ticket successfully updated.']);
     }
 
     public function updateAssignee(Request $request, $id)
     {
-        $assignee = intval($request->get('assignee'));
-        $this->ticketRepository->updateAssignee($id, $assignee);
+        $assigneeId = intval($request->get('assignee'));
+        $this->ticketRepository->updateAssignee($id, $assigneeId);
+        $assignee = \App\Models\User::find($assigneeId);
+
+        $this->actionRepository->log(Auth::user()->id, $id, 'assigee', [
+            'value' => $assignee->name,
+            'color' => '#8e44ad'
+        ]);
+
         return response(['message' => 'ticket successfully updated.']);
     }
 
     public function updateType(Request $request, $id)
     {
-        $type = intval($request->get('type'));
-        $this->ticketRepository->updateType($id, $type);
+        $typeId = intval($request->get('type'));
+        $this->ticketRepository->updateType($id, $typeId);
+        $type = \App\Models\Type::find($typeId);
+
+        $this->actionRepository->log(Auth::user()->id, $id, 'type', [
+            'value' => $type->type,
+            'color' => $type->color
+        ]);
+
         return response(['message' => 'ticket successfully updated.']);
     }
 

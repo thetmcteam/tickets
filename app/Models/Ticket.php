@@ -10,7 +10,7 @@ class Ticket extends Model
     use SearchableTrait;
 
     protected $guarded = ['id'];
-    protected $with = ['department', 'user', 'status', 'type', 'priority', 'assignee', 'comments'];
+    protected $with = ['department', 'user', 'status', 'type', 'priority', 'assignee', 'comments', 'actions'];
 
     // Whenever Ticket::search('query') is invoked it
     // will used the fields defined in this array
@@ -32,6 +32,11 @@ class Ticket extends Model
             'users' => ['tickets.assignee', 'users.id'],
         ]
     ];
+
+    public function actions()
+    {
+        return $this->hasMany(Action::class, 'ticket', 'id');
+    }
 
     public function department()
     {
