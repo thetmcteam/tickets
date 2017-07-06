@@ -1,7 +1,3 @@
-html {
-    font-size: 100% !important;
-}
-
 body {
     background-color: $body-background-color;
     line-height: $line-height;
@@ -10,9 +6,21 @@ body {
     color: #24292e;
 }
 
+// @media screen and (min-width: 1080px) {
+//     body {
+//         -moz-transform: scale(0.8, 0.85);
+//         zoom: 0.85;
+//         zoom: 85%;
+//     }
+// }
+
 a {
     color: #2196f3;
     cursor: pointer !important;
+}
+
+.label {
+    padding: .4em .6em .3em !important;
 }
 
 label {

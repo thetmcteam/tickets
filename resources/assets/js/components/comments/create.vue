@@ -4,7 +4,7 @@
             <div class="reply">
                 <div class="col-sm-1">
                     <div class="image">
-                        <img src="http://www.mtlwalks.com/images/empty_profile.jpg">
+                        <img :src="image !== null ? image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
                     </div>
                 </div>
                 <div class="col-sm-11">
@@ -27,7 +27,7 @@
 
 <script>
     export default {
-        props: ['ticket'],
+        props: ['ticket', 'image'],
 
         created() {
             this.data.ticket = this.ticket;

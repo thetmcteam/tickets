@@ -18,7 +18,6 @@
                         opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}
                     </span>
                 </h3>
-                <hr>
             </div>
             <div class="row">
                 <div class="col-sm-9">
@@ -27,7 +26,7 @@
                             <div class="row">
                                 <div class="col-sm-1">
                                     <div class="image">
-                                        <img src="http://www.mtlwalks.com/images/empty_profile.jpg">
+                                        <img src="{{ Auth::user()->image ? Auth::user()->image : 'http://www.mtlwalks.com/images/empty_profile.jpg' }}">
                                     </div>
                                 </div>
                                 <div class="col-sm-11">
@@ -42,51 +41,16 @@
                         </div>
                     </div>
                     <comments ticket="{{ $ticket['id'] }}"></comments>
-                    <comment ticket="{{ $ticket['id'] }}"></comment>
+                    <comment ticket="{{ $ticket['id'] }}" image="{{ Auth::user()->image }}"></comment>
                 </div>
                 <div class="col-sm-3">
-                    <div class="meta">
-                        <ul>
-                            <li>
-                                <span>Department</span>
-                                {{ $ticket['department']['department'] }}
-                            </li>
-                            <li>
-                                <a data-toggle="modal" data-target="#assignTicketModal"><span>Assignee</span></a>
-                                @if (!empty($ticket['assignee']))
-                                    <a href="">{{ $ticket['assignee']['name'] }}</a>
-                                @else
-                                    No one has been assigned yet.
-                                @endif
-                            </li>
-                            <li>
-                                <a data-toggle="modal" data-target="#ticketStatusModal"><span>Status</span></a>
-                                <p class="label" style="background-color: {{ $ticket['status']['color']  }}">
-                                    <i class="fa fa-warning"></i>
-                                    {{ $ticket['status']['status'] }}
-                                </p>
-                            </li>
-                            <li>
-                                <a data-toggle="modal" data-target="#ticketPriorityModal"><span>Priority</span></a>
-                                <p class="label" style="background-color: {{ $ticket['priority']['color']  }}">
-                                    <i class="fa fa-eye"></i>
-                                    {{ $ticket['priority']['priority'] }}
-                                </p>
-                            </li>
-                            <li>
-                                <span>Type</span>
-                                <p class="label" style="background-color: {{ $ticket['type']['color']  }}">
-                                    <i class="fa fa-tags"></i>
-                                    {{ $ticket['type']['type'] }}
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
+                    <ticket-meta t="{{ json_encode($ticket) }}"></ticket-meta>
                 </div>
             </div>
         </div>
     </div>
 
+    <type ticket="{{ $ticket['id'] }}" type="{{ $ticket['type']['id'] }}"></type>
     <status ticket="{{ $ticket['id'] }}" status="{{ $ticket['status']['id'] }}"></status>
     <assign ticket="{{ $ticket['id'] }}" assignee="{{ $ticket['assignee']['id'] }}"></assign>
     <priority ticket="{{ $ticket['id'] }}" priority="{{ $ticket['priority']['id'] }}"></priority>

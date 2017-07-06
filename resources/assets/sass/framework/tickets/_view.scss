@@ -2,6 +2,8 @@
     padding: 0 30px;
 
     .title {
+        margin-bottom: 25px;
+
         h2 {
             font-size: 1.75rem;
             margin-top: 1.5rem;
@@ -31,30 +33,20 @@
 
     .meta {
         ul {
-            margin: 0 auto;
             list-style: none;
             padding-left: 0;
 
-            li:nth-child(1) {
-                border-top: none;
-            }
-
             li {
-                padding: 15px 7.5px;
-                text-transform: capitalize;
-                border-top: 1px solid #eeeeee;
+                padding-top: 17px;
+                font-size: 12px;
+                color: #586069;
 
                 span {
                     display: block;
-                    font-weight: bolder;
+                    margin-bottom: 10px;
+                    font-size: 12px;
+                    line-height: 16px;
                     color: #586069;
-                }
-
-                p {
-                    text-align: left;
-                    padding: 5px;
-                    margin-top: 5px;
-                    display: block;
                 }
             }
         }

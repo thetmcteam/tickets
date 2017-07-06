@@ -10,7 +10,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-search"></i>
                             </span>
-                            <input type="text" class="form-control" name="query">
+                            <input type="text" class="form-control" name="query" value="{{ request()->get('query') ?: '' }}">
                             <span class="input-group-btn">
                                 <button class="btn btn-success">Filter</button>
                             </span>

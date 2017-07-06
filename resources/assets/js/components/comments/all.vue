@@ -4,12 +4,14 @@
             <div class="reply">
                 <div class="col-sm-1">
                     <div class="image">
-                        <img src="http://www.mtlwalks.com/images/empty_profile.jpg">
+                        <img :src="reply.user.image !== null ? reply.user.image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
                     </div>
                 </div>
                 <div class="col-sm-11">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ reply.user.name }} replied 6 days ago</div>
+                        <div class="panel-heading">
+                            {{ reply.user.name }} replied <timeago :since="reply.created_at"></timeago>
+                        </div>
                         <div class="panel-body">
                             {{ reply.content }}
                         </div>
@@ -34,6 +36,9 @@
                             <i class="fa fa-comment-o"></i>
                             <span class="heading">
                                 <a class="user">{{ note.user.name }}</a>
+                                <span style="color: #586069">
+                                    said <timeago :since="note.created_at"></timeago>
+                                </span>
                             </span>
                             <span class="content">{{ note.content }}</span>
                         </li>
