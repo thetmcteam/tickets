@@ -54,7 +54,7 @@
                                                             changed the status to
                                                         @elseif ($action['action'] === 'type')
                                                             changed the type to
-                                                        @elseif ($action['action'] === 'assignee')
+                                                        @elseif ($action['action'] === 'assign')
                                                             assigned
                                                         @endif
                                                         <span class="label" style="background-color: {{ $data['color']  }}; margin-right: 4px">

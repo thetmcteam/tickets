@@ -11,9 +11,7 @@
                             <label class="col-sm-3 text-right">Type</label>
                             <div class="col-sm-7">
                                 <select class="form-control" v-model="data.type">
-                                    <option value="1">Bug</option>
-                                    <option value="2">Unknown</option>
-                                    <option value="3">Other</option>
+                                    <option v-for="type in types" :value="type.id">{{ type.type }}</option>
                                 </select>
                             </div>
                         </div>
@@ -35,10 +33,16 @@
 
         created() {
             this.data.type = this.type;
+
+            axios.get('/api/types')
+                .then(response => {
+                    this.types = response.data;
+                });
         },
 
         data() {
             return {
+                types: [],
                 data: {
                     type: null
                 }

@@ -11,10 +11,7 @@
                             <label class="col-sm-3 text-right">Priority</label>
                             <div class="col-sm-7">
                                 <select class="form-control" v-model="data.priority">
-                                    <option value="1">Low</option>
-                                    <option value="2">Normal</option>
-                                    <option value="3">High</option>
-                                    <option value="4">Urgent</option>
+                                    <option v-for="priority in priorities" :value="priority.id">{{ priority.priority }}</option>
                                 </select>
                             </div>
                         </div>
@@ -36,10 +33,16 @@
 
         created() {
             this.data.priority = this.priority;
+
+            axios.get('/api/priorities')
+                .then(response => {
+                    this.priorities = response.data;
+                });
         },
 
         data() {
             return {
+                priorities: [],
                 data: {
                     priority: null
                 }

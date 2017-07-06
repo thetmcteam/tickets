@@ -37,7 +37,7 @@ class TicketRepository implements TicketRepositoryInterface
             throw new TicketNotFoundException;
         }
 
-        return $ticket->toArray();
+        return $ticket;
     }
 
     public function getAllPaginatedBy($query)

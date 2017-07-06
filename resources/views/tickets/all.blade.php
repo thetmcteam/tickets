@@ -36,7 +36,9 @@
                                     <span class="status">
                                         <i class="fa fa-warning"></i>
                                     </span>
-                                    <span class="department">{{ $ticket->department()->first()->department }}</span>
+                                    <a class="department" href="/tickets?query={{ $ticket->department()->first()->department }}">
+                                        {{ $ticket->department()->first()->department }}
+                                    </a>
                                     <a href="/tickets/{{ $ticket->id }}">{{ $ticket->title }}</a>
 
                                     <span class="label" style="background-color: {{ $ticket->type()->first()->color }}">

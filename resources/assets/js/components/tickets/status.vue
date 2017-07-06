@@ -11,10 +11,7 @@
                             <label class="col-sm-3 text-right">Status</label>
                             <div class="col-sm-7">
                                 <select class="form-control" v-model="data.status">
-                                    <option value="1">Open</option>
-                                    <option value="2">Awaiting Response</option>
-                                    <option value="3">Closed</option>
-                                    <option value="4">Monitor</option>
+                                    <option v-for="status in statuses" :value="status.id">{{ status.status }}</option>
                                 </select>
                             </div>
                         </div>
@@ -36,10 +33,16 @@
 
         created() {
             this.data.status = this.status;
+
+            axios.get('/api/status')
+                .then(response => {
+                    this.statuses = response.data;
+                });
         },
 
         data() {
             return {
+                statuses: [],
                 data: {
                     status: null
                 }

@@ -11,6 +11,7 @@
                             <label class="col-sm-3 text-right">Assignee</label>
                             <div class="col-sm-7">
                                 <select class="form-control" v-model="data.assignee">
+                                    <option value="1">Jordan Bardsley</option>
                                 </select>
                             </div>
                         </div>

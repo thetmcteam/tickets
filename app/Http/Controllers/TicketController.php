@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Carbon\Carbon;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
@@ -40,7 +41,7 @@ class TicketController extends Controller
             abort(404);
         }
 
-        return view('tickets.show')->withTicket($ticket);
+        return view('tickets.show')->withTicket($ticket->toArray());
     }
 
     public function search(Request $request)
@@ -88,10 +89,16 @@ class TicketController extends Controller
         $this->ticketRepository->updateAssignee($id, $assigneeId);
         $assignee = \App\Models\User::find($assigneeId);
 
-        $this->actionRepository->log(Auth::user()->id, $id, 'assigee', [
+        $this->actionRepository->log(Auth::user()->id, $id, 'assign', [
             'value' => $assignee->name,
             'color' => '#8e44ad'
         ]);
+
+        $assignee->notify((new \App\Notifications\YouveBeenAssigned(
+            $this->ticketRepository->findById($id),
+            Auth::user(),
+            $assignee
+        ))->delay(Carbon::now()->addMinutes(1)));
 
         return response(['message' => 'ticket successfully updated.']);
     }
