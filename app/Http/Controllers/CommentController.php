@@ -25,7 +25,7 @@ class CommentController extends Controller
 
     public function find(int $id)
     {
-        $comments = $this->commentRepository->findById($id);
+        $comments = $this->commentRepository->findByTicketId($id);
         return response($comments);
     }
 

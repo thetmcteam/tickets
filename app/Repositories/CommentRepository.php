@@ -20,10 +20,16 @@ class CommentRepository implements CommentRepositoryInterface
 
     public function findById(int $id)
     {
+        $comments = $this->comment->find($id);
+        return $comments;
+    }
+
+    public function findByTicketId(int $id)
+    {
         $comments = $this->comment->where('ticket', $id)->orderBy('id', 'asc')->get();
         return $comments;
     }
-    
+
     public function create(array $data)
     {
         $validator = $this->validate($data);
