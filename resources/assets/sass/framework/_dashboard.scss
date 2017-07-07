@@ -1,0 +1,36 @@
+.dashboard {
+    .welcome {
+        margin-top: 0;
+        padding: 20px 0;
+    }
+
+    .statistics {
+        padding: 50px 0;
+        background-color: #f6f9fc;
+
+        .statistic {
+            text-align: center;
+
+            .image {
+                border-radius: 100%;
+                padding: 35px 20px;
+                width: 100px;
+                height: 100px;
+                display: block;
+                margin: auto;
+
+                i {
+                    font-size: 2em;
+                }
+            }
+
+            .content {
+                font-size: 1.25em;
+
+                .number {
+                    font-weight: bolder;
+                }
+            }
+        }
+    }
+}

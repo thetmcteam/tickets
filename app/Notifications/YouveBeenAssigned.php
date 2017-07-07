@@ -38,7 +38,7 @@ class YouveBeenAssigned extends Notification implements ShouldQueue
         );
 
         return (new MailMessage)
-            ->line('You have been assigned to a ticket.')
+            ->line('You\'ve been assigned to a ticket.')
             ->subject('You\'ve been assigned to a ticket.')
             ->action('View Ticket', url('/tickets/' . $this->ticket->id))
             ->line($message);
