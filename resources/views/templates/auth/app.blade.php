@@ -21,8 +21,8 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/tickets/create"><i class="fa fa-plus"></i></a></li>
-                        <li><a href=""><i class="fa fa-user"></i></a></li>
-                        <li><a href=""><i class="fa fa-sign-out"></i></a></li>
+                        <li><a href="/user/tickets"><i class="fa fa-user"></i></a></li>
+                        <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
                     </ul>
                 </div>
             </div>

@@ -40,6 +40,12 @@ class TicketRepository implements TicketRepositoryInterface
         return $ticket;
     }
 
+    public function findByAssignee(int $id)
+    {
+        $tickets = $this->ticket->where('assignee', $id)->get();
+        return $tickets;
+    }
+
     public function getAllPaginatedBy($query)
     {
         $tickets = $this->ticket->search($query)->paginate(20);
