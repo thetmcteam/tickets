@@ -17,12 +17,20 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route('tickets') }}">tickets</a></li>
+                        <li class="{{ request()->route()->getName() == 'tickets'  ? 'active' : '' }}">
+                            <a href="{{ route('tickets') }}">tickets</a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/tickets/create"><i class="fa fa-plus"></i></a></li>
-                        <li><a href="/user/tickets"><i class="fa fa-user"></i></a></li>
-                        <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
+                        <li class="{{ request()->route()->getName() == 'tickets.create'  ? 'active' : '' }}">
+                            <a href="/tickets/create"><i class="fa fa-plus"></i></a>
+                        </li>
+                        <li class="{{ request()->route()->getName() == 'user.tickets'  ? 'active' : '' }}">
+                            <a href="/user/tickets"><i class="fa fa-user"></i></a>
+                        </li>
+                        <li>
+                            <a href="/logout"><i class="fa fa-sign-out"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>

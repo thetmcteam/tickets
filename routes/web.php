@@ -16,6 +16,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'user'], function () {
-        Route::get('tickets', 'UserController@tickets');
+        Route::get('tickets', 'UserController@tickets')->name('user.tickets');
     });
 });

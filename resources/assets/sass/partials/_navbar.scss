@@ -12,9 +12,17 @@
     }
 
     .navbar-nav {
+        li.active {
+            a {
+                background-color: transparent !important;
+                color: #0ef36f !important;
+            }
+        }
+
         a {
             color: $navbar-color !important;
             text-transform: capitalize;
+            font-weight: bold;
         }
     }
 
