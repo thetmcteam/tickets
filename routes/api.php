@@ -29,4 +29,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('types', 'TypeController@index');
     Route::get('status', 'StatusController@index');
     Route::get('priorities', 'PriorityController@index');
+    Route::get('actions/{id}', 'ActionController@find');
 });

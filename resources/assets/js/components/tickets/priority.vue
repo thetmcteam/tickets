@@ -56,6 +56,7 @@
                 axios.put(`/api/tickets/${ticket}/priority`, this.data)
                     .then(response => {
                         sweetAlert('Success', 'The priority of this ticket has been updated.', 'success');
+                        Bus.$emit('actions:refresh');
                     })
                     .catch(error => {
                         sweetAlert('Whoops', 'Oh no, looks like there was an issue when updating the priority of this ticket.', 'error');

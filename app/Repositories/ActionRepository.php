@@ -14,6 +14,12 @@ class ActionRepository implements ActionRepositoryInterface
         $this->action = $action;
     }
 
+    public function findByTicket(int $id)
+    {
+        $actions = $this->action->where('ticket', $id)->get();
+        return $actions;
+    }
+
     public function log(int $user, int $ticket, $action, array $data)
     {
         $this->action->create([

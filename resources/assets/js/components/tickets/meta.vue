@@ -43,7 +43,7 @@
 
 <script>
     export default {
-        props: ['t'],
+        props: ['id'],
 
         data() {
             return {
@@ -52,7 +52,7 @@
         },
 
         created() {
-            this.ticket = JSON.parse(this.t);
+            this.ticket = JSON.parse(this.id);
         }
     }
 </script>

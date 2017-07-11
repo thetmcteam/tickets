@@ -56,6 +56,7 @@
                 axios.put(`/api/tickets/${ticket}/type`, this.data)
                     .then(response => {
                         sweetAlert('Success', 'The type of this ticket has been updated.', 'success');
+                        Bus.$emit('actions:refresh');
                     })
                     .catch(error => {
                         sweetAlert('Whoops', 'Oh no, looks like there was an issue when updating the type of this ticket.', 'error');

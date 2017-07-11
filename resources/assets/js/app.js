@@ -19,6 +19,7 @@ Vue.use(require('vue-timeago'), {
 });
 
 Vue.component('ticket-meta', require('./components/tickets/meta.vue'));
+Vue.component('actions', require('./components/tickets/actions.vue'));
 Vue.component('comment', require('./components/comments/create.vue'));
 Vue.component('comments', require('./components/comments/all.vue'));
 Vue.component('create-ticket', require('./components/tickets/create.vue'));

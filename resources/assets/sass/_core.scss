@@ -6,14 +6,6 @@ body {
     color: #24292e;
 }
 
-// @media screen and (min-width: 1080px) {
-//     body {
-//         -moz-transform: scale(0.8, 0.85);
-//         zoom: 0.85;
-//         zoom: 85%;
-//     }
-// }
-
 a {
     color: #2196f3;
     cursor: pointer !important;
@@ -33,4 +25,8 @@ label {
 
 .panel-footer {
     background-color: #fff;
+}
+
+.sweet-alert p {
+    font-size: 2.5em;
 }
