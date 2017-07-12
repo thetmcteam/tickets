@@ -17,6 +17,9 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
+                        <li class="{{ request()->route()->getName() == 'dashboard'  ? 'active' : '' }}">
+                            <a href="/dashboard">dashboard</a>
+                        </li>
                         <li class="{{ request()->route()->getName() == 'tickets'  ? 'active' : '' }}">
                             <a href="{{ route('tickets') }}">tickets</a>
                         </li>
@@ -29,7 +32,7 @@
                             <a href="/user/tickets"><i class="fa fa-user"></i></a>
                         </li>
                         <li>
-                            <a href="/logout"><i class="fa fa-sign-out"></i></a>
+                            <a style="padding-right: 0" href="/logout"><i class="fa fa-sign-out"></i></a>
                         </li>
                     </ul>
                 </div>

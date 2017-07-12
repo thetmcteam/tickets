@@ -25,6 +25,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('{id}', 'CommentController@delete');
     });
 
+    Route::group(['prefix' => 'metrics'], function () {
+        Route::get('types', 'MetricsController@getTicketCountByType');
+        Route::get('department', 'MetricsController@getTicketCountsByDepartment');
+    });
+
     Route::post('notes', 'NoteController@create');
     Route::get('types', 'TypeController@index');
     Route::get('status', 'StatusController@index');

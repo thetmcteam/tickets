@@ -14,15 +14,15 @@
     .navbar-nav {
         li.active {
             a {
-                background-color: transparent !important;
-                color: #0ef36f !important;
+                background-color: #fff !important;
+                color: #27ae60 !important;
+                font-weight: bolder;
             }
         }
 
         a {
             color: $navbar-color !important;
             text-transform: capitalize;
-            font-weight: bold;
         }
     }
 

@@ -14,5 +14,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(\App\Contracts\Repositories\TicketRepositoryInterface::class, \App\Repositories\TicketRepository::class);
         $this->app->bind(\App\Contracts\Repositories\CommentRepositoryInterface::class, \App\Repositories\CommentRepository::class);
         $this->app->bind(\App\Contracts\Repositories\DepartmentRepositoryInterface::class, \App\Repositories\DepartmentRepository::class);
+        $this->app->bind(\App\Contracts\Repositories\MetricsRepositoryInterface::class, \App\Repositories\Metrics\MysqlMetricsRepository::class);
     }
 }

@@ -1,34 +1,34 @@
 <template>
-    <ul class="actions">
-                <li class="action" v-for="action in actions">
-                    <i class="fa fa-bell-o"></i>
-                    <span class="heading">
-                        <img :src="action.user.image !== null ? action.user.image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
-                        <a class="user">{{ action.user.name }}</a>
+    <ul class="actions" v-if="actions.length > 0">
+            <li class="action" v-for="action in actions">
+                <i class="fa fa-bell-o"></i>
+                <span class="heading">
+                    <img :src="action.user.image !== null ? action.user.image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
+                    <a class="user">{{ action.user.name }}</a>
+                </span>
+                <span class="content">
+                    <span v-if="action.action == 'priority'">
+                        changed the priority to
                     </span>
-                    <span class="content">
-                        <span v-if="action.action == 'priority'">
-                            changed the priority to
-                        </span>
-                        <span v-if="action.action == 'status'">
-                            changed the status to
-                        </span>
-                        <span v-if="action.action == 'type'">
-                            changed the type to
-                        </span>
-                        <span v-if="action.action == 'assign'">
-                            assigned
-                        </span>
-                        <span class="label" :style="{ 'background-color': getData(action.id, action.data).color, 'margin-right': '4px' }">
-                            {{ getData(action.id, action.data).value }}
-                        </span>
-                        <span v-if="action.action == 'assign'">
-                            to this ticket
-                        </span>
-                        <timeago :since="action.created_at"></timeago>
+                    <span v-if="action.action == 'status'">
+                        changed the status to
                     </span>
-                </li>
-        </ul>
+                    <span v-if="action.action == 'type'">
+                        changed the type to
+                    </span>
+                    <span v-if="action.action == 'assign'">
+                        assigned
+                    </span>
+                    <span class="label" :style="{ 'background-color': getData(action.id, action.data).color, 'margin-right': '4px' }">
+                        {{ getData(action.id, action.data).value }}
+                    </span>
+                    <span v-if="action.action == 'assign'">
+                        to this ticket
+                    </span>
+                    <timeago :since="action.created_at"></timeago>
+                </span>
+            </li>
+    </ul>
 </template>
 
 <script>
