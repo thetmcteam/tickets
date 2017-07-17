@@ -4,7 +4,7 @@
             <div class="reply">
                 <div class="col-sm-1">
                     <div class="image">
-                        <img :src="image !== null ? image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
+                        <img :src="image ? image : '/images/profile.jpg'">
                     </div>
                 </div>
                 <div class="col-sm-11">

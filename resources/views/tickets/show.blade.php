@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-sm-1">
                                     <div class="image">
-                                        <img src="{{ Auth::user()->image ? Auth::user()->image : 'http://www.mtlwalks.com/images/empty_profile.jpg' }}">
+                                        <img src="{{ Auth::user()->getImage() }}">
                                     </div>
                                 </div>
                                 <div class="col-sm-11">

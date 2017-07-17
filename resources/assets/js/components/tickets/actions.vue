@@ -4,7 +4,7 @@
                 <!-- <i class="fa fa-bell-o"></i> -->
                 <img src="/images/alerts.png" class="timebar-icon">
                 <span class="heading">
-                    <img :src="action.user.image !== null ? action.user.image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
+                    <img :src="action.user.image ? action.user.image : '/images/profile.jpg'">
                     <a class="user">{{ action.user.name }}</a>
                 </span>
                 <span class="content">

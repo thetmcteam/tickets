@@ -4,7 +4,7 @@
             <div class="reply">
                 <div class="col-sm-1">
                     <div class="image">
-                        <img :src="reply.user.image !== null ? reply.user.image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
+                        <img :src="reply.user.image ? reply.user.image : '/images/profile.jpg'">
                     </div>
                 </div>
                 <div class="col-sm-11">
@@ -38,7 +38,7 @@
                                 <img src="/images/speech-bubble.png" class="timebar-icon">
                             </a>
                             <span class="heading">
-                                <img :src="reply.user.image !== null ? reply.user.image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
+                                <img :src="reply.user.image ? reply.user.image : '/images/profile.jpg'">
                                 <a class="user">{{ note.user.name }}</a>
                                 <span style="color: #586069">
                                     said <timeago :since="note.created_at"></timeago>
