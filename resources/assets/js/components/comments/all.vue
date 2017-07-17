@@ -33,7 +33,10 @@
                     </div>
                     <ul v-if="reply.notes.length > 0" class="notes">
                         <li v-for="note in reply.notes" class="note">
-                            <i class="fa fa-comment-o"></i>
+                            <!-- <i class="fa fa-comment-o"></i> -->
+                            <a data-toggle="tooltip" data-placement="left" title="test">
+                                <img src="/images/speech-bubble.png" class="timebar-icon">
+                            </a>
                             <span class="heading">
                                 <img :src="reply.user.image !== null ? reply.user.image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
                                 <a class="user">{{ note.user.name }}</a>

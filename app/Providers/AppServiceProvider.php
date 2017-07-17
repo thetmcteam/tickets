@@ -8,6 +8,7 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        $this->app->bind(\App\Contracts\Repositories\UserRepositoryInterface::class, \App\Repositories\UserRepository::class);
         $this->app->bind(\App\Contracts\Repositories\TypeRepositoryInterface::class, \App\Repositories\TypeRepository::class);
         $this->app->bind(\App\Contracts\Repositories\NoteRepositoryInterface::class, \App\Repositories\NoteRepository::class);
         $this->app->bind(\App\Contracts\Repositories\ActionRepositoryInterface::class, \App\Repositories\ActionRepository::class);

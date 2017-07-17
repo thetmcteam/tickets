@@ -2,7 +2,8 @@
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', 'AuthController@index')->name('login');
-    Route::post('/', 'AuthController@check')->name('login');
+    Route::post('/', 'AuthController@authenticate')->name('login');
+    Route::post('ldap', 'AuthController@authenticateAgainstAD')->name('login.ldap');
 });
 
 Route::group(['middleware' => 'auth'], function () {

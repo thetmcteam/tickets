@@ -1,7 +1,8 @@
 <template>
     <ul class="actions" v-if="actions.length > 0">
             <li class="action" v-for="action in actions">
-                <i class="fa fa-bell-o"></i>
+                <!-- <i class="fa fa-bell-o"></i> -->
+                <img src="/images/alerts.png" class="timebar-icon">
                 <span class="heading">
                     <img :src="action.user.image !== null ? action.user.image : 'http://www.mtlwalks.com/images/empty_profile.jpg'">
                     <a class="user">{{ action.user.name }}</a>

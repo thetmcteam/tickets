@@ -1,0 +1,51 @@
+.auth--heading {
+    margin-top: 50px;
+    text-transform: lowercase;
+
+    h3 {
+        font-size: 1.1rem;
+        font-family: $pop-font-family;
+    }
+}
+
+.auth {
+    margin: 25px 0;
+    border: 1px solid #e5e5e5;
+    border-bottom: 3px solid #e5e5e5;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    form {
+        padding: 15px 35px;
+
+        label {
+            font-weight: normal;
+        }
+    }
+
+    .nav {
+        a {
+            border-radius: 0 !important;
+            border-top: 4px solid transparent;
+        }
+
+        li.active:nth-child(1) {
+            a {
+                border-left: none !important;
+            }
+        }
+
+        li.active:nth-child(2) {
+            a {
+                border-right: none !important;
+            }
+        }
+
+        li.active {
+            a {
+                border-top: 4px solid #3498db !important;
+                border-radius: 0 !important;
+            }
+        }
+    }
+}
