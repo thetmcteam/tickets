@@ -7,7 +7,7 @@
                 <div class="col-sm-12">
                     <div class="heading">
                         <h4 class="pull-left">Dashboard</h4>
-                        <a href="" class="pull-right btn btn-success">open ticket</a>
+                        <a href="/tickets/create" class="pull-right btn btn-success">open ticket</a>
                         <div class="clearfix"></div>
                     </div>
                 </div>

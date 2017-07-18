@@ -21,6 +21,12 @@ class UserRepository implements UserRepositoryInterface
         $this->validator = $validator;
     }
 
+    public function getAll()
+    {
+        $users = $this->user->all();
+        return $users;
+    }
+
     public function findById(int $id)
     {
         $user = $this->user->find($id);
@@ -56,7 +62,7 @@ class UserRepository implements UserRepositoryInterface
         $user = $this->user->find($id);
         
         if (!is_null($user)) {
-            $user->delete();
+            $user->deactivate();
         }
     }
 

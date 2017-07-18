@@ -30,6 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('department', 'MetricsController@getTicketCountsByDepartment');
     });
 
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', 'UserController@index');
+        Route::delete('{id}', 'UserController@deactivate');
+    });
+
     Route::post('notes', 'NoteController@create');
     Route::get('types', 'TypeController@index');
     Route::get('status', 'StatusController@index');

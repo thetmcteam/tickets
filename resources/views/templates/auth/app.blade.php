@@ -31,6 +31,9 @@
                         <li class="{{ request()->route()->getName() == 'user.tickets'  ? 'active' : '' }}">
                             <a href="/user/tickets"><i class="fa fa-user"></i></a>
                         </li>
+                        <li class="{{ request()->route()->getName() == 'users'  ? 'active' : '' }}">
+                            <a href="/users"><i class="fa fa-users"></i></a>
+                        </li>
                         <li>
                             <a style="padding-right: 0" href="/logout"><i class="fa fa-sign-out"></i></a>
                         </li>

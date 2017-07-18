@@ -23,6 +23,7 @@ class AuthController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->only('username', 'password');
+        $credentials['active'] = 1;
 
         if (Auth::attempt($credentials, false)) {
             return response(['message' => 'login success.'], 200);
@@ -38,17 +39,18 @@ class AuthController extends Controller
 
         $user = $this->userRepository->findByUsername($username);
 
+        if (!empty($user)) {
+            return $this->authenticate($request);
+        }
+
         if (Adldap::auth()->attempt($username, $password)) {
             $adUserModel = Adldap::search()->where('samaccountname', $username)->get()->first();
-
-            if (empty($user)) {
-                $user = $this->userRepository->create([
-                    'name' => $adUserModel->getName(),
-                    'username' => $username,
-                    'email' => $adUserModel->getEmail(),
-                    'password' => $password
-                ]);
-            }
+            $user = $this->userRepository->create([
+                'name' => $adUserModel->getName(),
+                'username' => $username,
+                'email' => $adUserModel->getEmail(),
+                'password' => $password
+            ]);
         } else {
             return response(['message' => 'unauthorized.'], 401);
         }

@@ -1,27 +1,26 @@
 .navbar:not(.heading) {
     border-radius: 0;
-    background-color: $theme;
-    border: none;
+    background-color: #fff;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     
     .navbar-header {
         .navbar-brand {
             font-family: $pop-font-family;
             line-height: 25px;
-            color: #fff;
         }
     }
 
     .navbar-nav {
         li.active {
             a {
-                background-color: #fff !important;
                 color: #27ae60 !important;
-                font-weight: bolder;
+                background-color: transparent;
             }
         }
 
         a {
-            color: $navbar-color !important;
             text-transform: capitalize;
         }
     }

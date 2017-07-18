@@ -25,4 +25,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::get('tickets', 'UserController@tickets')->name('user.tickets');
     });
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', function () {
+            return view('admin.users');
+        })->name('users');
+    });
 });
