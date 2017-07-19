@@ -55,4 +55,5 @@
     <status ticket="{{ $ticket['id'] }}" status="{{ $ticket['status']['id'] }}"></status>
     <assign ticket="{{ $ticket['id'] }}" assignee="{{ $ticket['assignee']['id'] }}"></assign>
     <priority ticket="{{ $ticket['id'] }}" priority="{{ $ticket['priority']['id'] }}"></priority>
+    <department ticket="{{ $ticket['id'] }}" department="{{ $ticket['department']['id'] }}"></department>
 @endsection

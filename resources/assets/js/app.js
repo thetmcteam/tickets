@@ -33,6 +33,7 @@ Vue.component('type', require('./components/tickets/type.vue'));
 Vue.component('status', require('./components/tickets/status.vue'));
 Vue.component('priority', require('./components/tickets/priority.vue'));
 Vue.component('assign', require('./components/tickets/assignee.vue'));
+Vue.component('department', require('./components/tickets/department.vue'));
 
 Vue.component('metrics-ticket', require('./components/metrics/tickets.vue'));
 Vue.component('metrics-department', require('./components/metrics/department.vue'));

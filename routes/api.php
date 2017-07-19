@@ -11,6 +11,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('{id}/priority', 'TicketController@updatePriority');
         Route::put('{id}/assignee', 'TicketController@updateAssignee');
         Route::put('{id}/type', 'TicketController@updateType');
+        Route::put('{id}/department', 'TicketController@updateDepartment');
     });
 
     Route::group(['prefix' => 'departments'], function () {

@@ -117,6 +117,20 @@ class TicketController extends Controller
         return response(['message' => 'ticket successfully updated.']);
     }
 
+    public function updateDepartment(Request $request, $id)
+    {
+        $departmentId = intval($request->get('department'));
+        $this->ticketRepository->updateDepartment($id, $departmentId);
+        $department = \App\Models\Department::find($departmentId);
+
+        $this->actionRepository->log(Auth::user()->id, $id, 'department', [
+            'value' => $department->department,
+            'color' => $department->color
+        ]);
+
+        return response(['message' => 'ticket successfully updated.']);
+    }
+
     public function store(Request $request)
     {
         $data = $request->all();

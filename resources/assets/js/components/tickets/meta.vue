@@ -11,7 +11,7 @@
             </li>
             <li>
                 <span>Department</span>
-                <a class="label" :style="{ 'background-color': ticket.department.color }">
+                <a class="label" :style="{ 'background-color': ticket.department.color }" data-toggle="modal" data-target="#ticketDepartmentModal">
                     <i class="fa fa-home"></i>
                     {{ ticket.department.department }}
                 </a>
