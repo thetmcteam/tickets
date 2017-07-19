@@ -1,19 +1,38 @@
 .users {
-    .user {
-        padding: 10px 0;
-        border-left: 15px solid #fff;
-        border-right: 15px solid #fff;
-        border-bottom: 1px solid #e5e5e5;
+    .toolbar {
+        margin-bottom: 15px;
+    }
 
+    .table {
+        tr:nth-child(1) {
+            border-top: none;
+        }
+
+        tr {
+            border-top: 1px solid #e5e5e5;
+
+            td {
+                padding: 20px;
+                text-align: center;
+            }
+        }
+    }
+
+    .user {
         img {
-            width: 75px;
-            height: 75px;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
             border-radius: 3px;
-            margin-right: 15px;
         }
 
         h4 {
-            text-transform: capitalize;
+            small {
+                color: #4a4a4a;
+                display: block;
+                margin-top: 1px;
+                font-size: 0.9em;
+            }
         }
     }
 }

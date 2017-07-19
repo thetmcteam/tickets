@@ -19,6 +19,9 @@
                 </form>
             </div>
             <div class="pull-right">
+                <a class="btn" href="/user/tickets">
+                    My Tickets
+                </a>
                 <a class="btn btn-success" href="/tickets/create">
                     New Ticket
                 </a>

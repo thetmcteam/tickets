@@ -28,10 +28,7 @@
                         <li class="{{ request()->route()->getName() == 'tickets.create'  ? 'active' : '' }}">
                             <a href="/tickets/create"><i class="fa fa-plus"></i></a>
                         </li>
-                        <li class="{{ request()->route()->getName() == 'user.tickets'  ? 'active' : '' }}">
-                            <a href="/user/tickets"><i class="fa fa-user"></i></a>
-                        </li>
-                        <li class="{{ request()->route()->getName() == 'users'  ? 'active' : '' }}">
+                        <li class="{{ request()->route()->getName() == 'users.all'  ? 'active' : '' }}">
                             <a href="/users"><i class="fa fa-users"></i></a>
                         </li>
                         <li>
