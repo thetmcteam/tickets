@@ -33,7 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', 'UserController@index');
-        Route::delete('{id}', 'UserController@deactivate');
+        Route::post('{id}/activate', 'UserController@activate');
+        Route::post('{id}/deactivate', 'UserController@deactivate');
     });
 
     Route::post('notes', 'NoteController@create');

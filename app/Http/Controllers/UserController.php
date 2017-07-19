@@ -24,6 +24,12 @@ class UserController extends Controller
         return response($users);
     }
 
+    public function activate($id)
+    {
+        $this->userRepository->activate($id);
+        return response(['message' => 'user activated.']);
+    }
+
     public function deactivate($id)
     {
         $this->userRepository->delete($id);

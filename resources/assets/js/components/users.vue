@@ -7,7 +7,7 @@
                 </div>
                 <h4>{{ user.name }}</h4>
                 <button class="btn btn-xs btn-primary" v-if="user.active === 1" @click="deactivate(user.id)">deactivate</button>
-                <button class="btn btn-xs btn-success" v-if="user.active === 0">activate</button>
+                <button class="btn btn-xs btn-success" v-if="user.active === 0" @click="activate(user.id)">activate</button>
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -37,8 +37,16 @@
                     });
             },
 
+            activate(id) {
+                axios.post(`/api/users/${id}/activate`)
+                    .then(response => {
+                        sweetAlert('User Activated', 'This user has been successfully activated.', 'success');
+                        this.refresh();
+                    });
+            },
+
             deactivate(id) {
-                axios.delete(`/api/users/${id}`)
+                axios.post(`/api/users/${id}/deactivate`)
                     .then(response => {
                         sweetAlert('User Deactivated', 'This user has been successfully deactivated.', 'success');
                         this.refresh();

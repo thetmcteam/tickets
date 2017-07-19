@@ -21,8 +21,17 @@ class User extends Authenticatable
         return $this->image;
     }
 
+    public function activate()
+    {
+        $this->update([
+            'active' => 1
+        ]);
+    }
+
     public function deactivate()
     {
-        $this->update(['active' => 0]);
+        $this->update([
+            'active' => 0
+        ]);
     }
 }

@@ -57,6 +57,15 @@ class UserRepository implements UserRepositoryInterface
         return $user;
     }
 
+    public function activate(int $id)
+    {
+        $user = $this->user->find($id);
+
+        if (!is_null($user)) {
+            $user->activate();
+        }
+    }
+
     public function delete(int $id)
     {
         $user = $this->user->find($id);
