@@ -41,7 +41,7 @@ class CommentController extends Controller
         }
 
         $ticket = $this->ticketRepository->findById($data['ticket']);
-        ($user = $ticket->user()->first())->notify((new \App\Notifications\YouHaveAReply(
+        ($user = $ticket->user()->first())->notify((new \App\Notifications\Reply(
             $user,
             $ticket,
             Auth::user(),

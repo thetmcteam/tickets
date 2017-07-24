@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Eloquent;
 
 use Carbon\Carbon;
 use Illuminate\Validation\Factory as Validator;

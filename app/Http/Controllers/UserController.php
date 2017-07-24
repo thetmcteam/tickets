@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\UserRepositoryInterface;
 use App\Contracts\Repositories\TicketRepositoryInterface;
 
@@ -40,5 +41,21 @@ class UserController extends Controller
     {
         $tickets = $this->ticketRepository->findByAssignee(Auth::user()->id);
         return view('user.tickets')->withTickets($tickets);
+    }
+
+    public function create()
+    {
+        return view('user.create');
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $this->ticketRepository->create($request->all());
+        } catch (ValidationException $e) {
+            return response(json_decode($e->getMessage()), 422);
+        }
+
+        return response(['message' => 'user created.'], 200);
     }
 }

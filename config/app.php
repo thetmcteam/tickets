@@ -227,6 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'ActiveDirectory' => Adldap\Laravel\Facades\Adldap::class,
         'Adldap' => Adldap\Laravel\Facades\Adldap::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class,
 
     ],
 

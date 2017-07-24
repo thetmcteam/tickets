@@ -8,7 +8,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout')->name('logout');
-    
+
     Route::get('dashboard', function () {
         $ticket = \App\Models\Ticket::class;
         $replies = \App\Models\Comment::class;

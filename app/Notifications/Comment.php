@@ -9,19 +9,21 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class YouveBeenAssigned extends Notification implements ShouldQueue
+class Comment extends Notification implements ShouldQueue
 {
     use Queueable;
 
+    private $user;
     private $ticket;
-    private $assigner;
-    private $assignee;
+    private $content;
+    private $commenter;
 
-    public function __construct(Ticket $ticket, User $assignee, User $assigner)
+    public function __construct(User $user, Ticket $ticket, User $commenter, $content)
     {
+        $this->user = $user;
         $this->ticket = $ticket;
-        $this->assigner = $assigner;
-        $this->assignee = $assignee;
+        $this->content = $content;
+        $this->commenter = $commenter;
     }
 
     public function via($notifiable)
@@ -31,16 +33,16 @@ class YouveBeenAssigned extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        $message = sprintf('Hello %s, %s has assigned this ticket to you. (%s)',
-            $this->assignee->name,
-            $this->assigner->name,
+        $message = sprintf('Hello %s, %s posted a comment on your reply. (%s)',
+            $this->user->name,
+            $this->commenter->name,
             $this->ticket->title
         );
 
         return (new MailMessage)
-            ->line('You\'ve been assigned to a ticket.')
-            ->subject('You\'ve been assigned to a ticket.')
+            ->subject('Someone commented on your reply.')
+            ->line($message)
             ->action('View Ticket', url('/tickets/' . $this->ticket->id))
-            ->line($message);
+            ->line($this->content);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Eloquent;
 
 use Illuminate\Validation\Factory as Validator;
 use App\Models\Type;

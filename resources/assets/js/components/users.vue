@@ -17,8 +17,8 @@
                 </form>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="/users/create">
-                    New User
+                <a class="btn btn-success" data-toggle="modal" data-target="#inviteModal">
+                    Invite
                 </a>
             </div>
             <div class="clearfix"></div>
@@ -43,6 +43,37 @@
                 No users could be found.
             </div>
         </div>
+        <div class="modal fade" id="inviteModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Invite Someone</h4>
+                    </div>
+                    <form class="form-horizontal" @submit.prevent="sendInvite()">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 text-right">email</label>
+                                <div class="col-sm-7">
+                                    <input type="email" class="form-control" v-model="invite.email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 text-right">admin</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" v-model="invite.admin" required>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary">invite</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -58,14 +89,17 @@
         data() {
             return {
                 users: [],
-                query: null
+                query: null,
+                invite: {
+                    admin: null,
+                    email: null
+                }
             };
         },
 
         computed: {
             filteredUsers() {
                 let items = this.users.slice(0);
-                console.log(items);
 
                 if (this.query === null) {
                     return items;
@@ -86,6 +120,13 @@
         },
 
         methods: {
+            sendInvite() {
+                axios.post('/api/invite', this.invite)
+                    .then(response => {
+                        console.log(response);
+                    });
+            },
+
             refresh() {
                 axios.get('/api/users')
                     .then(response => {

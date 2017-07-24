@@ -44,7 +44,7 @@ class NoteController extends Controller
         $ticket = $this->ticketRepository->findById($comment->ticket);
         
         $user = \App\Models\User::find($comment->user);
-        $user->notify((new \App\Notifications\YouHaveAComment(
+        $user->notify((new \App\Notifications\Comment(
             $user,
             $ticket,
             Auth::user(),

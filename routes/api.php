@@ -1,6 +1,8 @@
 <?php
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::post('invite', 'InviteController@store');
+    
     Route::group(['prefix' => 'tickets'], function () {
         Route::get('/', 'TicketController@index');
         Route::post('/', 'TicketController@store');

@@ -94,7 +94,7 @@ class TicketController extends Controller
             'color' => '#8e44ad'
         ]);
 
-        $assignee->notify((new \App\Notifications\YouveBeenAssigned(
+        $assignee->notify((new \App\Notifications\Assigned(
             $this->ticketRepository->findById($id),
             Auth::user(),
             $assignee
@@ -140,7 +140,7 @@ class TicketController extends Controller
         try {
             $this->ticketRepository->create($data);
         } catch (ValidationException $e) {
-            return response(json_decode($e->getMessage()), 401);
+            return response(json_decode($e->getMessage()), 422);
         }
 
         return response(['message' => 'ticket successfully created.']);
