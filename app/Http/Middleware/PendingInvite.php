@@ -22,7 +22,7 @@ class PendingInvite
             return $next($request);
         }
 
-        if ($request->json()) {
+        if ($request->ajax()) {
             return response('Unauthorized.', 401);
         }
 

@@ -10,12 +10,6 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout')->name('logout');
 
-    Route::get('dashboard', function () {
-        $ticket = \App\Models\Ticket::class;
-        $replies = \App\Models\Comment::class;
-        return view('admin.dashboard')->withTicket($ticket)->withReplies($replies);
-    })->name('dashboard');
-
     Route::group(['prefix' => 'tickets'], function () {
         Route::get('/', 'TicketController@index')->name('tickets');
         Route::get('create', 'TicketController@create')->name('tickets.create');
@@ -23,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('department/{id}', 'TicketController@showByDepartment')->name('tickets.department');
     });
 
-    Route::group(['prefix' => 'users'], function () {
+    Route::group(['prefix' => 'users', 'middleware' => 'admin'], function () {
         Route::get('/', function () {
             return view('admin.users');
         })->name('users.all');

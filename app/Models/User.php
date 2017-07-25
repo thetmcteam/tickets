@@ -21,6 +21,11 @@ class User extends Authenticatable
         return $this->image;
     }
 
+    public function isAdmin()
+    {
+        return (bool) $this->admin;
+    }
+
     public function activate()
     {
         $this->update([

@@ -17,9 +17,6 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="{{ request()->route()->getName() == 'dashboard'  ? 'active' : '' }}">
-                            <a href="/dashboard">dashboard</a>
-                        </li>
                         <li class="{{ request()->route()->getName() == 'tickets'  ? 'active' : '' }}">
                             <a href="{{ route('tickets') }}">tickets</a>
                         </li>
@@ -28,9 +25,11 @@
                         <li class="{{ request()->route()->getName() == 'tickets.create'  ? 'active' : '' }}">
                             <a href="/tickets/create"><i class="fa fa-plus"></i></a>
                         </li>
-                        <li class="{{ request()->route()->getName() == 'users.all'  ? 'active' : '' }}">
-                            <a href="/users"><i class="fa fa-users"></i></a>
-                        </li>
+                        @if (request()->user()->isAdmin())
+                            <li class="{{ request()->route()->getName() == 'users.all'  ? 'active' : '' }}">
+                                <a href="/users"><i class="fa fa-users"></i></a>
+                            </li>
+                        @endif
                         <li>
                             <a style="padding-right: 0" href="/logout"><i class="fa fa-sign-out"></i></a>
                         </li>

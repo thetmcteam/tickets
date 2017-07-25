@@ -19,5 +19,5 @@ return [
     \App\Contracts\Repositories\TicketRepositoryInterface::class => \App\Repositories\Eloquent\TicketRepository::class,
     \App\Contracts\Repositories\CommentRepositoryInterface::class => \App\Repositories\Eloquent\CommentRepository::class,
     \App\Contracts\Repositories\DepartmentRepositoryInterface::class => \App\Repositories\Eloquent\DepartmentRepository::class,
-    \App\Contracts\Repositories\MetricsRepositoryInterface::class => \App\Repositories\Metrics\Eloquent\MysqlMetricsRepository::class,
+    \App\Contracts\Repositories\MetricsRepositoryInterface::class => \App\Repositories\Metrics\MysqlMetricsRepository::class,
 ];
