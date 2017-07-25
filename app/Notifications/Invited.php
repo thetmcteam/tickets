@@ -34,6 +34,6 @@ class Invited extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject("You've been invited to join $appName.")
             ->line("You've been invited to join $appName, click the link below to get started. This invite will expire in 24 hours.")
-            ->action('Create Account', '');
+            ->action('Create Account', url('/invite?token='.$this->invite->uuid));
     }
 }

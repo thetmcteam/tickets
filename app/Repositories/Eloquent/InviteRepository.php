@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Eloquent;
 
-use Uuid;
 use App\Models\Invite;
 use App\Exceptions\ValidationException;
 use Illuminate\Validation\Factory as Validator;
@@ -39,9 +38,6 @@ class InviteRepository implements InviteRepositoryInterface
 
     public function create(array $data)
     {
-        $data['uuid'] = Uuid::generate();
-        $data['expires_at'] = date('Y-m-d H:i:s', time() + (24 * 3600));
-
         $validator = $this->validator->make($data, [
             'email' => 'required|email',
             'admin' => 'required|integer|in:0,1'
@@ -52,10 +48,9 @@ class InviteRepository implements InviteRepositoryInterface
         }
 
         $invite = $this->invite->create([
-            'uuid' => $data['uuid'],
             'email' => $data['email'],
             'admin' => $data['admin'],
-            'expires_at' => $data['expires_at'],
+            'expires_at' => date('Y-m-d H:i:s', time() + (24 * 3600))
         ]);
 
         return $invite;

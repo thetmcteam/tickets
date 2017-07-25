@@ -82,7 +82,7 @@
                     .then(response => {
                         sweetAlert({
                             title: 'Ticket Created',
-                            text: 'Thanks, your ticket has been created. We will look into this as soon as possible.',
+                            text: 'Thanks! Your ticket has been successfully created.',
                             type: 'success'
                         }, () => {
                             window.location.href = '/tickets';
