@@ -8,8 +8,8 @@ use Illuminate\Notifications\Notifiable;
 class Invite extends Model
 {
     use Notifiable;
-    
-    // The models primary key.
+
+    protected $keyType = 'string';
     protected $primaryKey = 'uuid';
 
     // The models fillable fields.

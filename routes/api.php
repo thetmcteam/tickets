@@ -1,5 +1,7 @@
 <?php
 
+Route::post('users', 'UserController@store');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::post('invite', 'InviteController@store');
     

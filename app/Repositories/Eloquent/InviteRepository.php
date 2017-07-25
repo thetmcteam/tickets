@@ -19,6 +19,24 @@ class InviteRepository implements InviteRepositoryInterface
         $this->validator = $validator;
     }
 
+    public function findByUuid($uuid)
+    {
+        $invite = $this->invite->find($uuid);
+        return $invite;
+    }
+
+    public function existsForUuid($uuid)
+    {
+        $invite = $this->invite->find($uuid);
+        return ! is_null($invite);
+    }
+
+    public function existsForEmail($email)
+    {
+        $invite = $this->invite->where('email', $email);
+        return $invite->count() > 0;
+    }
+
     public function create(array $data)
     {
         $data['uuid'] = Uuid::generate();

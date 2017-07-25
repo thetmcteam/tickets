@@ -57,7 +57,7 @@
                                     <input type="email" class="form-control" v-model="invite.email" required>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group no-margin-bottom">
                                 <label class="col-sm-3 text-right">admin</label>
                                 <div class="col-sm-7">
                                     <select class="form-control" v-model="invite.admin" required>
@@ -123,7 +123,14 @@
             sendInvite() {
                 axios.post('/api/invite', this.invite)
                     .then(response => {
-                        console.log(response);
+                        sweetAlert('Invite Sent', 'You have successfully sent an invite.', 'success');
+                        $('#inviteModal').modal('hide');
+                    })
+                    .catch(error => {
+                        if (error.response.status === 422) {
+                            sweetAlert('Invite Pending', 'An invite has already been sent to this person.', 'warning');
+                            $('#inviteModal').modal('hide');
+                        }
                     });
             },
 

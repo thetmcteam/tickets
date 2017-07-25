@@ -6,17 +6,18 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\UserRepositoryInterface;
-use App\Contracts\Repositories\TicketRepositoryInterface;
 
 class UserController extends Controller
 {
     private $userRepository;
-    private $ticketRepository;
 
-    public function __construct(UserRepositoryInterface $userRepository, TicketRepositoryInterface $ticketRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
-        $this->ticketRepository = $ticketRepository;
+
+        $this->middleware('invite.pending', [
+            'only' => ['store']
+        ]);
     }
 
     public function index()
@@ -37,21 +38,10 @@ class UserController extends Controller
         return response(['message' => 'user deactivated.']);
     }
 
-    public function tickets()
-    {
-        $tickets = $this->ticketRepository->findByAssignee(Auth::user()->id);
-        return view('user.tickets')->withTickets($tickets);
-    }
-
-    public function create()
-    {
-        return view('user.create');
-    }
-
     public function store(Request $request)
     {
         try {
-            $this->ticketRepository->create($request->all());
+            $this->userRepository->create($request->all());
         } catch (ValidationException $e) {
             return response(json_decode($e->getMessage()), 422);
         }

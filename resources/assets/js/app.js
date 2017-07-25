@@ -23,6 +23,7 @@ require('hchs-vue-charts');
 Vue.use(VueCharts);
 
 Vue.component('users', require('./components/users.vue'));
+Vue.component('invite', require('./components/invite.vue'));
 Vue.component('authenticate', require('./components/auth.vue'));
 Vue.component('ticket-meta', require('./components/tickets/meta.vue'));
 Vue.component('actions', require('./components/tickets/actions.vue'));
