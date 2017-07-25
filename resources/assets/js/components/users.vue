@@ -10,14 +10,14 @@
                             </span>
                             <input type="text" class="form-control" v-model="query">
                             <span class="input-group-btn">
-                                <button class="btn btn-success">Filter</button>
+                                <button class="btn btn-primary">Filter</button>
                             </span>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" data-toggle="modal" data-target="#inviteModal">
+                <a class="btn btn-primary" data-toggle="modal" data-target="#inviteModal">
                     Invite
                 </a>
             </div>

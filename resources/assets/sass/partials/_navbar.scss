@@ -13,15 +13,8 @@
     }
 
     .navbar-nav {
-        li.active {
-            a {
-                color: #27ae60 !important;
-                background-color: transparent;
-            }
-        }
-
         a {
-            text-transform: capitalize;
+            text-transform: lowercase;
         }
     }
 

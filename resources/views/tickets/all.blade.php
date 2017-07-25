@@ -12,14 +12,14 @@
                             </span>
                             <input type="text" class="form-control" name="query" value="{{ request()->get('query') ?: '' }}">
                             <span class="input-group-btn">
-                                <button class="btn btn-success">Filter</button>
+                                <button class="btn btn-primary">Filter</button>
                             </span>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="/tickets/create">
+                <a class="btn btn-primary" href="/tickets/create">
                     New Ticket
                 </a>
             </div>
@@ -51,7 +51,7 @@
                                         {{ $ticket->priority()->first()->priority }}
                                     </span>
                                 </h3>
-                                <h4>#{{ $ticket->id }} opened on May 2nd by <a href="">{{ $ticket->user()->first()->name }}</a></h4>
+                                <h4>#{{ $ticket->id }} opened on {{ date('F jS', strtotime($ticket->created_at)) }} by <a href="/tickets/?{{ $ticket->user()->first()->name }}">{{ $ticket->user()->first()->name }}</a></h4>
                             </div>
                             <div class="meta pull-right">
                                 <div class="comments">

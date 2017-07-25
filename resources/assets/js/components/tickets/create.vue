@@ -34,7 +34,7 @@
             <label>Content</label>
             <textarea class="form-control" v-model="data.content" rows="10" required></textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group no-margin-bottom">
             <button class="btn btn-primary">Create</button>
         </div>
     </form>
