@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Carbon\Carbon;
-use App\Models\Note;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
 use App\Exceptions\TicketNotFoundException;

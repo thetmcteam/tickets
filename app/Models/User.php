@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -11,6 +12,20 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
     protected $hidden = ['password', 'remember_token'];
+
+    public function getAuthorizedDepartments(): array
+    {
+        $authorizations = Auth::user()
+            ->authorizations()
+            ->select('department')
+            ->get();
+
+        $departments = $authorizations->map(function ($department) {
+            return $department->department;
+        })->toArray();
+
+        return $departments;
+    }
 
     public function getImage()
     {
