@@ -1,34 +1,42 @@
 .navbar:not(.heading) {
     border-radius: 0;
-    background-color: #fff;
     border-top: none;
     border-left: none;
     border-right: none;
+    background-color: #353535;
     
     .navbar-header {
         .navbar-brand {
-            font-family: $pop-font-family;
             line-height: 25px;
+            text-transform: lowercase;
+            font-family: $pop-font-family;
+            color: rgba(255,255,255,0.75);
         }
     }
 
     .navbar-nav {
         a {
-            text-transform: lowercase;
-        }
-    }
+            text-transform: capitalize;
+            font-weight: bolder;
 
-    .navbar-form {
-        .input-group-addon {
-            background-color: white;
-        }
-
-        input {
-            border-left: none;
+            img {
+                width: 18.5px;
+                height: 18.5px;
+                border-radius: 3px;
+            }
         }
 
-        input:hover, input:focus {
-            border-color: #ccc !important;
+        .dropdown-menu {
+            a {
+                font-weight: normal;
+            }
+        }
+
+        li.active {
+            a {
+                color: rgba(255,255,255,0.75);
+                background-color: transparent !important;
+            }
         }
     }
 }

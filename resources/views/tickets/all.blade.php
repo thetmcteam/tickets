@@ -10,17 +10,14 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-search"></i>
                             </span>
-                            <input type="text" class="form-control" name="query" value="{{ request()->get('query') ?: '' }}">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary">Filter</button>
-                            </span>
+                            <input type="text" class="form-control" name="query" value="{{ request()->get('query') ?: '' }}" placeholder="Search tickets...">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="/tickets/create">
-                    New Ticket
+                    Open Ticket
                 </a>
             </div>
             <div class="clearfix"></div>
@@ -51,7 +48,7 @@
                                         {{ $ticket->priority()->first()->priority }}
                                     </span>
                                 </h3>
-                                <h4>#{{ $ticket->id }} opened on {{ date('F jS', strtotime($ticket->created_at)) }} by <a href="/tickets/?{{ $ticket->user()->first()->name }}">{{ $ticket->user()->first()->name }}</a></h4>
+                                <h4>#{{ $ticket->id }} opened on {{ date('F jS', strtotime($ticket->created_at)) }} by <a href="/tickets/?query={{ $ticket->user()->first()->name }}">{{ $ticket->user()->first()->name }}</a></h4>
                             </div>
                             <div class="meta pull-right">
                                 <div class="comments">

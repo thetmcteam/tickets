@@ -8,7 +8,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
                     <a href="" class="navbar-brand">
@@ -30,8 +30,19 @@
                         <li class="{{ request()->route()->getName() == 'tickets.create'  ? 'active' : '' }}">
                             <a href="/tickets/create"><i class="fa fa-plus"></i></a>
                         </li>
-                        <li>
-                            <a style="padding-right: 0" href="/logout"><i class="fa fa-sign-out"></i></a>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown">
+                                <img src="{{ Auth::user()->getImage() }}">
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a>Signed in under<br>{{ Auth::user()->name }}</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/profile">Profile</a></li>
+                                <li><a href="/tickets?query={{ Auth::user()->name }}">Your Tickets</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/logout">Sign Out</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
