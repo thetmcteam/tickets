@@ -4,6 +4,12 @@ Route::post('users', 'UserController@store');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::post('invite', 'InviteController@store');
+
+    Route::group(['prefix' => 'authorizations'], function () {
+        Route::post('/', 'AuthorizationController@store');
+        Route::get('{id}', 'AuthorizationController@show');
+        Route::delete('{id}', 'AuthorizationController@delete');
+    });
     
     Route::group(['prefix' => 'tickets'], function () {
         Route::get('/', 'TicketController@index');

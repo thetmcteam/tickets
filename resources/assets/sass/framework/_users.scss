@@ -1,4 +1,12 @@
 .users {
+    .authorizations {
+        tr:nth-child(1) {
+            td, th {
+                border-top: none;
+            }
+        }
+    }
+
     .toolbar {
         margin-bottom: 15px;
     }

@@ -8,6 +8,7 @@ class Authorization extends Model
 {
     public $timestamps = false;
     protected $guarded = ['id'];
+    protected $with = ['department'];
 
     public function department()
     {

@@ -20,4 +20,5 @@ return [
     \App\Contracts\Repositories\CommentRepositoryInterface::class => \App\Repositories\Eloquent\CommentRepository::class,
     \App\Contracts\Repositories\DepartmentRepositoryInterface::class => \App\Repositories\Eloquent\DepartmentRepository::class,
     \App\Contracts\Repositories\MetricsRepositoryInterface::class => \App\Repositories\Metrics\MysqlMetricsRepository::class,
+    \App\Contracts\Repositories\AuthorizationRepositoryInterface::class => \App\Repositories\Eloquent\AuthorizationRepository::class,
 ];

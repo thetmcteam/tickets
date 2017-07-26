@@ -8,10 +8,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-search"></i>
                             </span>
-                            <input type="text" class="form-control" v-model="query">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary">Filter</button>
-                            </span>
+                            <input type="text" class="form-control" v-model="query" placeholder="Filter users...">
                         </div>
                     </div>
                 </form>
@@ -32,10 +29,25 @@
                         <h4><a href="">{{ user.name }}</a> <small>{{ user.username }}</small></h4>
                     </td>
                     <td>{{ user.email ? user.email : 'N/A' }}</td>
-                    <td>{{ user.created_at }}</td>
+                    <td>{{ user.admin === 1 ? 'Administrator' : 'Member' }}</td>
                     <td>
-                        <button class="btn btn-success btn-xs" v-if="user.active === 0" @click="activate(user.id)">activate</button>
-                        <button class="btn btn-danger btn-xs" v-else @click="deactivate(user.id)">deactivate</button>
+                        <div class="btn-group">
+                            <button class="btn btn-primary btn-xs">
+                                Manage
+                            </button>
+                            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a>Manager user<br>{{ user.name }}</a></li>
+                                <li class="divider"></li>
+                                <li v-if="user.active === 1"><a @click="deactivate(user.id)">Deactivate</a></li>
+                                <li v-else><a @click="activate(user.id)">Activate</a></li>
+                                <li><a @click="authorizations(user.id, user.name)">Authorizations</a></li>
+                                <li class="divider"></li>
+                                <li><a :href="'/tickets?query='+user.username">Tickets</a></li>
+                            </ul>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -74,14 +86,20 @@
                 </div>
             </div>
         </div>
+        <authorizations></authorizations>
     </div>
 </template>
 
 <script>
     let _ = require('lodash');
     let sweetAlert = require('sweetalert');
+    let authorizations = require('./authorizations.vue');
 
     export default {
+        components: {
+            authorizations
+        },
+
         created() {
             this.refresh();
         },
@@ -120,6 +138,13 @@
         },
 
         methods: {
+            authorizations(user, name) {
+                Bus.$emit('authorizations:edit', {
+                    id: user,
+                    name: name
+                });
+            },
+
             sendInvite() {
                 axios.post('/api/invite', this.invite)
                     .then(response => {

@@ -21,6 +21,7 @@ class Ticket extends Model
             'types.type' => 10,
             'departments.department' => 10,
             'users.name' => 10,
+            'users.username' => 10,
             'priorities.priority' => 10,
             'statuses.status' => 10,
         ],

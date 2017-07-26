@@ -18,9 +18,9 @@
                                     </h4>
                                 </div>
                                 <ul class="statistics">
-                                    <li><i class="fa fa-ticket"></i> {{ $user->tickets()->count() }} tickets created</li>
-                                    <li><i class="fa fa-comment-o"></i> {{ $user->replies()->count() }} replies</li>
-                                    <li><i class="fa fa-comments-o"></i> {{ $user->notes()->count() }} notes</li>
+                                    <li><i class="fa fa-ticket"></i> tickets created <span class="badge">{{ $user->tickets()->count() }}</span></li>
+                                    <li><i class="fa fa-comment-o"></i> replies <span class="badge">{{ $user->replies()->count() }}</span></li>
+                                    <li><i class="fa fa-comments-o"></i> notes <span class="badge">{{ $user->notes()->count() }}</span></li>
                                 </ul>
                                 <ul class="authorizations">
                                     @foreach ($user->authorizations()->get() as $authorization)
