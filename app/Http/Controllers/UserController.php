@@ -15,7 +15,10 @@ class UserController extends Controller
     {
         $this->userRepository = $userRepository;
 
-        $this->middleware('admin');
+        $this->middleware('admin', [
+            'except' => ['store']
+        ]);
+        
         $this->middleware('invite.pending', [
             'only' => ['store']
         ]);
