@@ -8,6 +8,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('profile', 'UserController@show');
     Route::get('logout', 'AuthController@logout')->name('logout');
 
     Route::group(['prefix' => 'tickets'], function () {

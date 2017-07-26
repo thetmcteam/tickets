@@ -39,4 +39,24 @@ class User extends Authenticatable
             'active' => 0
         ]);
     }
+
+    public function authorizations()
+    {
+        return $this->hasMany(Authorization::class, 'user', 'id');
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'user', 'id');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'user', 'id');
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class, 'user', 'id');
+    }
 }

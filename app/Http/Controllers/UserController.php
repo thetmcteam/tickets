@@ -52,4 +52,10 @@ class UserController extends Controller
 
         return response(['message' => 'user created.'], 200);
     }
+
+    public function show()
+    {
+        $user = Auth::user();
+        return view('user.profile')->withUser($user);
+    }
 }
