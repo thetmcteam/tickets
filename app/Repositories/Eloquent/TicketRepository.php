@@ -25,16 +25,27 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function getAllPaginated()
     {
-        $departments = Auth::user()->getAuthorizedDepartments();
-        $tickets = $this->ticket->whereIn('department', $departments)->paginate(20);
-        return $tickets;
+        $tickets = $this->ticket->newQuery();
+        
+        if (!Auth::user()->isAdmin()) {
+            $departments = Auth::user()->getAuthorizedDepartments();
+            $tickets->whereIn('department', $departments);
+        }
+
+        return $tickets->paginate(20);
     }
 
     public function getAllPaginatedBy($query)
     {
-        $departments = Auth::user()->getAuthorizedDepartments();
-        $tickets = $this->ticket->search($query)->whereIn('department', $departments)->paginate(20);
-        return $tickets;
+        $tickets = $this->ticket->newQuery();
+        $tickets->search($query);
+
+        if (!Auth::user()->isAdmin()) {
+            $departments = Auth::user()->getAuthorizedDepartments();
+            $tickets->whereIn('department', $departments);
+        }
+
+        return $tickets->paginate(20);
     }
 
     public function findById(int $id)
