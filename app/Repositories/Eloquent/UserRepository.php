@@ -51,7 +51,8 @@ class UserRepository implements UserRepositoryInterface
             'name' => $data['name'],
             'username' => $data['username'],
             'password' => $this->hasher->make($data['password']),
-            'email' => $data['email']
+            'email' => $data['email'],
+            'admin' => $data['admin'],
         ]);
 
         return $user;
@@ -82,6 +83,7 @@ class UserRepository implements UserRepositoryInterface
             'username' => 'required|max:30|unique:users,username',
             'email' => 'nullable|email|unique:users,email',
             'password' => 'required|max:60',
+            'admin' => 'required|in:0,1',
         ]);
     }
 }
