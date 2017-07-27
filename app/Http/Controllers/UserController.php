@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
+use App\Exceptions\UserNotFoundException;
 use App\Contracts\Repositories\UserRepositoryInterface;
 
 class UserController extends Controller
@@ -17,10 +18,6 @@ class UserController extends Controller
 
         $this->middleware('admin', [
             'except' => ['store']
-        ]);
-        
-        $this->middleware('invite.pending', [
-            'only' => ['store']
         ]);
     }
 
@@ -51,6 +48,36 @@ class UserController extends Controller
         }
 
         return response(['message' => 'user created.'], 200);
+    }
+
+    public function edit()
+    {
+        $user = Auth::user();
+        return view('user.edit')->withUser($user);
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $this->userRepository->update($id, $request->all());
+        } catch (ValidationException $e) {
+            return response(json_decode($e->getMessage), 422);
+        } catch (UserNotFoundException $e) {
+            return response($e->getMessage(), 400);
+        }
+
+        return response(['message' => 'user updated.'], 200);
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        try {
+            $this->userRepository->updatePassword($id, $request->get('password'));
+        } catch (UserNotFoundException $e) {
+            return response($e->getMessage(), 400);
+        }
+
+        return response(['message' => 'user updated.'], 200);
     }
 
     public function show()

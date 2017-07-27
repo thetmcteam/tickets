@@ -38,7 +38,8 @@
                             <ul class="dropdown-menu">
                                 <li class="disabled"><a>Signed in under<br>{{ Auth::user()->username }}</a></li>
                                 <li class="divider"></li>
-                                <li><a href="/profile">Profile</a></li>
+                                <li><a href="/user">Profile</a></li>
+                                <li><a href="/user/settings">Settings</a></li>
                                 <li><a href="/tickets?query={{ Auth::user()->name }}">Your Tickets</a></li>
                                 <li class="divider"></li>
                                 <li><a href="/logout">Sign Out</a></li>

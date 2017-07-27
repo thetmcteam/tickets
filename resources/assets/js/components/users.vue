@@ -39,7 +39,7 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li class="disabled"><a>Manager user<br>{{ user.name }}</a></li>
+                                <li class="disabled"><a>Manage user<br>{{ user.name }}</a></li>
                                 <li class="divider"></li>
                                 <li v-if="user.active === 1"><a @click="deactivate(user.id)">Deactivate</a></li>
                                 <li v-else><a @click="activate(user.id)">Activate</a></li>

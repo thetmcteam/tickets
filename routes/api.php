@@ -1,9 +1,13 @@
 <?php
 
-Route::post('users', 'UserController@store');
+Route::group(['middleware' => 'invite.pending'], function () {
+    Route::post('users', 'UserController@store');
+});
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::post('invite', 'InviteController@store');
+    Route::group(['middleware' => 'admin'], function () {
+        Route::post('invite', 'InviteController@store');
+    });
 
     Route::group(['prefix' => 'authorizations'], function () {
         Route::post('/', 'AuthorizationController@store');
@@ -43,6 +47,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', 'UserController@index');
+        Route::put('{id}', 'UserController@update');
+        Route::put('{id}/password', 'UserController@updatePassword');
         Route::post('{id}/activate', 'UserController@activate');
         Route::post('{id}/deactivate', 'UserController@deactivate');
     });
