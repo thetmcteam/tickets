@@ -48,6 +48,18 @@
                     line-height: 16px;
                     color: #586069;
                 }
+
+                .tag {
+                    color: white;
+                    padding: 4px 8px;
+                    font-size: 12px;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    text-align: left;
+                    width: 100px;
+                    display: block;
+                    font-weight: bolder;
+                }
             }
         }
     }

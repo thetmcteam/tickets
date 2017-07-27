@@ -11,29 +11,25 @@
             </li>
             <li>
                 <span>Department</span>
-                <a class="label" :style="{ 'background-color': ticket.department.color }" data-toggle="modal" data-target="#ticketDepartmentModal">
-                    <i class="fa fa-home"></i>
+                <a class="tag" :style="{ 'background-color': ticket.department.color }" data-toggle="modal" data-target="#ticketDepartmentModal">
                     {{ ticket.department.department }}
                 </a>
             </li>
             <li>
                 <span>Status</span>
-                <a class="label" :style="{ 'background-color': ticket.status.color }" data-toggle="modal" data-target="#ticketStatusModal">
-                    <i class="fa fa-warning"></i>
+                <a class="tag" :style="{ 'background-color': ticket.status.color }" data-toggle="modal" data-target="#ticketStatusModal">
                     {{ ticket.status.status }}
                 </a>
             </li>
             <li>
                 <span>Priority</span>
-                <a class="label" :style="{ 'background-color': ticket.priority.color }" data-toggle="modal" data-target="#ticketPriorityModal">
-                    <i class="fa fa-eye"></i>
+                <a class="tag" :style="{ 'background-color': ticket.priority.color }" data-toggle="modal" data-target="#ticketPriorityModal">
                     {{ ticket.priority.priority }}
                 </a>
             </li>
             <li>
                 <span>Type</span>
-                <a class="label" :style="{ 'background-color': ticket.type.color }" data-toggle="modal" data-target="#ticketTypeModal">
-                    <i class="fa fa-tags"></i>
+                <a class="tag" :style="{ 'background-color': ticket.type.color }" data-toggle="modal" data-target="#ticketTypeModal">
                     {{ ticket.type.type }}
                 </a>
             </li>
