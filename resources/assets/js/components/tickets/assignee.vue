@@ -11,7 +11,7 @@
                             <label class="col-sm-3 text-right">Assignee</label>
                             <div class="col-sm-7">
                                 <select class="form-control" v-model="data.assignee">
-                                    <option value="1">Jordan Bardsley</option>
+                                    <option v-for="user in users" :value="user.id">{{ user.name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -33,13 +33,19 @@
 
         created() {
             this.data.assignee = this.assignee;
+
+            axios.get('/api/users')
+                .then(response => {
+                    this.users = response.data;
+                });
         },
 
         data() {
             return {
                 data: {
                     assignee: null
-                }
+                },
+                users: []
             };
         },
 
