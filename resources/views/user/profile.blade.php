@@ -23,9 +23,17 @@
                                     <li><i class="fa fa-comments-o"></i> notes <span class="badge">{{ $user->notes()->count() }}</span></li>
                                 </ul>
                                 <ul class="authorizations">
-                                    @foreach ($user->authorizations()->get() as $authorization)
-                                        <li>{{ ucfirst(strtolower($authorization->department()->first()->department)) }}</li>
-                                    @endforeach
+                                    @if ($user->authorizations()->count() > 0)
+                                        @foreach ($user->authorizations()->get() as $authorization)
+                                            <li>{{ ucfirst(strtolower($authorization->department()->first()->department)) }}</li>
+                                        @endforeach
+                                    @else
+                                        @if ($user->isAdmin())
+                                            You're an administrator.
+                                        @else
+                                            You aren't authorized to view any tickets.
+                                        @endif
+                                    @endif
                                 </ul>
                             </div>
                         </div>

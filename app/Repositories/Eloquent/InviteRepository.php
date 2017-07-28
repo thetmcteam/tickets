@@ -55,4 +55,10 @@ class InviteRepository implements InviteRepositoryInterface
 
         return $invite;
     }
+
+    public function delete($uuid)
+    {
+        $invite = $this->invite->find($uuid);
+        $invite->delete();
+    }
 }

@@ -28,7 +28,7 @@ class TicketRepository implements TicketRepositoryInterface
         $tickets = $this->ticket->newQuery();
         
         if (!Auth::user()->isAdmin()) {
-            $departments = Auth::user()->getAuthorizedDepartments();
+            $departments = Auth::user()->getViewableDepartments();
             $tickets->whereIn('department', $departments);
         }
 
@@ -41,7 +41,7 @@ class TicketRepository implements TicketRepositoryInterface
         $tickets->search($query);
 
         if (!Auth::user()->isAdmin()) {
-            $departments = Auth::user()->getAuthorizedDepartments();
+            $departments = Auth::user()->getViewableDepartments();
             $tickets->whereIn('department', $departments);
         }
 

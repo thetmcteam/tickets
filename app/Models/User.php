@@ -13,6 +13,11 @@ class User extends Authenticatable
     protected $guarded = ['id'];
     protected $hidden = ['password', 'remember_token'];
 
+    public function getViewableDepartments(): array
+    {
+        return array_merge($this->getAuthorizedDepartments(), Department::where('public', 1)->get()->toArray());
+    }
+
     public function getAuthorizedDepartments(): array
     {
         $authorizations = Auth::user()

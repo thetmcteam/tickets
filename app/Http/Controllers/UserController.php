@@ -7,17 +7,20 @@ use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
 use App\Exceptions\UserNotFoundException;
 use App\Contracts\Repositories\UserRepositoryInterface;
+use App\Contracts\Repositories\InviteRepositoryInterface;
 
 class UserController extends Controller
 {
     private $userRepository;
+    private $inviteRepository;
 
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository, InviteRepositoryInterface $inviteRepository)
     {
         $this->userRepository = $userRepository;
+        $this->inviteRepository = $inviteRepository;
 
         $this->middleware('admin', [
-            'except' => ['store']
+            'except' => ['store', 'show', 'edit']
         ]);
     }
 
@@ -46,6 +49,8 @@ class UserController extends Controller
         } catch (ValidationException $e) {
             return response(json_decode($e->getMessage()), 422);
         }
+
+        $this->inviteRepository->delete($request->get('token'));
 
         return response(['message' => 'user created.'], 200);
     }
