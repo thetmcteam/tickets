@@ -10,9 +10,14 @@ class CreateDepartmentsTable extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('department')->unique();
-            $table->string('color')->unique();
+            $table->string('department');
+            $table->string('color');
             $table->integer('public')->default(0);
+
+            $table->unique([
+                'department', 
+                'color'
+            ]);
         });
     }
 

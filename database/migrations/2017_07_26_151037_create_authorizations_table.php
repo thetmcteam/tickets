@@ -12,6 +12,11 @@ class CreateAuthorizationsTable extends Migration
             $table->increments('id');
             $table->integer('user');
             $table->integer('department');
+
+            $table->unique([
+                'user', 
+                'department'
+            ]);
         });
     }
 

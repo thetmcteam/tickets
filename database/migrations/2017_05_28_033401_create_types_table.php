@@ -11,7 +11,12 @@ class CreateTypesTable extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
-            $table->string('color')->unique();
+            $table->string('color');
+
+            $table->unique([
+                'type',
+                'color'
+            ]);
         });
     }
 
