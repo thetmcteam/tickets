@@ -1,52 +1,84 @@
-.auth--heading {
-    margin-top: 50px;
-    text-transform: lowercase;
+.auth--container {
+    margin-top: 100px;
 
-    h3 {
-        font-size: 1.1rem;
-        font-family: $pop-font-family;
-    }
-}
+    .auth--heading {
+        margin-bottom: 30px;
 
-.auth {
-    margin: 25px 0;
-    border: 1px solid #e5e5e5;
-    border-bottom: 3px solid #e5e5e5;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-
-    form {
-        padding: 15px 35px;
-
-        label {
-            font-weight: normal;
+        h3 {
+            color: #dedddd;
+            font-weight: bolder;
+            font-family: $pop-font-family;
         }
     }
 
-    .nav {
-        margin-top: 0;
-        
-        a {
-            border-radius: 0 !important;
-            border-top: 4px solid transparent;
-        }
+    .auth {
+        margin: 25px 0;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 0 8px black;
 
-        li.active:nth-child(1) {
-            a {
-                border-left: none !important;
+        form {
+            padding: 40px 25px;
+
+            .form-group {
+                margin-bottom: 20px;
+
+                .form-control {
+                    border-radius: 0;
+                    border-left: none !important;
+                    background-color: #fff !important;
+                    height: 50px;
+                }
+
+                .form-control:focus {
+                    border: 1px solid #ccc;
+                }
+
+                .input-group-addon {
+                    border-radius: 0;
+                    color: #cccccc;
+                }
+
+                label {
+                    font-weight: normal;
+                    margin-bottom: 0;
+                }
+
+                button {
+                    font-weight: bolder;
+                    padding: 10px 0;
+                    background-color: teal;
+                    border: none;
+                }
             }
         }
 
-        li.active:nth-child(2) {
+        .nav {
+            margin-top: 0;
+            
             a {
-                border-right: none !important;
+                border-radius: 5px !important;
+                background-color: #eeeeee;
+                border: none !important;
+                padding: 20px;
             }
-        }
 
-        li.active {
-            a {
-                border-top: 4px solid #3498db !important;
-                border-radius: 0 !important;
+            li.active:nth-child(1) {
+                a {
+                    border-left: none !important;
+                }
+            }
+
+            li.active:nth-child(2) {
+                a {
+                    border-right: none !important;
+                }
+            }
+
+            li.active {
+                a {
+                    background-color: #fff;
+                }
             }
         }
     }

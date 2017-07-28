@@ -10,6 +10,10 @@ h1, h2, h3, h4, h5, h6, a {
     font-family: inherit;
 }
 
+.form-control:-webkit-autofill, .form-control:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px #fff inset;
+}
+
 a {
     color: #0366d6;
     cursor: pointer !important;

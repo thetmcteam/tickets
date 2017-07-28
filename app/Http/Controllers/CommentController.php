@@ -16,8 +16,11 @@ class CommentController extends Controller
     private $ticketRepository;
     private $commentRepository;
 
-    public function __construct(NoteRepositoryInterface $noteRepository, CommentRepositoryInterface $commentRepository, TicketRepositoryInterface $ticketRepository)
-    {
+    public function __construct(
+        NoteRepositoryInterface $noteRepository, 
+        CommentRepositoryInterface $commentRepository, 
+        TicketRepositoryInterface $ticketRepository
+    ) {
         $this->noteRepository = $noteRepository;
         $this->ticketRepository = $ticketRepository;
         $this->commentRepository = $commentRepository;

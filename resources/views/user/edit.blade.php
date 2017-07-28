@@ -1,7 +1,10 @@
 @extends("templates.auth.app")
 
 @section("content")
-    <div class="ticket create">
+    <div class="ticket create"> 
+        <h3>Your account settings</h3>
+        <h3 class="no-margin-top"><small>Update your account settings below.</small></h3>
+        <hr>
         <div class="tcreate">
             <div class="reply">
                 <div class="row">

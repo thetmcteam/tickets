@@ -1,22 +1,40 @@
 <template>
-    <div class="auth">
-        <ul class="nav nav-tabs nav-justified">
-            <li :class="{ 'active': method === 'basic' }"><a @click="authenticate('basic')">Basic</a></li>
-            <li :class="{ 'active': method === 'ad' }"><a @click="authenticate('ad')">Active Directory</a></li>
-        </ul>
-        <form @submit.prevent="login">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" v-model="data.username">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" v-model="data.password">
-            </div>
-            <div class="form-group no-margin-bottom">
-                <button class="btn btn-primary">Login</button>
-            </div>
-        </form>
+    <div class="auth--container">
+        <div class="auth--heading text-center">
+            <h3>helpdesk</h3>
+        </div>
+        <div class="auth">
+            <ul class="nav nav-tabs nav-justified">
+                <li :class="{ 'active': method === 'basic' }"><a @click="authenticate('basic')">Basic</a></li>
+                <li :class="{ 'active': method === 'ad' }"><a @click="authenticate('ad')">Active Directory</a></li>
+            </ul>
+            <form @submit.prevent="login">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user-o"></i>
+                        </span>
+                        <input type="text" class="form-control" v-model="data.username" placeholder="Username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                        <input type="password" class="form-control" v-model="data.password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group" v-if="method == 'basic'">
+                    <label>
+                        <input type="checkbox" v-model="data.remember"> Keep me logged in
+                    </label>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <button class="btn btn-primary btn-block">login</button>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -28,7 +46,8 @@
             return {
                 data: {
                     username: null,
-                    password: null
+                    password: null,
+                    remember: false
                 },
                 method: 'basic'
             };

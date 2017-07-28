@@ -1,26 +1,43 @@
 <template>
-    <div class="auth">
-        <ul class="nav nav-tabs nav-justified">
-            <li class="active"><a>Invite</a></li>
-            <li><a href="/">Have An Account?</a></li>
-        </ul>
-        <form @submit.prevent="save()">
-            <div class="form-group">
-                <label>name</label>
-                <input type="text" v-model="data.name" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label>username</label>
-                <input type="text" v-model="data.username" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label>password</label>
-                <input type="password" v-model="data.password" class="form-control" maxlength="60" required>
-            </div>
-            <div class="form-group no-margin-bottom">
-                <button class="btn btn-primary">create</button>
-            </div>
-        </form>
+    <div class="auth--container">
+        <div class="auth--heading text-center">
+            <h3>helpdesk</h3>
+        </div>
+        <div class="auth">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a>Invitation</a></li>
+                <li><a href="/">Have An Account?</a></li>
+            </ul>
+            <form @submit.prevent="save()">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user-o"></i>
+                        </span>
+                        <input type="text" v-model="data.name" class="form-control" placeholder="Full Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user-o"></i>
+                        </span>
+                        <input type="text" v-model="data.username" class="form-control" placeholder="Username" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                        <input type="password" v-model="data.password" class="form-control" placeholder="Password" maxlength="60" required>
+                    </div>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <button class="btn btn-primary btn-block">create your account</button>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 
