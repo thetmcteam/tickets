@@ -44,16 +44,12 @@
                     <comments ticket="{{ $ticket['id'] }}"></comments>
                     <comment ticket="{{ $ticket['id'] }}" image="{{ Auth::user()->image }}"></comment>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <ticket-meta id="{{ json_encode($ticket) }}"></ticket-meta>
                 </div>
             </div>
         </div>
     </div>
 
-    <type ticket="{{ $ticket['id'] }}" type="{{ $ticket['type']['id'] }}"></type>
-    <status ticket="{{ $ticket['id'] }}" status="{{ $ticket['status']['id'] }}"></status>
     <assign ticket="{{ $ticket['id'] }}" assignee="{{ $ticket['assignee']['id'] }}"></assign>
-    <priority ticket="{{ $ticket['id'] }}" priority="{{ $ticket['priority']['id'] }}"></priority>
-    <department ticket="{{ $ticket['id'] }}" department="{{ $ticket['department']['id'] }}"></department>
 @endsection

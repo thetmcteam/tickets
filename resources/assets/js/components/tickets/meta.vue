@@ -10,36 +10,52 @@
                 </a>
             </li>
             <li>
-                <span>Department</span>
-                <a class="tag" :style="{ 'background-color': ticket.department.color }" data-toggle="modal" data-target="#ticketDepartmentModal">
-                    {{ ticket.department.department }}
-                </a>
+                <span>
+                    Department
+                    <a><i class="fa fa-cog pull-right"></i></a>
+                </span>
+                <department :ticket="ticket"></department>
             </li>
             <li>
-                <span>Status</span>
-                <a class="tag" :style="{ 'background-color': ticket.status.color }" data-toggle="modal" data-target="#ticketStatusModal">
-                    {{ ticket.status.status }}
-                </a>
+                <span>
+                    Status
+                    <a href=""><i class="fa fa-cog pull-right" data-toggle="dropdown"></i></a>
+                </span>
+                <status :ticket="ticket"></status>
             </li>
             <li>
-                <span>Priority</span>
-                <a class="tag" :style="{ 'background-color': ticket.priority.color }" data-toggle="modal" data-target="#ticketPriorityModal">
-                    {{ ticket.priority.priority }}
-                </a>
+                <span>
+                    Priority
+                    <a href=""><i class="fa fa-cog pull-right" data-toggle="dropdown"></i></a>
+                </span>
+                <priority :ticket="ticket"></priority>
             </li>
             <li>
-                <span>Type</span>
-                <a class="tag" :style="{ 'background-color': ticket.type.color }" data-toggle="modal" data-target="#ticketTypeModal">
-                    {{ ticket.type.type }}
-                </a>
+                <span>
+                    Type
+                    <a href=""><i class="fa fa-cog pull-right" data-toggle="dropdown"></i></a>
+                </span>
+                <type :ticket="ticket"></type>
             </li>
         </ul>
     </div>
 </template>
 
 <script>
+    let type = require('./type.vue');
+    let status = require('./status.vue');
+    let priority = require('./priority.vue');
+    let department = require('./department.vue');
+
     export default {
         props: ['id'],
+
+        components: {
+            department,
+            status,
+            priority,
+            type
+        },
 
         data() {
             return {

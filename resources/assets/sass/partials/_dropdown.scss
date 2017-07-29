@@ -1,0 +1,17 @@
+.dropdown-menu.custom-menu {
+    padding: 0;
+    width: 225px;
+
+    .header {
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        padding: 8px 15px;
+    }
+
+    li {
+        a {
+            padding: 10px 15px;
+        }
+    }
+}

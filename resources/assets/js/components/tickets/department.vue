@@ -1,27 +1,17 @@
 <template>
-    <div class="modal fade" id="ticketDepartmentModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Update Ticket Department</h4>
-                </div>
-                <form @submit.prevent="update" class="form-horizontal">
-                    <div class="modal-body">
-                        <div class="form-group no-margin-bottom">
-                            <label class="col-sm-3 text-right">Department</label>
-                            <div class="col-sm-7">
-                                <select class="form-control" v-model="data.department">
-                                    <option v-for="department in departments" :value="department.id">{{ department.department }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary">Update Department</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="dropdown">
+        <a class="tag" :style="{ 'background-color': ticket.department.color }" data-toggle="dropdown">
+            {{ ticket.department.department }}
+        </a>
+        <ul class="dropdown-menu custom-menu">
+            <li class="header">Ticket Department</li>
+            <li v-for="department in departments" :class="{ disabled : department.id === ticket.department.id }">
+                <a @click="update(department)">
+                    <i class="fa fa-square" :style="{ color: department.color }" style="margin-right: 5px"></i>
+                    {{ department.department }}
+                </a>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -29,11 +19,9 @@
     let sweetAlert = require('sweetalert');
 
     export default {
-        props: ['ticket', 'department'],
+        props: ['ticket'],
 
         created() {
-            this.data.department = this.department;
-
             axios.get('/api/departments')
                 .then(response => {
                     this.departments = response.data;
@@ -42,18 +30,16 @@
 
         data() {
             return {
-                departments: [],
-                data: {
-                    department: null
-                }
+                departments: []
             };
         },
 
         methods: {
-            update() {
-                let ticket = this.ticket;
+            update(department) {
+                this.ticket.department = department;
+                let ticket = this.ticket.id;
 
-                axios.put(`/api/tickets/${ticket}/department`, this.data)
+                axios.put(`/api/tickets/${ticket}/department`, { department: department.id })
                     .then(response => {
                         sweetAlert('Success', 'The department of this ticket has been updated.', 'success');
                         Bus.$emit('actions:refresh');

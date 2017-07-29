@@ -1,27 +1,17 @@
 <template>
-    <div class="modal fade" id="ticketStatusModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Update This Ticket's Status</h4>
-                </div>
-                <form @submit.prevent="update" class="form-horizontal">
-                    <div class="modal-body">
-                        <div class="form-group no-margin-bottom">
-                            <label class="col-sm-3 text-right">Status</label>
-                            <div class="col-sm-7">
-                                <select class="form-control" v-model="data.status">
-                                    <option v-for="status in statuses" :value="status.id">{{ status.status }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary">Update Status</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="dropdown">
+        <a class="tag" :style="{ 'background-color': ticket.status.color }" data-toggle="dropdown">
+            {{ ticket.status.status }}
+        </a>
+        <ul class="dropdown-menu custom-menu">
+            <li class="header">Ticket Status</li>
+            <li v-for="status in statuses" :class="{ disabled : status.id === ticket.status.id }">
+                <a @click="update(status)">
+                    <i class="fa fa-square" :style="{ color: status.color }" style="margin-right: 5px"></i>
+                    {{ status.status }}
+                </a>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -29,11 +19,9 @@
     let sweetAlert = require('sweetalert');
 
     export default {
-        props: ['ticket', 'status'],
+        props: ['ticket'],
 
         created() {
-            this.data.status = this.status;
-
             axios.get('/api/status')
                 .then(response => {
                     this.statuses = response.data;
@@ -42,18 +30,16 @@
 
         data() {
             return {
-                statuses: [],
-                data: {
-                    status: null
-                }
+                statuses: []
             };
         },
 
         methods: {
-            update() {
-                let ticket = this.ticket;
+            update(status) {
+                this.ticket.status = status;
+                let ticket = this.ticket.id;
                 
-                axios.put(`/api/tickets/${ticket}/status`, this.data)
+                axios.put(`/api/tickets/${ticket}/status`, { status: status.id })
                     .then(response => {
                         sweetAlert('Success', 'The status of this ticket has been updated.', 'success');
                         Bus.$emit('actions:refresh');

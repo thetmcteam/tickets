@@ -1,27 +1,17 @@
 <template>
-    <div class="modal fade" id="ticketTypeModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Update This Ticket's Type</h4>
-                </div>
-                <form @submit.prevent="update" class="form-horizontal">
-                    <div class="modal-body">
-                        <div class="form-group no-margin-bottom">
-                            <label class="col-sm-3 text-right">Type</label>
-                            <div class="col-sm-7">
-                                <select class="form-control" v-model="data.type">
-                                    <option v-for="type in types" :value="type.id">{{ type.type }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary">Update Status</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="dropdown">
+        <a class="tag" :style="{ 'background-color': ticket.type.color }" data-toggle="dropdown">
+            {{ ticket.type.type }}
+        </a>
+        <ul class="dropdown-menu custom-menu">
+            <li class="header">Ticket Type</li>
+            <li v-for="type in types" :class="{ disabled : type.id === ticket.type.id }">
+                <a @click="update(type)">
+                    <i class="fa fa-square" :style="{ color: type.color }" style="margin-right: 5px"></i>
+                    {{ type.type }}
+                </a>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -29,11 +19,9 @@
     let sweetAlert = require('sweetalert');
 
     export default {
-        props: ['ticket', 'type'],
+        props: ['ticket'],
 
         created() {
-            this.data.type = this.type;
-
             axios.get('/api/types')
                 .then(response => {
                     this.types = response.data;
@@ -42,18 +30,16 @@
 
         data() {
             return {
-                types: [],
-                data: {
-                    type: null
-                }
+                types: []
             };
         },
 
         methods: {
-            update() {
-                let ticket = this.ticket;
+            update(type) {
+                let ticket = this.ticket.id;
+                this.ticket.type = type;
                 
-                axios.put(`/api/tickets/${ticket}/type`, this.data)
+                axios.put(`/api/tickets/${ticket}/type`, { type: type.id })
                     .then(response => {
                         sweetAlert('Success', 'The type of this ticket has been updated.', 'success');
                         Bus.$emit('actions:refresh');

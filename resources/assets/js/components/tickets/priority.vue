@@ -1,39 +1,27 @@
 <template>
-    <div class="modal fade" id="ticketPriorityModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Update Ticket Priority</h4>
-                </div>
-                <form @submit.prevent="update" class="form-horizontal">
-                    <div class="modal-body">
-                        <div class="form-group no-margin-bottom">
-                            <label class="col-sm-3 text-right">Priority</label>
-                            <div class="col-sm-7">
-                                <select class="form-control" v-model="data.priority">
-                                    <option v-for="priority in priorities" :value="priority.id">{{ priority.priority }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary">Update Priority</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+   <div class="dropdown">
+       <a class="tag" :style="{ 'background-color': ticket.priority.color }" data-toggle="dropdown">
+            {{ ticket.priority.priority }}
+        </a>
+        <ul class="dropdown-menu custom-menu">
+            <li class="header">Ticket Priority</li>
+            <li v-for="priority in priorities" :class="{ disabled : priority.id === ticket.priority.id }">
+                <a @click="update(priority)">
+                    <i class="fa fa-square" :style="{ color: priority.color }" style="margin-right: 5px"></i>
+                    {{ priority.priority }}
+                </a>
+            </li>
+        </ul>
+   </div>
 </template>
 
 <script>
     let sweetAlert = require('sweetalert');
 
     export default {
-        props: ['ticket', 'priority'],
+        props: ['ticket'],
 
         created() {
-            this.data.priority = this.priority;
-
             axios.get('/api/priorities')
                 .then(response => {
                     this.priorities = response.data;
@@ -42,18 +30,16 @@
 
         data() {
             return {
-                priorities: [],
-                data: {
-                    priority: null
-                }
+                priorities: []
             };
         },
 
         methods: {
-            update() {
-                let ticket = this.ticket;
+            update(priority) {
+                let ticket = this.ticket.id;
+                this.ticket.priority = priority;
 
-                axios.put(`/api/tickets/${ticket}/priority`, this.data)
+                axios.put(`/api/tickets/${ticket}/priority`, { priority: priority.id })
                     .then(response => {
                         sweetAlert('Success', 'The priority of this ticket has been updated.', 'success');
                         Bus.$emit('actions:refresh');
