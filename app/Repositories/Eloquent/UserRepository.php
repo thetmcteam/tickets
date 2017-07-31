@@ -79,7 +79,7 @@ class UserRepository implements UserRepositoryInterface
         $user = $this->user->find($id);
 
         if (is_null($user)) {
-            throw new UserNotFoundException('No user found by the requested id.');
+            throw new UserNotFoundException;
         }
 
         $user->name = trim(strtolower($data['name']));

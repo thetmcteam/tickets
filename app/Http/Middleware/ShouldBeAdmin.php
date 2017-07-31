@@ -12,7 +12,7 @@ class ShouldBeAdmin
             return $next($request);
         }
 
-        if ($request->ajax()) {
+        if ($request->ajax() || $request->method() !== 'GET') {
             return response('Unauthorized.', 401);
         }
 

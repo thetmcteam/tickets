@@ -86,42 +86,42 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function updateStatus(int $id, int $status)
     {
-        $this->ticket->find($id)->update([
+        $this->findById($id)->update([
             'status' => $status
         ]);
     }
 
     public function updateAssignee(int $id, int $user)
     {
-        $this->ticket->find($id)->update([
+        $this->findById($id)->update([
             'assignee' => $user
         ]);
     }
 
     public function updatePriority(int $id, int $priority)
     {
-        $this->ticket->find($id)->update([
+        $this->findById($id)->update([
             'priority' => $priority
         ]);
     }
 
     public function updateType(int $id, int $type)
     {
-        $this->ticket->find($id)->update([
+        $this->findById($id)->update([
             'type' => $type
         ]);
     }
 
     public function updateDepartment(int $id, int $department)
     {
-        $this->ticket->find($id)->update([
+        $this->findById($id)->update([
             'department' => $department
         ]);
     }
 
     public function delete(int $id)
     {
-        $ticket = $this->ticket->find($id);
+        $ticket = $this->findById($id);
         $ticket->delete();
     }
 

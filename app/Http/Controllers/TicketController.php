@@ -49,45 +49,55 @@ class TicketController extends Controller
         return response($tickets);
     }
 
-    public function create()
-    {
-        return view('tickets.create');
-    }
-
     public function updateStatus(Request $request, $id)
     {
         $statusId = intval($request->get('status'));
-        $this->ticketRepository->updateStatus($id, $statusId);
-        $status = \App\Models\Status::find($statusId);
+        
+        try {
+            $this->ticketRepository->updateStatus($id, $statusId);
+        } catch (TicketNotFoundException $e) {
+            abort(404);
+        }
 
+        $status = \App\Models\Status::find($statusId);
         $this->actionRepository->log(Auth::user()->id, $id, 'status', [
             'value' => $status->status,
             'color' => $status->color
         ]);
 
-        return response(['message' => 'ticket successfully updated.']);
+        return response(['message' => 'ticket updated.']);
     }
 
     public function updatePriority(Request $request, $id)
     {
         $priorityId = intval($request->get('priority'));
-        $this->ticketRepository->updatePriority($id, $priorityId);
-        $priority = \App\Models\Priority::find($priorityId);
+        
+        try {
+            $this->ticketRepository->updatePriority($id, $priorityId);
+        } catch (TicketNotFoundException $e) {
+            abort(404);
+        }
 
+        $priority = \App\Models\Priority::find($priorityId);
         $this->actionRepository->log(Auth::user()->id, $id, 'priority', [
             'value' => $priority->priority,
             'color' => $priority->color
         ]);
 
-        return response(['message' => 'ticket successfully updated.']);
+        return response(['message' => 'ticket updated.']);
     }
 
     public function updateAssignee(Request $request, $id)
     {
         $assigneeId = intval($request->get('assignee'));
-        $this->ticketRepository->updateAssignee($id, $assigneeId);
-        $assignee = \App\Models\User::find($assigneeId);
+        
+        try {
+            $this->ticketRepository->updateAssignee($id, $assigneeId);
+        } catch (TicketNotFoundException $e) {
+            abort(404);
+        }
 
+        $assignee = \App\Models\User::find($assigneeId);
         $this->actionRepository->log(Auth::user()->id, $id, 'assign', [
             'value' => $assignee->name,
             'color' => '#8e44ad'
@@ -99,35 +109,45 @@ class TicketController extends Controller
             $assignee
         ))->delay(Carbon::now()->addMinutes(1)));
 
-        return response(['message' => 'ticket successfully updated.']);
+        return response(['message' => 'ticket updated.']);
     }
 
     public function updateType(Request $request, $id)
     {
         $typeId = intval($request->get('type'));
-        $this->ticketRepository->updateType($id, $typeId);
-        $type = \App\Models\Type::find($typeId);
+        
+        try {
+            $this->ticketRepository->updateType($id, $typeId);
+        } catch (TicketNotFoundException $e) {
+            abort(404);
+        }
 
+        $type = \App\Models\Type::find($typeId);
         $this->actionRepository->log(Auth::user()->id, $id, 'type', [
             'value' => $type->type,
             'color' => $type->color
         ]);
 
-        return response(['message' => 'ticket successfully updated.']);
+        return response(['message' => 'ticket updated.']);
     }
 
     public function updateDepartment(Request $request, $id)
     {
         $departmentId = intval($request->get('department'));
-        $this->ticketRepository->updateDepartment($id, $departmentId);
-        $department = \App\Models\Department::find($departmentId);
+        
+        try {
+            $this->ticketRepository->updateDepartment($id, $departmentId);
+        } catch (TicketNotFoundException $e) {
+            abort(404);
+        }
 
+        $department = \App\Models\Department::find($departmentId);
         $this->actionRepository->log(Auth::user()->id, $id, 'department', [
             'value' => $department->department,
             'color' => $department->color
         ]);
 
-        return response(['message' => 'ticket successfully updated.']);
+        return response(['message' => 'ticket updated.']);
     }
 
     public function store(Request $request)
@@ -142,12 +162,17 @@ class TicketController extends Controller
             return response(json_decode($e->getMessage()), 422);
         }
 
-        return response(['message' => 'ticket successfully created.']);
+        return response(['message' => 'ticket successfully created.'], 200);
     }
 
     public function delete(int $id)
     {
-        $this->ticketRepository->delete($id);
-        return response(['message' => 'ticket successfully removed.']);
+        try {
+            $this->ticketRepository->delete($id);
+        } catch (TicketNotFoundException $e) {
+            abort(404);
+        }
+
+        return response(['message' => 'ticket successfully removed.'], 200);
     }
 }

@@ -68,7 +68,7 @@ class UserController extends Controller
         } catch (ValidationException $e) {
             return response(json_decode($e->getMessage), 422);
         } catch (UserNotFoundException $e) {
-            return response($e->getMessage(), 400);
+            abort(404);
         }
 
         return response(['message' => 'user updated.'], 200);
@@ -79,7 +79,7 @@ class UserController extends Controller
         try {
             $this->userRepository->updatePassword($id, $request->get('password'));
         } catch (UserNotFoundException $e) {
-            return response($e->getMessage(), 400);
+            abort(404);
         }
 
         return response(['message' => 'user updated.'], 200);

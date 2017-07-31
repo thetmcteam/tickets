@@ -19,13 +19,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'TicketController@index');
         Route::post('/', 'TicketController@store');
         Route::post('search', 'TicketController@search');
-        Route::delete('{id}', 'TicketController@delete');
 
-        Route::put('{id}/status', 'TicketController@updateStatus');
-        Route::put('{id}/priority', 'TicketController@updatePriority');
-        Route::put('{id}/assignee', 'TicketController@updateAssignee');
-        Route::put('{id}/type', 'TicketController@updateType');
-        Route::put('{id}/department', 'TicketController@updateDepartment');
+        Route::group(['middleware' => 'admin'], function () {
+            Route::delete('{id}', 'TicketController@delete');
+            Route::put('{id}/status', 'TicketController@updateStatus');
+            Route::put('{id}/priority', 'TicketController@updatePriority');
+            Route::put('{id}/assignee', 'TicketController@updateAssignee');
+            Route::put('{id}/type', 'TicketController@updateType');
+            Route::put('{id}/department', 'TicketController@updateDepartment');
+        });
     });
 
     Route::group(['prefix' => 'departments'], function () {
