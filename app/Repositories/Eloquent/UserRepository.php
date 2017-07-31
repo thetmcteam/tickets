@@ -45,7 +45,7 @@ class UserRepository implements UserRepositoryInterface
         $validator = $this->validator->make($data, [
             'name' => 'required|max:255',
             'username' => 'required|max:30|unique:users,username',
-            'email' => 'nullable|email|unique:users,email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|max:60',
             'admin' => 'required|in:0,1',
         ]);

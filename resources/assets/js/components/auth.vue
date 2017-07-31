@@ -74,6 +74,12 @@
                     .catch(error => {
                         if (error.response.status === 401) {
                             sweetAlert('Invalid Credentials', 'There was an issue logging you in with those credentials.', 'error');
+                        } else if (error.response.status === 422) {
+                            sweetAlert(
+                                'Validation Error', 
+                                'There was an issue importing you user from Active Directory. ' + error.response.data[0], 
+                                'warning'
+                            );
                         }
                     });
             }

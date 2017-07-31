@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth, Adldap;
 use Illuminate\Http\Request;
+use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\UserRepositoryInterface;
 
 class AuthController extends Controller
@@ -45,12 +46,17 @@ class AuthController extends Controller
 
         if (Adldap::auth()->attempt($username, $password)) {
             $adUserModel = Adldap::search()->where('samaccountname', $username)->get()->first();
-            $user = $this->userRepository->create([
-                'name' => $adUserModel->getName(),
-                'username' => $username,
-                'email' => $adUserModel->getEmail(),
-                'password' => $password
-            ]);
+            try {
+                $user = $this->userRepository->create([
+                    'name' => $adUserModel->getName(),
+                    'username' => $username,
+                    'email' => $adUserModel->getEmail(),
+                    'password' => $password,
+                    'admin' => 0
+                ]);
+            } catch (ValidationException $e) {
+                return response(json_decode($e->getMessage()), 422);
+            }
         } else {
             return response(['message' => 'unauthorized.'], 401);
         }
