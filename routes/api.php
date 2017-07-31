@@ -39,7 +39,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'comments'], function () {
         Route::post('/', 'CommentController@create');
         Route::get('{id}', 'CommentController@find');
-        Route::delete('{id}', 'CommentController@delete');
+        
+        Route::group(['middleware' => 'admin'], function () {
+            Route::delete('{id}', 'CommentController@delete');
+        });
     });
 
     Route::group(['prefix' => 'metrics'], function () {

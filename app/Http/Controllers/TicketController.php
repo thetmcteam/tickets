@@ -162,7 +162,7 @@ class TicketController extends Controller
             return response(json_decode($e->getMessage()), 422);
         }
 
-        return response(['message' => 'ticket successfully created.'], 200);
+        return response(['message' => 'ticket created.'], 200);
     }
 
     public function delete(int $id)
@@ -173,6 +173,6 @@ class TicketController extends Controller
             abort(404);
         }
 
-        return response(['message' => 'ticket successfully removed.'], 200);
+        return response(['message' => 'ticket removed.'], 200);
     }
 }

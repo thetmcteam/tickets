@@ -8,6 +8,11 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+    protected function makeTicket()
+    {
+        return factory(\App\Models\Ticket::class)->create();
+    }
+
     protected function makeBasicUser()
     {
         return factory(\App\Models\User::class)->create([

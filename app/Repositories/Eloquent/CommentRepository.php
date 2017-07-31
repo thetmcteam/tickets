@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Validation\Factory as Validator;
 use App\Models\Comment;
 use App\Exceptions\ValidationException;
+use App\Exceptions\CommentNotFoundException;
 use App\Contracts\Repositories\CommentRepositoryInterface;
 
 class CommentRepository implements CommentRepositoryInterface
@@ -48,6 +49,11 @@ class CommentRepository implements CommentRepositoryInterface
     public function delete(int $id)
     {
         $comment = $this->comment->find($id);
+        
+        if (is_null($comment)) {
+            throw new CommentNotFoundException;
+        }
+
         $comment->delete();
     }
 

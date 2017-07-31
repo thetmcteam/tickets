@@ -20,11 +20,11 @@ class TicketTest extends TestCase
 
     public function testDeleteTicket()
     {
-        $this->makeTicket();
+        $ticket = $this->makeTicket();
         $user = $this->makeAdminUser();
-        $response = $this->actingAs($user)->delete('/api/tickets/1');
+        $response = $this->actingAs($user)->delete("/api/tickets/{$ticket->id}");
         $response->assertStatus(200);
-        $response->assertJson(['message' => 'ticket successfully removed.']);
+        $response->assertJson(['message' => 'ticket removed.']);
     }
 
     public function testDeleteTicketUnauthorized()
@@ -50,55 +50,50 @@ class TicketTest extends TestCase
 
     public function testUpdateTicketDepartmenet()
     {
-        $this->makeTicket();
+        $ticket = $this->makeTicket();
         $user = $this->makeAdminUser();
         $department = factory(\App\Models\Department::class)->create();
-        $response = $this->actingAs($user)->put('/api/tickets/1/department', ['department' => $department->id]);
+        $response = $this->actingAs($user)->put("/api/tickets/{$ticket->id}/department", ['department' => $department->id]);
         $response->assertStatus(200);
         $response->assertJson(['message' => 'ticket updated.']);
     }
 
     public function testUpdateTicketType()
     {
-        $this->makeTicket();
+        $ticket = $this->makeTicket();
         $user = $this->makeAdminUser();
         $type = factory(\App\Models\Type::class)->create();
-        $response = $this->actingAs($user)->put('/api/tickets/1/type', ['type' => $type->id]);
+        $response = $this->actingAs($user)->put("/api/tickets/{$ticket->id}/type", ['type' => $type->id]);
         $response->assertStatus(200);
         $response->assertJson(['message' => 'ticket updated.']);
     }
 
     public function testUpdateTicketAssignee()
     {
-        $this->makeTicket();
+        $ticket = $this->makeTicket();
         $user = $this->makeAdminUser();
-        $response = $this->actingAs($user)->put('/api/tickets/1/assignee', ['assignee' => $user->id]);
+        $response = $this->actingAs($user)->put("/api/tickets/{$ticket->id}/assignee", ['assignee' => $user->id]);
         $response->assertStatus(200);
         $response->assertJson(['message' => 'ticket updated.']);
     }
 
     public function testUpdateTicketPriority()
     {
-        $this->makeTicket();
+        $ticket = $this->makeTicket();
         $user = $this->makeAdminUser();
         $priority = factory(\App\Models\Priority::class)->create();
-        $response = $this->actingAs($user)->put('/api/tickets/1/priority', ['priority' => $priority->id]);
+        $response = $this->actingAs($user)->put("/api/tickets/{$ticket->id}/priority", ['priority' => $priority->id]);
         $response->assertStatus(200);
         $response->assertJson(['message' => 'ticket updated.']);
     }
 
     public function testUpdateTicketStatus()
     {
-        $this->makeTicket();
+        $ticket = $this->makeTicket();
         $user = $this->makeAdminUser();
         $status = factory(\App\Models\Status::class)->create();
-        $response = $this->actingAs($user)->put('/api/tickets/1/status', ['status' => $status->id]);
+        $response = $this->actingAs($user)->put("/api/tickets/{$ticket->id}/status", ['status' => $status->id]);
         $response->assertStatus(200);
         $response->assertJson(['message' => 'ticket updated.']);
-    }
-
-    private function makeTicket()
-    {
-        factory(\App\Models\Ticket::class)->create();
     }
 }

@@ -21,6 +21,12 @@ $factory->define(App\Models\Type::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'content' => $faker->name
+    ];
+});
+
 $factory->define(App\Models\Department::class, function (Faker\Generator $faker) {
     return [
         'department' => $faker->name,
