@@ -37,7 +37,8 @@ class TypeRepository implements TypeRepositoryInterface
         }
 
         $this->type->create([
-            'type' => strtolower($data['type'])
+            'type' => strtolower($data['type']),
+            'color' => $data['color']
         ]);
     }
 
@@ -50,7 +51,8 @@ class TypeRepository implements TypeRepositoryInterface
     private function validate(array $data)
     {
         return $this->validator->make($data, [
-            'type' => 'required|unique:types,type'
+            'type' => 'required|unique:types,type',
+            'color' => 'required|unique:types,color'
         ]);
     }
 }

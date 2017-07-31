@@ -38,7 +38,8 @@ class DepartmentRepository implements DepartmentRepositoryInterface
 
         $this->department->create([
             'department' => $data['department'],
-            'color' => $data['color']
+            'color' => $data['color'],
+            'public' => $data['public']
         ]);
     }
 
@@ -52,7 +53,8 @@ class DepartmentRepository implements DepartmentRepositoryInterface
     {
         return $this->validator->make($data, [
             'department' => 'required|unique:departments,department',
-            'color' => 'required|unique:departments,color'
+            'color' => 'required|unique:departments,color',
+            'public' => 'required|integer|in:0,1'
         ]);
     }
 }

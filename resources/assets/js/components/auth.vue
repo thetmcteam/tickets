@@ -59,13 +59,7 @@
             },
 
             login() {
-                let route;
-
-                if (this.method == 'basic') {
-                    route = '/';
-                } else {
-                    route = '/ldap';
-                }
+                let route = (this.method == 'basic' ? '/' : '/ldap');
 
                 axios.post(route, this.data)
                     .then(response => {
