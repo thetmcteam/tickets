@@ -24,6 +24,9 @@
                             <li class="{{ request()->route()->getName() == 'users.all'  ? 'active' : '' }}">
                                 <a href="/users">users</a>
                             </li>
+                            <li class="{{ request()->route()->getName() == 'departments.all' ? 'active' : '' }}">
+                                <a href="/departments">Departments</a>
+                            </li>
                         @endif
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

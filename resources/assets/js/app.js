@@ -22,6 +22,7 @@ require('chart.js');
 require('hchs-vue-charts');
 Vue.use(VueCharts);
 
+Vue.component('departments', require('./components/departments.vue'));
 Vue.component('password', require('./components/password.vue'));
 Vue.component('account', require('./components/account.vue'));
 Vue.component('users', require('./components/users.vue'));

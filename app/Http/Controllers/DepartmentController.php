@@ -32,9 +32,27 @@ class DepartmentController extends Controller
         return response(['message' => 'department successfully created.']);
     }
 
-    public function delete(int $id)
+    public function deactivate(int $id)
     {
-        $this->departmentRepository->delete($id);
-        return response(['message' => 'department successfully deleted.']);
+        $this->departmentRepository->deactivate($id);
+        return response(['message' => 'department deactivated.']);
+    }
+
+    public function activate(int $id)
+    {
+        $this->departmentRepository->activate($id);
+        return response(['message' => 'department activated']);
+    }
+
+    public function makePublic(int $id)
+    {
+        $this->departmentRepository->makePublic($id);
+        return response(['message' => 'department updated']);
+    }
+
+    public function makePrivate(int $id)
+    {
+        $this->departmentRepository->makePrivate($id);
+        return response(['message' => 'department updated']);
     }
 }

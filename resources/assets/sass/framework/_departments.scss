@@ -1,0 +1,20 @@
+.departments {
+    .toolbar {
+        margin-bottom: 15px;
+    }
+
+    .table {
+        tr:nth-child(1) {
+            border-top: none;
+        }
+
+        tr {
+            border-top: 1px solid #e5e5e5;
+
+            td {
+                padding: 20px;
+                text-align: center;
+            }
+        }
+    }
+}

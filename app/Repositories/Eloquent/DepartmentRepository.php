@@ -43,10 +43,28 @@ class DepartmentRepository implements DepartmentRepositoryInterface
         ]);
     }
 
-    public function delete(int $id)
+    public function activate(int $id)
     {
         $department = $this->department->find($id);
-        $department->delete();
+        $department->activate();
+    }
+
+    public function deactivate(int $id)
+    {
+        $department = $this->department->find($id);
+        $department->deactivate();
+    }
+
+    public function makePublic(int $id)
+    {
+        $department = $this->department->find($id);
+        $department->makePublic();
+    }
+
+    public function makePrivate(int $id)
+    {
+        $department = $this->department->find($id);
+        $department->makePrivate();
     }
 
     private function validate(array $data)

@@ -13,6 +13,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('department');
             $table->string('color');
             $table->integer('public')->default(0);
+            $table->integer('active')->default(1);
 
             $table->unique([
                 'department', 

@@ -32,8 +32,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'departments'], function () {
         Route::get('/', 'DepartmentController@index');
-        Route::post('/', 'DepartmentController@create');
-        Route::delete('{id}', 'DepartmentController@delete');
+        
+        Route::group(['middleware' => 'admin'], function () {
+            Route::post('/', 'DepartmentController@create');
+            Route::put('{id}/activate', 'DepartmentController@activate');
+            Route::put('{id}/deactivate', 'DepartmentController@deactivate');
+            Route::put('{id}/public', 'DepartmentController@makePublic');
+            Route::put('{id}/private', 'DepartmentController@makePrivate');
+        });
     });
 
     Route::group(['prefix' => 'comments'], function () {

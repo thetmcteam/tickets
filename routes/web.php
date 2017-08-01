@@ -10,7 +10,6 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('user', 'UserController@show')->name('user.profile');
     Route::get('user/settings', 'UserController@edit')->name('user.settings');
-
     Route::get('logout', 'AuthController@logout')->name('logout');
 
     Route::group(['prefix' => 'tickets'], function () {
@@ -24,9 +23,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('department/{id}', 'TicketController@showByDepartment')->name('tickets.department');
     });
 
-    Route::group(['prefix' => 'users', 'middleware' => 'admin'], function () {
-        Route::get('/', function () {
-            return view('admin.users');
-        })->name('users.all');
-    });
+    Route::get('departments', function () {
+        return view('admin.departments');
+    })
+        ->middleware('admin')
+        ->name('departments.all');
+
+    Route::get('users', function () {
+        return view('admin.users');
+    })
+        ->middleware('admin')
+        ->name('users.all');
 });
