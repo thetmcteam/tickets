@@ -14,7 +14,7 @@
                 </form>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary">
+                <a class="btn btn-primary" data-toggle="modal" data-target="#createDepartmentModal">
                     Add
                 </a>
             </div>
@@ -59,6 +59,37 @@
                 </tbody>
             </table>
         </div>
+        <div class="modal fade" id="createDepartmentModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Create a new department</h4>
+                    </div>
+                    <form @submit.prevent="save">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" v-model="data.department" maxlength="30" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Color</label>
+                                <input type="text" v-model="data.color" maxlength="30" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Public</label>
+                                <select v-model="data.public" class="form-control" required>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -68,7 +99,12 @@
     export default {
         data() {
             return {
-                departments: []
+                departments: [],
+                data: {
+                    department: null,
+                    public: null,
+                    color: null
+                }
             };
         },
 
@@ -77,6 +113,17 @@
         },
 
         methods: {
+            save() {
+                axios.post('/api/departments', this.data)
+                    .then(response => {
+                        this.refresh();
+                        sweetAlert('Department Created', 'Nice! This department has been successfully added.', 'success');
+                    })
+                    .catch(error => {
+                        sweetAlert('Something Went Wrong', 'Whoops. Looks like something went wrong while processing your request.', 'error');
+                    });
+            },
+
             refresh() {
                 axios.get('/api/departments')
                     .then(response => {
