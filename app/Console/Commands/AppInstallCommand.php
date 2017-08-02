@@ -28,7 +28,7 @@ class AppInstallCommand extends Command
     public function handle()
     {
         $this->call('config:cache');
-        $this->call('key:generate');
+        $this->call('migrate');
         $this->call('db:seed');
     }
 }
