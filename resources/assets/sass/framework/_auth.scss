@@ -5,7 +5,7 @@
         margin-bottom: 30px;
 
         h3 {
-            color: #dedddd;
+            color: #fff;
             font-weight: bolder;
             font-family: $pop-font-family;
         }
@@ -15,7 +15,7 @@
         margin: 25px 0;
         border-radius: 5px;
         background-color: #fff;
-        box-shadow: 0 0 8px black;
+        box-shadow: 0 0 5px #4e4d4d;
 
         form {
             padding: 40px 25px;
@@ -47,7 +47,7 @@
                 button {
                     font-weight: bolder;
                     padding: 10px 0;
-                    background-color: teal;
+                    background-color: #3498db;
                     border: none;
                 }
             }
@@ -57,7 +57,7 @@
             margin-top: 0;
             
             a {
-                border-radius: 0px !important;
+                // border-radius: 0px !important;
                 background-color: #eeeeee;
                 border: none !important;
                 padding: 20px;
