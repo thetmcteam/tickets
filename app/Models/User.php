@@ -46,6 +46,11 @@ class User extends Authenticatable
         return (bool) $this->admin;
     }
 
+    public function getId(): int
+    {
+        return intval($this->id);
+    }
+
     public function activate()
     {
         $this->update([

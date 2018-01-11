@@ -3,7 +3,7 @@
         <a class="tag" :style="{ 'background-color': ticket.status.color }" data-toggle="dropdown">
             {{ ticket.status.status }}
         </a>
-        <ul class="dropdown-menu custom-menu">
+        <ul class="dropdown-menu custom-menu" v-if="isAdmin()">
             <li class="header">Ticket Status</li>
             <li v-for="status in statuses" :class="{ disabled : status.id === ticket.status.id }">
                 <a @click="update(status)">
@@ -35,6 +35,10 @@
         },
 
         methods: {
+            isAdmin() {
+                return Boolean(window.user.admin);
+            },
+
             update(status) {
                 this.ticket.status = status;
                 let ticket = this.ticket.id;

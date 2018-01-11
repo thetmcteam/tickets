@@ -3,7 +3,7 @@
        <a class="tag" :style="{ 'background-color': ticket.priority.color }" data-toggle="dropdown">
             {{ ticket.priority.priority }}
         </a>
-        <ul class="dropdown-menu custom-menu">
+        <ul class="dropdown-menu custom-menu" v-if="isAdmin()">
             <li class="header">Ticket Priority</li>
             <li v-for="priority in priorities" :class="{ disabled : priority.id === ticket.priority.id }">
                 <a @click="update(priority)">
@@ -35,6 +35,10 @@
         },
 
         methods: {
+            isAdmin() {
+                return Boolean(window.user.admin);
+            },
+
             update(priority) {
                 let ticket = this.ticket.id;
                 this.ticket.priority = priority;

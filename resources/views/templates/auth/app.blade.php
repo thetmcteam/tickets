@@ -2,9 +2,18 @@
 <html>
     <head>
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         <title>{{ config("app.name") }}</title>
+        
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+
+        <script>
+            window.user = {
+                id: {{ Auth::user()->getId() }},
+                admin: {{ intval(Auth::user()->isAdmin()) }}
+            };
+        </script>
     </head>
     <body>
 

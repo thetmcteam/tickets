@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="assignTicketModal">
+    <div class="modal fade" id="assignTicketModal" v-if="isAdmin()">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -34,10 +34,12 @@
         created() {
             this.data.assignee = this.assignee;
 
-            axios.get('/api/users')
-                .then(response => {
-                    this.users = response.data;
-                });
+            if (this.isAdmin()) {
+                axios.get('/api/users')
+                    .then(response => {
+                        this.users = response.data;
+                    });
+            }
         },
 
         data() {
@@ -50,6 +52,10 @@
         },
 
         methods: {
+            isAdmin() {
+                return Boolean(window.user.admin);
+            },
+
             save() {
                 let ticket = this.ticket;
 

@@ -3,7 +3,7 @@
         <a class="tag" :style="{ 'background-color': ticket.type.color }" data-toggle="dropdown">
             {{ ticket.type.type }}
         </a>
-        <ul class="dropdown-menu custom-menu">
+        <ul class="dropdown-menu custom-menu" v-if="isAdmin()">
             <li class="header">Ticket Type</li>
             <li v-for="type in types" :class="{ disabled : type.id === ticket.type.id }">
                 <a @click="update(type)">
@@ -35,6 +35,10 @@
         },
 
         methods: {
+            isAdmin() {
+                return Boolean(window.user.admin);
+            },
+            
             update(type) {
                 let ticket = this.ticket.id;
                 this.ticket.type = type;
