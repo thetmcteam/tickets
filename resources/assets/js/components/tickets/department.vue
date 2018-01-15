@@ -5,7 +5,7 @@
         </a>
         <ul class="dropdown-menu custom-menu" v-if="isAdmin()">
             <li class="header">Ticket Department</li>
-            <li v-for="department in departments" :class="{ disabled : department.id === ticket.department.id }">
+            <li v-for="department in departments" v-if="department.id !== ticket.department.id">
                 <a @click="update(department)">
                     <i class="fa fa-square" :style="{ color: department.color }" style="margin-right: 5px"></i>
                     {{ department.department }}

@@ -10,7 +10,12 @@ class Ticket extends Model
     use SearchableTrait;
 
     protected $guarded = ['id'];
-    protected $with = ['department', 'user', 'status', 'type', 'priority', 'assignee', 'comments', 'actions'];
+    
+    protected $with = [
+        'department', 'user', 'status', 
+        'type', 'priority', 'assignee', 
+        'comments', 'actions'
+    ];
 
     // Whenever Ticket::search('query') is invoked it
     // will used the fields defined in this array
@@ -72,5 +77,55 @@ class Ticket extends Model
     public function priority()
     {
         return $this->hasOne(Priority::class, 'id', 'priority');
+    }
+
+    /**
+     * Get the ticket status.
+     *
+     * @return int
+     */
+    public function getStatusId(): int
+    {
+        return intval($this->status);
+    }
+
+    /**
+     * Get the ticket priority.
+     *
+     * @return int
+     */
+    public function getPriorityId(): int
+    {
+        return intval($this->priority);
+    }
+
+    /**
+     * Get the ticket type.
+     *
+     * @return int
+     */
+    public function getTypeId(): int
+    {
+        return intval($this->type);
+    }
+
+    /**
+     * Get the department type.
+     *
+     * @return int
+     */
+    public function getDepartmentId(): int
+    {
+        return intval($this->department);
+    }
+
+    /**
+     * Get the assignee id.
+     *
+     * @return int
+     */
+    public function getAssigneeId(): int
+    {
+        return intval($this->assignee);
     }
 }

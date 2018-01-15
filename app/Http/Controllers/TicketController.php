@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
 use App\Exceptions\TicketNotFoundException;
+use App\Exceptions\UpdateNotAllowedException;
 use App\Contracts\Repositories\ActionRepositoryInterface;
 use App\Contracts\Repositories\TicketRepositoryInterface;
 
@@ -57,6 +58,8 @@ class TicketController extends Controller
             $this->ticketRepository->updateStatus($id, $statusId);
         } catch (TicketNotFoundException $e) {
             abort(404);
+        } catch (UpdateNotAllowedException $e) {
+            abort(400);
         }
 
         $status = \App\Models\Status::find($statusId);
@@ -76,6 +79,8 @@ class TicketController extends Controller
             $this->ticketRepository->updatePriority($id, $priorityId);
         } catch (TicketNotFoundException $e) {
             abort(404);
+        } catch (UpdateNotAllowedException $e) {
+            abort(400);
         }
 
         $priority = \App\Models\Priority::find($priorityId);
@@ -95,6 +100,8 @@ class TicketController extends Controller
             $this->ticketRepository->updateAssignee($id, $assigneeId);
         } catch (TicketNotFoundException $e) {
             abort(404);
+        } catch (UpdateNotAllowedException $e) {
+            abort(400);
         }
 
         $assignee = \App\Models\User::find($assigneeId);
@@ -120,6 +127,8 @@ class TicketController extends Controller
             $this->ticketRepository->updateType($id, $typeId);
         } catch (TicketNotFoundException $e) {
             abort(404);
+        } catch (UpdateNotAllowedException $e) {
+            abort(400);
         }
 
         $type = \App\Models\Type::find($typeId);
@@ -139,6 +148,8 @@ class TicketController extends Controller
             $this->ticketRepository->updateDepartment($id, $departmentId);
         } catch (TicketNotFoundException $e) {
             abort(404);
+        } catch (UpdateNotAllowedException $e) {
+            abort(400);
         }
 
         $department = \App\Models\Department::find($departmentId);

@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use App\Models\Action;
 use App\Exceptions\ValidationException;
 use App\Exceptions\TicketNotFoundException;
+use App\Exceptions\UpdateNotAllowedException;
 use Illuminate\Validation\Factory as Validator;
 use App\Contracts\Repositories\TicketRepositoryInterface;
 
@@ -86,35 +87,65 @@ class TicketRepository implements TicketRepositoryInterface
 
     public function updateStatus(int $id, int $status)
     {
-        $this->findById($id)->update([
+        $ticket = $this->findById($id);
+
+        if ($ticket->getStatusId() === $status) {
+            throw new UpdateNotAllowedException;
+        }
+
+        $ticket->update([
             'status' => $status
         ]);
     }
 
     public function updateAssignee(int $id, int $user)
     {
-        $this->findById($id)->update([
+        $ticket = $this->findById($id);
+
+        if ($ticket->getAssigneeId() === $user) {
+            throw new UpdateNotAllowedException;
+        }
+
+        $ticket->update([
             'assignee' => $user
         ]);
     }
 
     public function updatePriority(int $id, int $priority)
     {
-        $this->findById($id)->update([
+        $ticket = $this->findById($id);
+
+        if ($ticket->getPriorityId() === $priority) {
+            throw new UpdateNotAllowedException;
+        }
+
+        $ticket->update([
             'priority' => $priority
         ]);
     }
 
     public function updateType(int $id, int $type)
     {
-        $this->findById($id)->update([
+        $ticket = $this->findById($id);
+
+        if ($ticket->getTypeId() === $type) {
+            throw new UpdateNotAllowedException;
+        }
+
+        $ticket->update([
             'type' => $type
         ]);
     }
 
     public function updateDepartment(int $id, int $department)
     {
-        $this->findById($id)->update([
+        $ticket = $this->findById($id);
+
+        if ($ticket->getDepartmentId() === $department) {
+            throw new UpdateNotAllowedException;
+        }
+
+        $ticket->update([
             'department' => $department
         ]);
     }
