@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <comments ticket="{{ $ticket['id'] }}"></comments>
-                    <comment ticket="{{ $ticket['id'] }}" image="{{ Auth::user()->image }}"></comment>
+                    <comment closed="{{ $ticket['status']['id'] === \App\Constants\Status::Closed }}" ticket="{{ $ticket['id'] }}" image="{{ Auth::user()->image }}"></comment>
                 </div>
                 <div class="col-sm-2">
                     <ticket-meta id="{{ json_encode($ticket) }}"></ticket-meta>
