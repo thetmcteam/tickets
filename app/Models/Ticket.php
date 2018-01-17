@@ -14,7 +14,7 @@ class Ticket extends Model
     protected $with = [
         'department', 'user', 'status', 
         'type', 'priority', 'assignee', 
-        'comments', 'actions'
+        'comments', 'actions', 'attachments'
     ];
 
     // Whenever Ticket::search('query') is invoked it
@@ -72,6 +72,11 @@ class Ticket extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'ticket', 'id');
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(Attachment::class, 'ticket', 'id');
     }
 
     public function priority()

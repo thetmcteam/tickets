@@ -29,6 +29,7 @@ $container-large-desktop: (1050px) !default;
 @import "partials/inputs";
 @import "partials/buttons";
 @import "partials/dropdown";
+@import "partials/dropzone";
 
 // Framework
 @import "framework/tickets/all";

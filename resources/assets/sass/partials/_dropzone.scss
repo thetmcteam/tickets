@@ -1,0 +1,15 @@
+.vue-dropzone {
+    padding: 5px !important;
+    min-height: 0 !important;
+    text-align: center !important;
+    border: none !important;
+
+    i {
+        font-style: normal !important;
+    }
+
+    .dz-message {
+        font-family: $font-family !important;
+        font-style: italic;
+    }
+}

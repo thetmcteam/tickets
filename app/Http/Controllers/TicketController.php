@@ -74,7 +74,7 @@ class TicketController extends Controller
     public function updatePriority(Request $request, $id)
     {
         $priorityId = intval($request->get('priority'));
-        
+
         try {
             $this->ticketRepository->updatePriority($id, $priorityId);
         } catch (TicketNotFoundException $e) {

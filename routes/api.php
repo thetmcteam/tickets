@@ -9,6 +9,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('invite', 'InviteController@store');
     });
 
+    Route::group(['prefix' => 'attachments'], function () {
+        Route::post('/', 'AttachmentController@create');
+        Route::get('{id}', 'AttachmentController@find');
+        Route::delete('{id}', 'AttachmentController@delete');
+    });
+
     Route::group(['prefix' => 'authorizations'], function () {
         Route::post('/', 'AuthorizationController@store');
         Route::get('{id}', 'AuthorizationController@show');

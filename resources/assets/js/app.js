@@ -34,6 +34,7 @@ Vue.component('comment', require('./components/comments/create.vue'));
 Vue.component('comments', require('./components/comments/all.vue'));
 Vue.component('create-ticket', require('./components/tickets/create.vue'));
 Vue.component('assign', require('./components/tickets/assignee.vue'));
+Vue.component('attachments', require('./components/tickets/attachments.vue'));
 
 Vue.component('metrics-ticket', require('./components/metrics/tickets.vue'));
 Vue.component('metrics-department', require('./components/metrics/department.vue'));
