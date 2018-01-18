@@ -22,12 +22,12 @@ class Ticket extends Model
     // to search for a given query.
     protected $searchable = [
         'columns' => [
-            'tickets.title' => 10,
-            'types.type' => 10,
-            'departments.department' => 10,
-            'users.name' => 10,
-            'users.username' => 10,
-            'priorities.priority' => 10,
+            'tickets.title' => 1,
+            'types.type' => 7,
+            'departments.department' => 7,
+            'users.name' => 9,
+            'users.username' => 9,
+            'priorities.priority' => 8,
             'statuses.status' => 10,
         ],
         'joins' => [

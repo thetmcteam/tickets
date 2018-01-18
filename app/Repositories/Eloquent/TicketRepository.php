@@ -36,14 +36,34 @@ class TicketRepository implements TicketRepositoryInterface
         return $tickets->paginate(20);
     }
 
-    public function getAllPaginatedBy($query)
+    public function getAllPaginatedBy(array $data)
     {
         $tickets = $this->ticket->newQuery();
-        $tickets->search($query);
+        
+        if (isset($data['query'])) {
+            $tickets->search($data['query']);
+        }
 
-        if (!Auth::user()->isAdmin()) {
-            $departments = Auth::user()->getViewableDepartments();
-            $tickets->whereIn('department', $departments);
+        if (isset($data['department'])) {
+            if (!Auth::user()->isAdmin()) {
+                $departments = Auth::user()->getViewableDepartments();
+                $tickets->whereIn('department', $departments);
+                $tickets->where('department', $data['department']);
+            } else {
+                $tickets->where('department', $data['department']);
+            }
+        }
+
+        if (isset($data['status'])) {
+            $tickets->where('status', $data['status']);
+        }
+
+        if (isset($data['type'])) {
+            $tickets->where('type', $data['type']);
+        }
+
+        if (isset($data['priority'])) {
+            $tickets->where('priority', $data['priority']);
         }
 
         return $tickets->paginate(20);

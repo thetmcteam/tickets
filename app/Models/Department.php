@@ -41,4 +41,19 @@ class Department extends Model
             'public' => 0
         ]);
     }
+
+    public function getId(): int
+    {
+        return intval($this->id);
+    }
+
+    public function getName()
+    {
+        return $this->department;
+    }
+
+    public function getColor()
+    {
+        return $this->color;
+    }
 }

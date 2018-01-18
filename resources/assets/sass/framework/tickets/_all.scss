@@ -6,6 +6,20 @@
     }
 
     .panel {
+        .filters {
+            margin: 0;
+
+            li {
+                a {
+                    color: inherit;
+
+                    .fa {
+                        margin-right: 3px;
+                    }
+                }
+            }
+        }
+
         .panel-body {
             padding: 0;
         }

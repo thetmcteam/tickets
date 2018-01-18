@@ -23,7 +23,68 @@
             <div class="clearfix"></div>
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading">Tickets</div>
+            <div class="panel-heading">
+                Tickets
+
+                <ul class="filters list-inline pull-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Department <span class="caret"></span></a>
+                        <ul class="dropdown-menu custom-menu">
+                            <li class="header">Department</li>
+                            @foreach ($departments as $department)
+                                <li>
+                                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, [ 'department' => $department->getId() ])) }}">
+                                        <i class="fa fa-square" style="color: {{ $department->getColor()  }}"></i>
+                                        {{ $department->getName() }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></a>
+                        <ul class="dropdown-menu custom-menu">
+                            <li class="header">Status</li>
+                            @foreach ($statuses as $status)
+                                <li>
+                                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, [ 'status' => $status->getId() ])) }}">
+                                        <i class="fa fa-square" style="color: {{ $status->getColor()  }}"></i>
+                                        {{ $status->getName() }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Type <span class="caret"></span></a>
+                        <ul class="dropdown-menu custom-menu">
+                            <li class="header">Type</li>
+                            @foreach ($types as $type)
+                                <li>
+                                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, [ 'type' => $type->getId() ])) }}">
+                                        <i class="fa fa-square" style="color: {{ $type->getColor()  }}"></i>
+                                        {{ $type->getName() }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Priority <span class="caret"></span></a>
+                        <ul class="dropdown-menu custom-menu">
+                            <li class="header">Priority</li>
+                            @foreach ($priorities as $priority)
+                                <li>
+                                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, [ 'priority' => $priority->getId() ])) }}">
+                                        <i class="fa fa-square" style="color: {{ $priority->getColor()  }}"></i>
+                                        {{ $priority->getName() }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             <div class="panel-body">
                 @if ($tickets->count() > 0)
                     @foreach ($tickets as $ticket)

@@ -11,6 +11,13 @@ use App\Exceptions\UpdateNotAllowedException;
 use App\Contracts\Repositories\ActionRepositoryInterface;
 use App\Contracts\Repositories\TicketRepositoryInterface;
 
+use App\Models\{
+    Status,
+    Type,
+    Priority,
+    Department
+};
+
 class TicketController extends Controller
 {
     private $ticketRepository;
@@ -24,13 +31,25 @@ class TicketController extends Controller
 
     public function index(Request $request)
     {
-        if (($query = $request->get('query')) !== null) {
-            $tickets = $this->ticketRepository->getAllPaginatedBy($query);
+        if (
+            $request->has('query') 
+            || $request->has('status') 
+            || $request->has('priority') 
+            || $request->has('department') 
+            || $request->has('type')
+        ) {
+            $tickets = $this->ticketRepository->getAllPaginatedBy($request->all());
         } else {
             $tickets = $this->ticketRepository->getAllPaginated();
         }
 
-        return view('tickets.all')->withTickets($tickets);
+        return view('tickets.all')
+            ->withTickets($tickets)
+            ->withDepartments(Department::all())
+            ->withStatuses(Status::all())
+            ->withPriorities(Priority::all())
+            ->withTypes(Type::all())
+            ->withQuery($request->all());
     }
 
     public function show(int $id)
