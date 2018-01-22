@@ -38,7 +38,7 @@
                                 <img src="/images/speech-bubble.png" class="timebar-icon">
                             </a>
                             <span class="heading">
-                                <img :src="reply.user.image ? reply.user.image : '/images/profile.jpg'">
+                                <img :src="note.user.image ? note.user.image : '/images/profile.jpg'">
                                 <a class="user">{{ note.user.name }}</a>
                                 <span style="color: #586069">
                                     said <timeago :since="note.created_at"></timeago>

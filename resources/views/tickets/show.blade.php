@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-sm-1">
                                     <div class="image">
-                                        <img src="{{ Auth::user()->getImage() }}">
+                                        <img src="{{ $ticket['user']['image'] ?: asset('/images/profile.jpg') }}">
                                     </div>
                                 </div>
                                 <div class="col-sm-11">
