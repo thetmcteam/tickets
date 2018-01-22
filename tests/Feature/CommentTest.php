@@ -15,13 +15,13 @@ class CommentTest extends TestCase
     {
         $ticket = $this->makeTicket();
         $user = $this->makeBasicUser();
-        
+
         $response = $this->actingAs($user)->post('/api/comments', [
             'ticket' => $ticket->id,
             'user' => $user->id,
             'content' => 'test'
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertJson(['message' => 'comment created.']);
     }
