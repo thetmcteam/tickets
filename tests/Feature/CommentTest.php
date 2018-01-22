@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -13,6 +14,7 @@ class CommentTest extends TestCase
 
     public function testCreateComment()
     {
+        Notification::fake();
         $ticket = $this->makeTicket();
         $user = $this->makeBasicUser();
 

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -70,6 +71,7 @@ class TicketTest extends TestCase
 
     public function testUpdateTicketAssignee()
     {
+        Notification::fake();
         $ticket = $this->makeTicket();
         $user = $this->makeAdminUser();
         $response = $this->actingAs($user)->put("/api/tickets/{$ticket->id}/assignee", ['assignee' => $user->id]);
