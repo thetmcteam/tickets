@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -13,15 +14,16 @@ class CommentTest extends TestCase
 
     public function testCreateComment()
     {
+        Notification::fake();
         $ticket = $this->makeTicket();
         $user = $this->makeBasicUser();
-        
+
         $response = $this->actingAs($user)->post('/api/comments', [
             'ticket' => $ticket->id,
             'user' => $user->id,
             'content' => 'test'
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertJson(['message' => 'comment created.']);
     }

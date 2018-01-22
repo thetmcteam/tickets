@@ -10,7 +10,15 @@ abstract class TestCase extends BaseTestCase
 
     protected function makeTicket()
     {
-        return factory(\App\Models\Ticket::class)->create();
+        $type = factory(\App\Models\Type::class)->create();
+        $status = factory(\App\Models\Status::class)->create();
+        $department = factory(\App\Models\Department::class)->create();
+
+        return factory(\App\Models\Ticket::class)->create([
+            'department' => $type->id,
+            'status' => $status->id,
+            'type' => $type->id,
+        ]);
     }
 
     protected function makeBasicUser()
