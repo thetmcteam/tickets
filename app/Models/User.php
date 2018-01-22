@@ -15,7 +15,11 @@ class User extends Authenticatable
 
     public function getViewableDepartments(): array
     {
-        return array_merge($this->getAuthorizedDepartments(), Department::where('public', 1)->get()->toArray());
+        $publicDepartments = Department::select('id')->where('public', 1)->get()->map(function ($department) {
+            return $department->id;
+        })->toArray();
+        
+        return array_merge($this->getAuthorizedDepartments(), $publicDepartments);
     }
 
     public function getAuthorizedDepartments(): array
