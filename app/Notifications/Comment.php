@@ -13,17 +13,13 @@ class Comment extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private $user;
     private $ticket;
-    private $content;
-    private $commenter;
+    private $commentator;
 
-    public function __construct(User $user, Ticket $ticket, User $commenter, $content)
+    public function __construct(Ticket $ticket, User $commentator)
     {
-        $this->user = $user;
         $this->ticket = $ticket;
-        $this->content = $content;
-        $this->commenter = $commenter;
+        $this->commentator = $commentator;
     }
 
     public function via($notifiable)
@@ -33,16 +29,13 @@ class Comment extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        $message = sprintf('Hello %s, %s posted a comment on your reply. (%s)',
-            $this->user->name,
-            $this->commenter->name,
-            $this->ticket->title
-        );
+        $message = trans('ticket.notifications.comment.message', [
+            'user' => $this->commentator->name
+        ]);
 
         return (new MailMessage)
-            ->subject('Someone commented on your reply.')
+            ->subject(trans('ticket.notifications.comment.subject'))
             ->line($message)
-            ->action('View Ticket', url('/tickets/' . $this->ticket->id))
-            ->line($this->content);
+            ->action(trans('ticket.notifications.comment.action'), url('/tickets/' . $this->ticket->id));
     }
 }

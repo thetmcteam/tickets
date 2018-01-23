@@ -13,17 +13,13 @@ class Reply extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private $user;
     private $ticket;
     private $replier;
-    private $content;
 
-    public function __construct(User $user, Ticket $ticket, User $replier, $content)
+    public function __construct(Ticket $ticket, User $replier)
     {
-        $this->user = $user;
         $this->ticket = $ticket;
         $this->replier = $replier;
-        $this->content = $content;
     }
 
     public function via($notifiable)
@@ -33,16 +29,13 @@ class Reply extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        $message = sprintf('Hey %s, %s posted a reply to your ticket (%s).',
-            $this->user->name,
-            $this->replier->name,
-            $this->ticket->title
-        );
+        $message = trans('ticket.notifications.reply.message', [
+            'user' => $this->replier->name
+        ]);
 
         return (new MailMessage)
-            ->subject('Someone replied to your ticket.')
+            ->subject(trans('ticket.notifications.reply.subject'))
             ->line($message)
-            ->action('View Ticket', url('/tickets/'. $this->ticket->id))
-            ->line($this->content);
+            ->action(trans('ticket.notifications.reply.action'), url('/tickets/'. $this->ticket->id));
     }
 }

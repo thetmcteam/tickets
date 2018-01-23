@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\NoteRepositoryInterface;
 use App\Contracts\Repositories\TicketRepositoryInterface;
 use App\Contracts\Repositories\CommentRepositoryInterface;
+use App\Handlers\Notifications\CommentNotificationHandler;
 
 class NoteController extends Controller
 {
@@ -45,14 +44,11 @@ class NoteController extends Controller
 
         $comment = $this->commentRepository->findById($data['comment']);
         $ticket = $this->ticketRepository->findById($comment->ticket);
+
+        $recipient = \App\Models\User::find($comment->user);
         
-        $user = \App\Models\User::find($comment->user);
-        $user->notify((new \App\Notifications\Comment(
-            $user,
-            $ticket,
-            Auth::user(),
-            $data['note']
-        ))->delay(Carbon::now()->addMinutes(1)));
+        $notificationHandler = new CommentNotificationHandler($ticket, $recipient, $request->user());
+        $notificationHandler->handleNotification();
 
         return response(['message' => 'note successfully created.']);
     }

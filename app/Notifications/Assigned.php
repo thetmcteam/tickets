@@ -15,13 +15,11 @@ class Assigned extends Notification implements ShouldQueue
 
     private $ticket;
     private $assigner;
-    private $assignee;
 
-    public function __construct(Ticket $ticket, User $assignee, User $assigner)
+    public function __construct(Ticket $ticket, User $assigner)
     {
         $this->ticket = $ticket;
         $this->assigner = $assigner;
-        $this->assignee = $assignee;
     }
 
     public function via($notifiable)
@@ -31,16 +29,13 @@ class Assigned extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        $message = sprintf('Hello %s, %s has assigned this ticket to you. (%s)',
-            $this->assignee->name,
-            $this->assigner->name,
-            $this->ticket->title
-        );
+        $message = sprintf(trans('ticket.notifications.assigned.message', [
+            'user' => $this->assigner->name
+        ]));
 
         return (new MailMessage)
-            ->line('You\'ve been assigned to a ticket.')
-            ->subject('You\'ve been assigned to a ticket.')
-            ->action('View Ticket', url('/tickets/' . $this->ticket->id))
-            ->line($message);
+            ->subject(trans('ticket.notifications.assigned.subject'))
+            ->line($message)
+            ->action(trans('ticket.notifications.assigned.action'), url('/tickets/' . $this->ticket->id));
     }
 }
