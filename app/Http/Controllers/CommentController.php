@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
 use App\Exceptions\CommentNotFoundException;
 use App\Contracts\Repositories\NoteRepositoryInterface;
 use App\Contracts\Repositories\TicketRepositoryInterface;
 use App\Contracts\Repositories\CommentRepositoryInterface;
+use App\Handlers\Notifications\ReplyNotificationHandler;
 
 class CommentController extends Controller
 {
@@ -45,12 +44,10 @@ class CommentController extends Controller
         }
 
         $ticket = $this->ticketRepository->findById($data['ticket']);
-        ($user = $ticket->user()->first())->notify((new \App\Notifications\Reply(
-            $user,
-            $ticket,
-            Auth::user(),
-            $data['content']
-        ))->delay(Carbon::now()->addMinutes(1)));
+        $recipient = $ticket->user()->first();
+
+        $notificationHandler = new ReplyNotificationHandler($ticket, $recipient, $request->user());
+        $notificationHandler->handleNotification();
 
         return response(['message' => 'comment created.'], 200);
     }
