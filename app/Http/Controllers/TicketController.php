@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
 use App\Exceptions\TicketNotFoundException;
 use App\Exceptions\UpdateNotAllowedException;
 use App\Contracts\Repositories\ActionRepositoryInterface;
 use App\Contracts\Repositories\TicketRepositoryInterface;
+use App\Handlers\Notifications\AssignedNotificationHandler;
 
 use App\Models\{
     Status,
@@ -82,7 +81,7 @@ class TicketController extends Controller
         }
 
         $status = \App\Models\Status::find($statusId);
-        $this->actionRepository->log(Auth::user()->id, $id, 'status', [
+        $this->actionRepository->log($request->user()->id, $id, 'status', [
             'value' => $status->status,
             'color' => $status->color
         ]);
@@ -103,7 +102,7 @@ class TicketController extends Controller
         }
 
         $priority = \App\Models\Priority::find($priorityId);
-        $this->actionRepository->log(Auth::user()->id, $id, 'priority', [
+        $this->actionRepository->log($request->user()->id, $id, 'priority', [
             'value' => $priority->priority,
             'color' => $priority->color
         ]);
@@ -124,16 +123,15 @@ class TicketController extends Controller
         }
 
         $assignee = \App\Models\User::find($assigneeId);
-        $this->actionRepository->log(Auth::user()->id, $id, 'assign', [
+        $this->actionRepository->log($request->user()->id, $id, 'assign', [
             'value' => $assignee->name,
             'color' => '#8e44ad'
         ]);
 
-        $assignee->notify((new \App\Notifications\Assigned(
-            $this->ticketRepository->findById($id),
-            Auth::user(),
-            $assignee
-        ))->delay(Carbon::now()->addMinutes(1)));
+        $ticket = $this->ticketRepository->findById($id);
+
+        $notificationHandler = new AssignedNotificationHandler($ticket, $assignee, $request->user());
+        $notificationHandler->handleNotification();
 
         return response(['message' => 'ticket updated.']);
     }
@@ -151,7 +149,7 @@ class TicketController extends Controller
         }
 
         $type = \App\Models\Type::find($typeId);
-        $this->actionRepository->log(Auth::user()->id, $id, 'type', [
+        $this->actionRepository->log($request->user()->id, $id, 'type', [
             'value' => $type->type,
             'color' => $type->color
         ]);
@@ -172,7 +170,7 @@ class TicketController extends Controller
         }
 
         $department = \App\Models\Department::find($departmentId);
-        $this->actionRepository->log(Auth::user()->id, $id, 'department', [
+        $this->actionRepository->log($request->user()->id, $id, 'department', [
             'value' => $department->department,
             'color' => $department->color
         ]);
