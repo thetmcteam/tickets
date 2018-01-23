@@ -1,17 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Hashing\BcryptHasher;
 use App\Contracts\Repositories\UserRepositoryInterface;
 
 class UsersTableSeeder extends Seeder
 {
-    private $hasher;
     private $userRepository;
 
-    public function __construct(UserRepositoryInterface $userRepository, BcryptHasher $hasher)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->hasher = $hasher;
         $this->userRepository = $userRepository;
     }
 
@@ -21,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'administrator',
             'username' => 'admin',
             'email' => 'admin@admin.com',
-            'password' => $this->hasher->make('secret'),
+            'password' => 'secret',
             'admin' => 1
         ]);
     }
