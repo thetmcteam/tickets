@@ -36,7 +36,7 @@
                                         </div>
                                         <div class="panel-body">{!! nl2br($ticket['content']) !!}</div>
                                     </div>
-                                    <attachments ticket="{{ $ticket['id'] }}"></attachments>
+                                    <attachments ticket="{{ $ticket['id'] }}" path="{{ Storage::url('') }}"></attachments>
                                     <actions ticket="{{ $ticket['id'] }}"></actions>
                                 </div>
                             </div>
