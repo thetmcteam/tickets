@@ -22,7 +22,7 @@
             <tbody>
                 <tr v-for="attachment in attachments">
                     <td>{{ attachment.user.name }}</td>
-                    <td><a :href="path + attachment.location" target="_blank">{{ attachment.location }}</a></td>
+                    <td><a :href="path + attachment.location" target="_blank">{{ attachment.location.slice(0, 50) }}</a></td>
                     <td>{{ attachment.created_at }}</td>
                 </tr>
             </tbody>

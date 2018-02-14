@@ -13,7 +13,7 @@
                             {{ reply.user.name }} replied <timeago :since="reply.created_at"></timeago>
                         </div>
                         <div class="panel-body">
-                            {{ reply.content }}
+                            <pre>{{ reply.content }}</pre>
                         </div>
                         <div class="panel-footer">
                             <ul class="list-inline no-margin">
