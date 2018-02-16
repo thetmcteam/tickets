@@ -4,7 +4,7 @@
             <h3>helpdesk</h3>
         </div>
         <div class="auth">
-            <ul class="nav nav-tabs nav-justified">
+            <ul class="nav nav-tabs nav-justified hidden-xs">
                 <li :class="{ 'active': method === 'basic' }"><a @click="authenticate('basic')">Basic</a></li>
                 <li :class="{ 'active': method === 'ad' }"><a @click="authenticate('ad')">Active Directory</a></li>
             </ul>
@@ -25,7 +25,7 @@
                         <input type="password" class="form-control" v-model="data.password" placeholder="Password">
                     </div>
                 </div>
-                <div class="form-group" v-if="method == 'basic'">
+                <div class="form-group hidden-xs" v-if="method == 'basic'">
                     <label>
                         <input type="checkbox" v-model="data.remember"> Keep me logged in
                     </label>

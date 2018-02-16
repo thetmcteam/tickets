@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
         
         <title>{{ config("app.name") }}</title>
         
@@ -23,8 +24,13 @@
                     <a href="" class="navbar-brand">
                         helpdesk
                     </a>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-                <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse" id="navbar-toggle">
                     <ul class="nav navbar-nav">
                         <li class="{{ request()->route()->getName() == 'tickets'  ? 'active' : '' }}">
                             <a href="{{ route('tickets') }}">tickets</a>

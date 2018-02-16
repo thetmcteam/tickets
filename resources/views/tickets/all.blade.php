@@ -15,7 +15,7 @@
                     </div>
                 </form>
             </div>
-            <div class="pull-right">
+            <div class="pull-right hidden-xs">
                 <a class="btn btn-primary" href="/tickets/create">
                     Open Ticket
                 </a>
@@ -26,7 +26,7 @@
             <div class="panel-heading">
                 Tickets
 
-                <ul class="filters list-inline pull-right">
+                <ul class="filters list-inline pull-right hidden-xs">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Department <span class="caret"></span></a>
                         <ul class="dropdown-menu custom-menu">
@@ -91,13 +91,15 @@
                         <div class="ticket">
                             <div class="pull-left">
                                 <h3>
-                                    <span class="status">
-                                        <i class="fa fa-warning"></i>
+                                    <span class="title">
+                                        <span class="status">
+                                            <i class="fa fa-warning"></i>
+                                        </span>
+                                        <a class="department" href="/tickets?query={{ $ticket->department()->first()->department }}">
+                                            {{ $ticket->department()->first()->department }}
+                                        </a>
+                                        <a href="/tickets/{{ $ticket->id }}">{{ $ticket->title }}</a>
                                     </span>
-                                    <a class="department" href="/tickets?query={{ $ticket->department()->first()->department }}">
-                                        {{ $ticket->department()->first()->department }}
-                                    </a>
-                                    <a href="/tickets/{{ $ticket->id }}">{{ $ticket->title }}</a>
 
                                     <span class="label" style="background-color: {{ $ticket->type()->first()->color }}">
                                         {{ $ticket->type()->first()->type }}
@@ -109,9 +111,11 @@
                                         {{ $ticket->priority()->first()->priority }}
                                     </span>
                                 </h3>
-                                <h4>#{{ $ticket->id }} opened on {{ date('F jS', strtotime($ticket->created_at)) }} by <a href="/tickets/?query={{ $ticket->user()->first()->name }}">{{ $ticket->user()->first()->name }}</a></h4>
+                                <h4>
+                                    #{{ $ticket->id }} opened on {{ date('F jS', strtotime($ticket->created_at)) }} by <a href="/tickets/?query={{ $ticket->user()->first()->name }}">{{ $ticket->user()->first()->name }}</a>
+                                </h4>
                             </div>
-                            <div class="meta pull-right">
+                            <div class="meta pull-right hidden-xs">
                                 <div class="comments">
                                     <span>
                                         <i class="fa fa-comments-o"></i>

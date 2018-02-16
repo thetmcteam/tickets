@@ -29,6 +29,22 @@
         border-top: none !important;
     }
 
+    @media screen and (max-width: 768px) {
+        .ticket {
+            .pull-left {
+                float: none !important;
+            }
+
+            .title {
+                display: block;
+            }
+
+            .label {
+                display: none;
+            }
+        }
+    }
+
     .ticket {
         border-top: 1px solid #f1f1f1;
         padding: 10px 15px;

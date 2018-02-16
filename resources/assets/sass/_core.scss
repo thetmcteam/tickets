@@ -38,3 +38,9 @@ label {
 .sweet-alert p {
     font-size: 2.5em;
 }
+
+@media screen and (max-width: 768px) {
+    .hidden-xs {
+        display: none;
+    }
+}

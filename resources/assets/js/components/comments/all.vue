@@ -4,7 +4,7 @@
             <div class="reply">
                 <div class="col-sm-1">
                     <div class="image">
-                        <img :src="reply.user.image ? reply.user.image : '/images/profile.jpg'">
+                        <img :src="reply.user.image ? reply.user.image : '/images/profile.jpg'" class="hidden-xs">
                     </div>
                 </div>
                 <div class="col-sm-11">
@@ -33,7 +33,6 @@
                     </div>
                     <ul v-if="reply.notes.length > 0" class="notes">
                         <li v-for="note in reply.notes" class="note">
-                            <!-- <i class="fa fa-comment-o"></i> -->
                             <a data-toggle="tooltip" data-placement="left" title="test">
                                 <img src="/images/speech-bubble.png" class="timebar-icon">
                             </a>

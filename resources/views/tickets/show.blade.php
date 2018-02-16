@@ -6,7 +6,7 @@
             <div class="title">
                 <h2>
                     {{ $ticket['title'] }}
-                    <span style="color: #a3aab1">#{{ $ticket['id'] }}</span>
+                    <span class="hidden-xs" style="color: #a3aab1">#{{ $ticket['id'] }}</span>
                 </h2>
                 <h3>
                     <span class="label" style="background-color: {{ $ticket['status']['color']  }}">
@@ -20,16 +20,16 @@
                 </h3>
             </div>
             <div class="row">
-                <div class="col-sm-9">
+                <div class="col-xs-12 col-sm-9">
                     <div class="tview">
                         <div class="reply">
                             <div class="row">
-                                <div class="col-sm-1">
+                                <div class="col-sm-1 hidden-xs">
                                     <div class="image">
                                         <img src="{{ $ticket['user']['image'] ?: asset('/images/profile.jpg') }}">
                                     </div>
                                 </div>
-                                <div class="col-sm-11">
+                                <div class="col-xs-12 col-sm-11">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             {{ $ticket['user']['name'] }} opened this ticket {{ \Carbon\Carbon::parse($ticket['created_at'])->diffForHumans() }}
@@ -45,7 +45,7 @@
                     <comments ticket="{{ $ticket['id'] }}"></comments>
                     <comment closed="{{ $ticket['status']['id'] === \App\Constants\Status::Closed }}" ticket="{{ $ticket['id'] }}" image="{{ Auth::user()->image }}"></comment>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-2 hidden-xs">
                     <ticket-meta id="{{ json_encode($ticket) }}"></ticket-meta>
                 </div>
             </div>
