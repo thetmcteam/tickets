@@ -3,7 +3,7 @@
         <div class="row">
             <div class="reply">
                 <div class="col-sm-1">
-                    <div class="image">
+                    <div class="image hidden-xs">
                         <img :src="image ? image : '/images/profile.jpg'">
                     </div>
                 </div>
