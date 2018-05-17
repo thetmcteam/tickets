@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Exceptions\ValidationException;
 use App\Contracts\Repositories\InviteRepositoryInterface;
@@ -38,7 +39,8 @@ class InviteController extends Controller
             return response(json_decode($e->getMessage()), 422);
         }
 
-        $invite->notify(new \App\Notifications\Invited($invite, config('app.name')));
+        $delay = Carbon::now()->addMinutes(1);
+        $invite->notify((new \App\Notifications\Invited($invite, config('app.name')))->delay($delay));
 
         return response(['message' => 'invite created.'], 200);
     }
